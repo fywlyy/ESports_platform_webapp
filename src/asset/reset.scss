@@ -25,20 +25,11 @@ img{vertical-align: middle;}
   user-select:none;
 }
 
-
 /*浮动*/
 .fl { float:left; }
 .fr { float:right; }
 
-/*定位*/
-.posa{ position: absolute; }
-.posr{ position: relative; }
-.posf{ position: fixed; }
-.inblock{ display: inline-block; }
-
-
-
-/**清除浮动**/
+/*清除浮动*/
 .clearFix:before, .clearFix:after { display: table; content: ""; }
 .clearFix:after { clear: both; }
 .clearFix { *zoom: 1; }
@@ -48,65 +39,68 @@ img{vertical-align: middle;}
   font-size: 1rem;
 }
 
-//按钮样式
-.button{
-  width: 160px * $scale;
-  min-width: 160px * $scale;
-  color: #818181;
-  border: 1px solid #c1c1c1;
+/*初始化一系列样式(图片，warning，error，danger，normal，button)*/
+.warning{
+  color: #ff731f;
+  font-weight: bold;
+}
+.price{
+  color: #e8e8e8;//**
+}
+.danger{
+  color: red;
+}
+.normal{
+  color: #535353;
+}
+.green{
+  color:#00c36a;
+}
+.btn {
   display: inline-block;
-  *display: inline;
-  padding: 10px * $scale 20px * $scale;
+  vertical-align: baseline;
   margin-bottom: 0;
-  *margin-left: .3em;
-  font-size: 16px * $scale;
+  height:rem(98);
+  font-size: rem(34);
+  font-weight: normal;
   text-align: center;
-  vertical-align: middle;
+  line-height: 1;
   cursor: pointer;
-  background-color: #fff;
-;*zoom:1;
-  @include border-radius(5px);
-  &.small{
-    min-width: 120px * $scale;
-    width: 120px * $scale;
-    padding: 6px * $scale 0 5px * $scale 0;
-  }
-  &.min{
-    min-width: 45px;
-    width: 45px;
-    padding: 5px 0;
-  }
-  &:hover{
-    color: $font-default-color;
-    border-color: $font-default-color;
-  }
+  border: none;
+  border-radius: rem(10);
+  white-space: nowrap;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color:#6c8ebe;
+  color:#fff;
 }
-.button.primary{
-  background-color: $theme-default-color;
-  border-color: $theme-default-color;
+.btn[disabled]{
+  background: #f8f8f8;
+  border: 1px solid #bbb;
+  color: #333;
+}
+.btn-danger {
   color: #fff;
-  &:hover{
-    background-color:$theme-default-hover-color;
-    border-color: $theme-default-hover-color;
-  }
+  border-color: $baseColor;
+  background-color: $baseColor;
 }
-.button.export{
-  background-color: #59a5eb;
-  color: #fff;
-  border-color:#59a5eb;
-  &:hover{
-    background-color: #2e89de;
-    border-color: #2e89de;
+.scroll-loading{
+  padding: rem(10);
+  font-size: rem(24);
+  text-align: center;
+  height: rem(130);
+  .loading-span{
+    img{
+      display: block;
+      margin: 0 auto;
+      width: rem(80);
+      height: rem(80);
+    }
   }
-}
-.button[disabled]{
-  color: #dadada;
-  border-color: #e6e6e6;
-  background-color:#fff;
-  &:hover{
-    color: #dadada;
-    border-color: #e6e6e6;
-    background-color:#fff;
-    cursor: not-allowed;
+  .loading-state{
+    display: block;
+    height: 100%;
   }
 }

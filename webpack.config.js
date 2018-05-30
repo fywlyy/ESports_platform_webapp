@@ -6,8 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     main: './src/main.js',
-    jquery: path.resolve(__dirname, './src/asset/plugin/jquery.min.js'),
-    colResizable: path.resolve(__dirname, './src/asset/plugin/colResizable.js'),
+    jquery: path.resolve(__dirname, './src/asset/plugin/jquery.min.js')
   },
   output: {
     path: path.resolve(__dirname, './built'),
@@ -75,9 +74,9 @@ module.exports = {
       template: './src/index.html', //html模板路径
       inject: true, //js插入的位置，true/'head'/'body'/false
       hash: true, //为静态资源生成hash值
-      chunks: ['manifest', 'jquery', 'colResizable', 'vendors', 'main'],
+      chunks: ['manifest', 'jquery', 'vendors', 'main'],
       chunksSortMode: function (chunk1, chunk2) {
-        var order = ['manifest', 'jquery', 'colResizable', 'vendors', 'main'];
+        var order = ['manifest', 'jquery', 'vendors', 'main'];
         var order1 = order.indexOf(chunk1.names[0]);
         var order2 = order.indexOf(chunk2.names[0]);
         return order1 - order2;

@@ -1,16 +1,16 @@
 @import "../../asset/common";
 
 .login-page{
-    padding: 10px;
+    padding: rem(10);
 }
 .login-page h1{
-    height: 50px;
+    height: rem(50);
     background-color:#00c36a;
     text-align: center;
-    line-height: 50px;
-    font-size: 30px;
+    line-height: rem(50);
+    font-size: rem(30);
 }
 .login-page .btn-module{
-    margin-top: 100px;
+    margin-top: rem(100);
     text-align: center;
 }
