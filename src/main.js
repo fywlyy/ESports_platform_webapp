@@ -22,6 +22,19 @@ const HomePageCb = function(userId) {
     },'HomePage')
 };
 
+$.ajaxSetup({
+    cache: false,
+    beforeSend: function(xhr){
+
+    },
+    complete: function (xhr,status) {
+
+    },
+    error: function(xhr,status,error) {
+        
+    }
+});
+
 const routes = {
     '/': () => {
         let userId = Util.getCookie('userId');
@@ -41,6 +54,9 @@ const router = new Router(routes).configure({
             Util.linkTo('/login');
             return false;
         }
+    },
+    after: () => {
+
     }
 });
 router.init();
