@@ -8,19 +8,19 @@
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
-import GroupsTpl from './groups.html';
-import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js';
+import DynamicDetailsTpl from './dynamic-details.html';
+import GroupInfoItem from '../../common-component/groupInfoItem/groupInfoItem.js';
 
-import "./groups.scss";
+import "./dynamic-details.scss";
 
-export default function Groups() {
-    const infoList = [0,1,2,3];
+export default function DynamicDetails() {
+    const itemData = {};
 
     const handlers = {
         init: function() {
-            $(".container").html(GroupsTpl());
-            GroupInfoList($(".group-info-list"),infoList);
-            Util.setTitle('圈子111');
+            $(".container").append(DynamicDetailsTpl());
+            GroupInfoItem($(".groupItem-layout"),itemData);
+            Util.setTitle('动态详情');
             this.bindEvent();
         },
         bindEvent: function() {

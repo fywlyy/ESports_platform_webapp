@@ -30,6 +30,12 @@ const GamesCb = function(userId) {
         let Games = require('./pages/games/games.js');
         Games.default(userId);
     },'Games')
+/*动态详情*/
+const DynamicDetailsCb = function() {
+    require.ensure([], (require) => {
+        let DynamicDetails = require('./pages/dynamic-details/dynamic-details.js');
+        DynamicDetails.default();
+    },'DynamicDetails')
 };
 /*jquery ajax setup*/
 $.ajaxSetup({
@@ -55,6 +61,7 @@ const routes = {
     '/login': LoginCb,
     '/groups': GroupsCb,
     '/games': GamesCb,
+    '/dynamic-details': DynamicDetailsCb,
 };
 
 const router = new Router(routes).configure({
