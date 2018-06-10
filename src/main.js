@@ -38,6 +38,13 @@ const DynamicDetailsCb = function() {
         DynamicDetails.default();
     },'DynamicDetails')
 };
+/*比赛页*/
+const MatchesCb = function() {
+    require.ensure([], (require) => {
+        let Matches = require('./pages/matches/matches.js');
+        Matches.default();
+    },'Matches')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -63,6 +70,7 @@ const routes = {
     '/groups': GroupsCb,
     '/games': GamesCb,
     '/dynamic-details': DynamicDetailsCb,
+    '/matches': MatchesCb
 };
 
 const router = new Router(routes).configure({
