@@ -3,6 +3,8 @@
 $themeBlack: #141414;
 $hotColor: #585757;
 $themeYellow: #ffaf00;
+$defaultBorder: rem(1) solid #cec9c3;
+$activeBorder: rem(1) solid #ef9000;
 #header-all{
   .hot-recommend{
     background: $themeBlack;
@@ -38,12 +40,35 @@ $themeYellow: #ffaf00;
     }
   }
   .sort{
-    >button{
+    >div{
       display: inline-block;
       border-radius: rem(15);
+      height: rem(50);
+      line-height: rem(50);
     }
     .sort-border{
-      border: rem(1) solid $themeYellow;
+      padding: 0 rem(12);
+      font-size: rem(24);
+      color: #93908b;
+      text-align: center;
+      border: $defaultBorder;
+      background: #cec9c3;
+      &.active{
+        color: #fff;
+        border: $activeBorder;
+        background: $themeYellow;
+      }
+    }
+    .account-safe-btn{
+      div{
+        background: red;
+      }
+      color: #259cf6;
+      border: $defaultBorder;
+    }
+    .auto-transport-btn{
+      color: #252525;
+      border: $defaultBorder;
     }
   }
 }
