@@ -1,3 +1,4 @@
+import Util from '../util/util.js';
 import TableTpl from "./footer.html";
 
 import "./footer.scss";
@@ -16,6 +17,8 @@ export default function Footer($el, cb) {
                 }else{
                     $this.parent().find('.nav-item.active').removeClass('active');
                     $this.addClass('active');
+                    let router = $this.data('router')
+                    Util.linkTo(`/${router}`);
                 }
             });
         }

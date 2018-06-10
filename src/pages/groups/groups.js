@@ -20,12 +20,14 @@ export default function Groups() {
 
     const handlers = {
         init: function() {
-            $(".container").append(GroupsTpl());
+            $(".container").html(GroupsTpl());
             GroupInfoList($(".group-info-list"),infoList);
 
             var swiper = new Swiper('.group-list',{
                 slidesPerView: 4
             });
+
+            Util.setTitle('圈子111');
 
             this.bindEvent();
         },

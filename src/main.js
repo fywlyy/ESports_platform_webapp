@@ -24,6 +24,20 @@ const GroupsCb = function(userId) {
         Groups.default(userId);
     },'Groups')
 };
+/*游戏页*/
+const GamesCb = function(userId) {
+    require.ensure([], (require) => {
+        let Games = require('./pages/games/games.js');
+        Games.default(userId);
+    }, 'Games')
+};
+/*动态详情*/
+const DynamicDetailsCb = function() {
+    require.ensure([], (require) => {
+        let DynamicDetails = require('./pages/dynamic-details/dynamic-details.js');
+        DynamicDetails.default();
+    },'DynamicDetails')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -47,6 +61,8 @@ const routes = {
     },
     '/login': LoginCb,
     '/groups': GroupsCb,
+    '/games': GamesCb,
+    '/dynamic-details': DynamicDetailsCb,
 };
 
 const router = new Router(routes).configure({
