@@ -57,3 +57,10 @@ $baseColor:#59381d;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin myTransition($attr:all, $time:.2s){
+  transition: $attr $time;
+  -moz-transition: $attr $time;
+  -webkit-transition: $attr $time;
+  -o-transition: $attr $time;
+}
