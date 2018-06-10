@@ -354,5 +354,23 @@ module.exports = {
     },
     setTitle: function(title) {
         $(".page-title").html(title);
+    },
+    restFooter: function(key) {
+        let noFooter = false;
+        const blacklist = ['/dynamic-details'];
+
+        blacklist.map((item,index) => {
+            if(key === item){
+                noFooter = true;
+            }
+        })
+
+        if(noFooter) {
+            $(".footer-layout").hide();
+            $(".container").addClass('no-footer');
+        }else{
+            $(".footer-layout").show();
+            $(".container").removeClass('no-footer');
+        }
     }
 }

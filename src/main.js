@@ -70,11 +70,14 @@ const router = new Router(routes).configure({
         alert('错误链接！');
     },
     before: () => {
+        let hash = location.hash;
         let userId = Util.getCookie('userId');
-        if(!userId && location.hash.indexOf('/login') < 0){
+        if(!userId && hash.indexOf('/login') < 0){
             Util.linkTo('/login');
             return false;
         }
+        //footer显示隐藏控制
+        Util.restFooter(hash.split('#')[1]);
     },
     after: () => {
 

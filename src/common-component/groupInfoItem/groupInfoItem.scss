@@ -5,7 +5,27 @@
     border-radius: rem(15);
     border: 1px solid #e3e0db;
     padding: 0 rem(20);
-
+    &.only-one{
+        >.comments{
+            display: none;
+        }
+        >.content{
+            >div{
+                border-bottom:none;
+                .operator{
+                    position:inherit;
+                    bottom:0;
+                    right:0;
+                    display: block;
+                    margin-top:rem(16);
+                    text-align: right;
+                    span:nth-child(3){
+                        margin-right:0;
+                    }
+                }
+            }
+        }
+    }
     >.headerInfo{
         height: rem(100);
         position: relative;
@@ -61,6 +81,7 @@
             position: relative;
 
             >img{
+                display: block;
                 max-width: rem(225);
             }
 
@@ -88,12 +109,14 @@
                 span:nth-child(1){
                     &:before{
                         background-image:url('../../asset/images/groupItem/comment.png');
+                        background-repeat: no-repeat;
                     }
                 }
 
                 span:nth-child(2){
                     &:before{
                         background-image:url('../../asset/images/groupItem/like.png');
+                        background-repeat: no-repeat;
                     }
                 }
 
@@ -103,6 +126,7 @@
                         width: rem(38);
                         height: rem(32);
                         background-image:url('../../asset/images/groupItem/menu.png');
+                        background-repeat: no-repeat;
                     }
                 }
 
@@ -115,7 +139,7 @@
     >.comments{
         font-size: rem(24);
         color: #b2b1ad;
-        line-height: rem(32);
+        line-height: rem(34);
         padding: rem(5) 0;
 
         >p>span{

@@ -1,0 +1,35 @@
+<div class="comment">
+    <div class="comment-header">
+        <div class="comment-num">评论 1081</div>
+        <div class="like-num">
+            <span class="icon-heart"></span> 
+            <span>25678</span>
+        </div>
+    </div>
+    <ul class="comment-info-list">
+        {{each infoList as itemData i}}
+            <li class="clearFix">
+                <div class="photo fl">
+                    <img src="../../asset/images/groupItem/headImg.png" alt="">
+                </div>
+                <div class="info-modal">
+                    <p class="name">空城</p>
+                    <p class="time">06-05 22:09</p>
+                    <p class="content">颜值担当~</p>
+                    <div class="operator">
+                        <span class="icon-comment"></span>
+                        <span class="icon-like"></span>
+                    </div>
+                </div>
+            </li>
+        {{/each}}                
+    </ul>
+    <div class="comment-input">
+        <div class="input-box" contenteditable="true">
+            <img src="../../asset/images/groupItem/headImg.png" alt="">
+        </div>
+        <div class="send-btn">
+            <span class="icon-expression"></span>
+        </div>
+    </div>
+</div>

@@ -3,12 +3,9 @@
 .dynamicDetails-layout{
     min-height:100%;
     background-color:#f1ede8;
-    padding:rem(16) rem(10);
+    padding:rem(16) rem(10) rem(88);
     @include box-sizing;
-    .groupItem-layout{
-
-    }
-    .commentList-layout{
+    .comment-layout{
         margin-top:rem(12);
     }
 }
