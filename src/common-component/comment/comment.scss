@@ -119,6 +119,7 @@
         @include box-shadow-outset(2px,2px,4px,4px,#d9d8d4);
         background-color:rgba(225,225,225,.7);
         @include box-sizing;
+        z-index:1000;
         .input-box{
             width:100%;
             height:rem(56);
@@ -126,7 +127,8 @@
             @include border-radius(rem(15));
             background-color:#cec9c3;
             font-size:rem(30);  
-            color:#625b51;                      
+            color:#625b51;   
+            -webkit-user-select:text;                   
             @include box-sizing;
             & > img{
                 position:relative;
