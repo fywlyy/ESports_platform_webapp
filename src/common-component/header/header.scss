@@ -2,10 +2,8 @@
 
 .header{
     position:relative;
-    width:100%;
     height:rem(60);
     padding:0 rem(75);
-    @include box-sizing;
     .btn-back{
         position:absolute;
         top:0;

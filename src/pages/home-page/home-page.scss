@@ -18,7 +18,10 @@
     background-color:#f1ede8; 
     overflow-x: hidden; 
     overflow-y: scroll; 
-    @include box-sizing;    
+    @include box-sizing;  
+    &.no-footer{
+        padding-bottom:0;
+    }  
 }
 
 .footer-layout{
