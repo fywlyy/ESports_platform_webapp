@@ -33,7 +33,7 @@
       }
 
       .swiper-pagination-bullet{
-        background: url('../../asset/images/matches/pagination.png') center;
+        background: url('../../asset/images/matches/pagination.png') no-repeat center;
         background-size: rem(9);
         width: rem(9);
         height: rem(9);
@@ -41,13 +41,122 @@
       }
 
       .swiper-pagination-bullet.swiper-pagination-bullet-active{
-        background: url('../../asset/images/matches/pagination-active.png') center;
+        background: url('../../asset/images/matches/pagination-active.png') no-repeat center;
         background-size: rem(31);
         width: rem(31);
         height: rem(31);
         vertical-align: middle;
       }
 
+    }
+
+  }
+
+  .recent-event{
+    background: #ffffff;
+    border: 1px solid #e3e0db;
+    border-radius: rem(15);
+    margin: rem(10) rem(10) 0;
+
+    .event-item{
+
+      >img{
+        width: rem(335);
+        height: rem(300);
+      }
+
+      >div{
+        font-size: rem(24);
+        color: #ffffff;
+        line-height: rem(54);
+        text-align: center;
+        padding: rem(23) 0 rem(12);
+
+        span{
+          display: inline-block;
+          padding: 0 rem(20);
+          border-radius: rem(25);
+        }
+
+        span:first-child{
+          background: #ffaf00;
+          margin-right: rem(20);
+        }
+
+        span:last-child{
+          background: #fd8515;
+        }
+
+      }
+
+    }
+
+  }
+
+  .hot-news{
+    background: #ffffff;
+    border: 1px solid #e3e0db;
+    border-radius: rem(15);
+    margin: rem(10) rem(10);
+    padding-bottom: rem(10);
+
+    .news-list{
+      padding: 0 rem(35);
+      font-size: rem(24);
+      color: #625b51;
+    }
+    
+    .news-item{
+      border-top: 1px solid #d9d8d4;
+      height: rem(63);
+      line-height: rem(63);
+
+      span{
+        display: inline-block;
+      }
+
+      span:first-child{
+        width: rem(550);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      span:last-child{
+        float: right;
+      }
+
+    }
+
+    .news-item:last-child{
+      border-bottom: 1px solid #d9d8d4;
+    }
+
+  }
+
+  //公共头部
+  .header-common{
+    height: rem(80);
+    line-height: rem(80);
+
+    >div:first-child{
+      font-size: rem(30);
+      color: #050100;
+
+      &:before{
+        content: '';
+        display: inline-block;
+        width: rem(15);
+        height: rem(40);
+        background: #ffaf00;
+        margin-right: rem(10);
+      }
+
+    }
+
+    img{
+      height: rem(32);
+      margin-right: rem(15);
     }
 
   }
