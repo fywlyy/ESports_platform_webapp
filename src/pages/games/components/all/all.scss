@@ -1,0 +1,28 @@
+@import "../../../../asset/common";
+
+$themeBlack: #141414;
+$hotColor: #585757;
+$themeYellow: #ffaf00;
+#header-all{
+  .hot-recommend{
+    float: left;
+  }
+  .hot-list{
+    float: left;
+    background: $themeBlack;
+    .hot-list-item{
+      float: left;
+      width: rem(125);
+      height: rem(50);
+      line-height: rem(50);
+      text-align: center;
+      color: $hotColor;
+      font-size: rem(24);
+      &.active{
+        color: $themeYellow;
+        border: rem(2) solid $themeYellow;
+        border-radius: rem(10);
+      }
+    }
+  }
+}

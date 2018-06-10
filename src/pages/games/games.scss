@@ -1,17 +1,23 @@
 @import "../../asset/common";
 $themeYellow: #ffaf00;
-$themeBlack: #252525;
+$themeGray: #252525;
+$themeBlack: #141414;
 .games{
   .game-header{
     overflow: hidden;
     height: rem(60);
+    padding: rem(3) rem(30) 0 rem(30);
+    background: $themeGray;
     .game-header-item{
       float: left;
       position: relative;
-      width: rem(155);
-      font-size: rem(30);
-      color: #93908b;
+      width: 25%;
       line-height: rem(61);
+      font-size: rem(30);
+      text-align: center;
+      color: #93908b;
+      border-top-left-radius: rem(1);
+      border-top-right-radius: rem(1);
       &.active{
         color: $themeYellow;
         background: $themeBlack;
@@ -25,5 +31,8 @@ $themeBlack: #252525;
         }
       }
     }
+  }
+  .item-container{
+
   }
 }
