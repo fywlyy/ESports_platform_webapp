@@ -6,10 +6,12 @@
  * Desc: 登陆页
  */
 import _ from 'underscore';
+import Swiper from 'Swiper';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import GroupsTpl from './groups.html';
 import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js';
+import 'swiper/dist/css/swiper.min.css';
 
 import "./groups.scss";
 
@@ -20,11 +22,25 @@ export default function Groups() {
         init: function() {
             $(".container").html(GroupsTpl());
             GroupInfoList($(".group-info-list"),infoList);
+
+            var swiper = new Swiper('.group-list',{
+                slidesPerView: 4
+            });
+
             Util.setTitle('圈子111');
+
             this.bindEvent();
         },
         bindEvent: function() {
-            
+            $('.group-list .swiper-slide').on('click',function(){
+                let $this = $(this);
+                if($this.hasClass('active')){
+                    return;
+                }else{
+                    $this.parent().find('.swiper-slide.active').removeClass('active');
+                    $this.addClass('active');
+                }
+            });
         }
     }
 

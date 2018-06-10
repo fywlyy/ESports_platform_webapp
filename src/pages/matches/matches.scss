@@ -1,0 +1,55 @@
+@import "../../asset/common";
+
+.matches-page{
+  width: 100%;
+
+  .video-list{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .swiper-slide{
+
+      img{
+        width: 100%;
+      }
+
+    }
+
+    .swiper-pagination{
+
+      >*{
+        transition: all 0s;
+        -moz-transition: all 0s;
+        -webkit-transition: all 0s;
+        -o-transition: all 0s;
+      }
+
+      &.swiper-pagination-bullets{
+        bottom: 0;
+        height: rem(32);
+        padding-top: rem(3);
+        background: url('../../asset/images/matches/border.png');
+      }
+
+      .swiper-pagination-bullet{
+        background: url('../../asset/images/matches/pagination.png') center;
+        background-size: rem(9);
+        width: rem(9);
+        height: rem(9);
+        vertical-align: middle;
+      }
+
+      .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: url('../../asset/images/matches/pagination-active.png') center;
+        background-size: rem(31);
+        width: rem(31);
+        height: rem(31);
+        vertical-align: middle;
+      }
+
+    }
+
+  }
+    
+}

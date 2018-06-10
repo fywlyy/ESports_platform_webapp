@@ -38,6 +38,13 @@ const DynamicDetailsCb = function() {
         DynamicDetails.default();
     },'DynamicDetails')
 };
+/*比赛页*/
+const MatchesCb = function() {
+    require.ensure([], (require) => {
+        let Matches = require('./pages/matches/matches.js');
+        Matches.default();
+    },'Matches')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -63,6 +70,7 @@ const routes = {
     '/groups': GroupsCb,
     '/games': GamesCb,
     '/dynamic-details': DynamicDetailsCb,
+    '/matches': MatchesCb
 };
 
 const router = new Router(routes).configure({
@@ -70,11 +78,14 @@ const router = new Router(routes).configure({
         alert('错误链接！');
     },
     before: () => {
+        let hash = location.hash;
         let userId = Util.getCookie('userId');
-        if(!userId && location.hash.indexOf('/login') < 0){
+        if(!userId && hash.indexOf('/login') < 0){
             Util.linkTo('/login');
             return false;
         }
+        //footer显示隐藏控制
+        Util.restFooter(hash.split('#')[1]);
     },
     after: () => {
 
