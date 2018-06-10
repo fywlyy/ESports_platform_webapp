@@ -352,4 +352,7 @@ module.exports = {
         }
         return fileSize;
     },
+    setTitle: function(title) {
+        $(".page-title").html(title);
+    }
 }

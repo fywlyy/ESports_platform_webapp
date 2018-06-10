@@ -24,6 +24,13 @@ const GroupsCb = function(userId) {
         Groups.default(userId);
     },'Groups')
 };
+/*动态详情*/
+const DynamicDetailsCb = function() {
+    require.ensure([], (require) => {
+        let DynamicDetails = require('./pages/dynamic-details/dynamic-details.js');
+        DynamicDetails.default();
+    },'DynamicDetails')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -47,6 +54,7 @@ const routes = {
     },
     '/login': LoginCb,
     '/groups': GroupsCb,
+    '/dynamic-details': DynamicDetailsCb,
 };
 
 const router = new Router(routes).configure({
