@@ -1,0 +1,29 @@
+@import "../../asset/common";
+$themeYellow: #ffaf00;
+$themeBlack: #252525;
+.games{
+  .game-header{
+    overflow: hidden;
+    height: rem(60);
+    .game-header-item{
+      float: left;
+      position: relative;
+      width: rem(155);
+      font-size: rem(30);
+      color: #93908b;
+      line-height: rem(61);
+      &.active{
+        color: $themeYellow;
+        background: $themeBlack;
+        .header-top{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: rem(6);
+          background: $themeYellow;
+        }
+      }
+    }
+  }
+}

@@ -29,7 +29,8 @@ const GamesCb = function(userId) {
     require.ensure([], (require) => {
         let Games = require('./pages/games/games.js');
         Games.default(userId);
-    },'Games')
+    }, 'Games')
+};
 /*动态详情*/
 const DynamicDetailsCb = function() {
     require.ensure([], (require) => {
