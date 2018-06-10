@@ -42,8 +42,13 @@ module.exports = {
       },
       {
         test: /\.png|jpg|gif|jpeg$/,
-        loader: "url-loader?limit=8194&name=img/[name].[ext]",
-        query: 'random=' + new Date().getTime(),
+        loader: "url-loader",
+        query: {
+          // 图片大小限制 单位b
+          limit: 8192,
+          // 生成的文件的存放目录
+          name: 'images/[name].[ext]?[hash]'
+        }
       },
       {
         test: /\.json$/,
