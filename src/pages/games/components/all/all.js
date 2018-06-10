@@ -15,7 +15,10 @@ export default function All($el, infoList) {
             this.bindEvent();
         },
         bindEvent: function() {
-
+            $('.hot-list').on('click', '.hot-list-item', function () {
+                let _this = $(this);
+                _this.hasClass('active')? _this.removeClass('active'): _this.addClass('active')
+            })
         }
     }
     handlers.init();
