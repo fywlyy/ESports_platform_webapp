@@ -13,6 +13,6 @@ export default function Login() {
     $(".login-btn").on('click',function(){
         const userId = '456';
         Util.addCookie('userId',userId,1,document.domain);
-        Util.linkTo('/home-page/' + userId);
+        Util.linkTo('/groups/');
     })
 }

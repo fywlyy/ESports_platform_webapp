@@ -27,6 +27,7 @@
                 color: #050100;
 
                 img{
+                    height: rem(29);
                     margin-left: rem(20);
                 }
 
@@ -43,6 +44,7 @@
             position: absolute;
             top: rem(20);
             right: rem(10);
+            height: rem(31);
         }
 
     }
@@ -126,6 +128,7 @@
             color: #fe9901;
 
             >img{
+                height: rem(14);
                 float: right;
                 margin-top: rem(10);
             }
