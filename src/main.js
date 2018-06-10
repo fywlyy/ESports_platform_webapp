@@ -1,6 +1,9 @@
 import { Router } from 'director/build/director';
 import Util from './common-component/util/util';
 import API from './api/Api.js';
+
+import HomePage from './pages/home-page/home-page.js';
+
 import './asset/reset.scss';
 
 // 引入垫片兼容IE
@@ -15,13 +18,13 @@ const LoginCb = function() {
     },'Login')
 };
 /*首页*/
-const HomePageCb = function(userId) {
+const GroupsCb = function(userId) {
     require.ensure([], (require) => {
-        let HomePage = require('./pages/home-page/home-page.js');
-        HomePage.default(userId);
-    },'HomePage')
+        let Groups = require('./pages/groups/groups.js');
+        Groups.default(userId);
+    },'Groups')
 };
-
+/*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
     beforeSend: function(xhr){
@@ -34,14 +37,16 @@ $.ajaxSetup({
         
     }
 });
+/*页面结构初始化*/
+HomePage();
 
 const routes = {
     '/': () => {
         let userId = Util.getCookie('userId');
-        Util.linkTo('/home-page/' + userId);
+        Util.linkTo('/groups');
     },
     '/login': LoginCb,
-    '/home-page/:userId': HomePageCb
+    '/groups': GroupsCb,
 };
 
 const router = new Router(routes).configure({

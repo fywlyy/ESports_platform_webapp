@@ -1,8 +1,8 @@
-var TableTpl = require("./footer.html");
+import TableTpl from "./footer.html";
 
 import "./footer.scss";
 
-module.exports = function($el, cb){
+export default function Footer($el, cb) {
     const handlers = {
         init: function() {
             $el.append(TableTpl());
@@ -17,10 +17,9 @@ module.exports = function($el, cb){
                     $this.parent().find('.nav-item.active').removeClass('active');
                     $this.addClass('active');
                 }
-                
-            })
+            });
         }
     }
 
     handlers.init();
-};
+}

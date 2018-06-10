@@ -1,12 +1,12 @@
 @import "../../asset/common";
 
-.header{
+.header-layout{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: rem(80);
-    background-color: #9cf;
+    height: rem(60);
+    background-color: #252525;
     text-align: center;
     line-height: rem(80);
     z-index: 1;
@@ -14,13 +14,15 @@
 .container{
     width:100%;
     height:100%;
-    padding: rem(80) 0 rem(120) 0;
-    background-color:gray;  
+    padding: rem(60) 0 rem(120) 0;
+    background-color:#f1ede8; 
+    overflow-x: hidden; 
+    overflow-y: scroll; 
     @include box-sizing;    
 }
 
 .footer-layout{
-    position:fixed;
+    position:absolute;
     left:0;
     bottom:0;
     width:100%;
