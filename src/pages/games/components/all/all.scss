@@ -5,24 +5,45 @@ $hotColor: #585757;
 $themeYellow: #ffaf00;
 #header-all{
   .hot-recommend{
-    float: left;
-  }
-  .hot-list{
-    float: left;
     background: $themeBlack;
-    .hot-list-item{
+    padding-top: rem(16);
+    .hot-title{
       float: left;
-      width: rem(125);
-      height: rem(50);
+      margin: 0 rem(18) 0 rem(25);
+      color: $hotColor;
+      font-size: rem(30);
+      height: rem(100);
       line-height: rem(50);
       text-align: center;
+    }
+    .hot-list{
+      font-size: rem(30);
       color: $hotColor;
-      font-size: rem(24);
-      &.active{
-        color: $themeYellow;
-        border: rem(2) solid $themeYellow;
-        border-radius: rem(10);
+      .hot-list-item{
+        display: inline-block;
+        width: rem(120);
+        height: rem(50);
+        line-height: rem(50);
+        text-align: center;
+        margin-bottom: rem(4);
+        color: $hotColor;
+        font-size: rem(24);
+        border: rem(2) solid $themeBlack;
+        &.active{
+          color: $themeYellow;
+          border: rem(2) solid $themeYellow;
+          border-radius: rem(15);
+        }
       }
+    }
+  }
+  .sort{
+    >button{
+      display: inline-block;
+      border-radius: rem(15);
+    }
+    .sort-border{
+      border: rem(1) solid $themeYellow;
     }
   }
 }
