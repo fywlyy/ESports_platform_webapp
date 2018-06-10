@@ -24,6 +24,13 @@ const GroupsCb = function(userId) {
         Groups.default(userId);
     },'Groups')
 };
+/*游戏页*/
+const GamesCb = function(userId) {
+    require.ensure([], (require) => {
+        let Games = require('./pages/games/games.js');
+        Games.default(userId);
+    },'Games')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -47,6 +54,7 @@ const routes = {
     },
     '/login': LoginCb,
     '/groups': GroupsCb,
+    '/games': GamesCb,
 };
 
 const router = new Router(routes).configure({

@@ -18,7 +18,7 @@ export default function Groups() {
 
     const handlers = {
         init: function() {
-            $(".container").append(GroupsTpl());
+            $(".container").html(GroupsTpl());
             GroupInfoList($(".group-info-list"),infoList);
             this.bindEvent();
         },
