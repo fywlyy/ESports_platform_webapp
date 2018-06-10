@@ -22,7 +22,7 @@ export default function DynamicDetails() {
 
     const handlers = {
         init: function() {
-            $(".container").append(DynamicDetailsTpl());
+            $(".container").html(DynamicDetailsTpl());
             GroupInfoItem($(".groupItem-layout"),itemData,true);
             Comment($(".comment-layout"),commentData)
             Util.setTitle('动态详情');
