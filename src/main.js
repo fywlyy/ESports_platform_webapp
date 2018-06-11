@@ -87,6 +87,8 @@ const router = new Router(routes).configure({
         }
         //footer显示隐藏控制
         Util.restFooter(hash.split('#')[1]);
+        //页面滚动条初始化
+        $(".container").scrollTop(0);
     },
     after: () => {
 
