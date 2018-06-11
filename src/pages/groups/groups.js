@@ -6,12 +6,11 @@
  * Desc: 登陆页
  */
 import _ from 'underscore';
-import Swiper from 'Swiper';
+import Swiper from 'swiper';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import GroupsTpl from './groups.html';
 import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js';
-import 'swiper/dist/css/swiper.min.css';
 
 import "./groups.scss";
 

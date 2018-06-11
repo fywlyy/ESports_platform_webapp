@@ -5,6 +5,7 @@ import API from './api/Api.js';
 import HomePage from './pages/home-page/home-page.js';
 
 import './asset/reset.scss';
+import 'swiper/dist/css/swiper.min.css';
 
 // 引入垫片兼容IE
 import "babel-polyfill";
@@ -18,7 +19,7 @@ const LoginCb = function() {
     },'Login')
 };
 /*首页*/
-const GroupsCb = function(userId) {
+const GroupsCb = function(userId) {    
     require.ensure([], (require) => {
         let Groups = require('./pages/groups/groups.js');
         Groups.default(userId);

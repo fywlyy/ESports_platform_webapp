@@ -2,11 +2,13 @@ var path = require("path");
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
     main: './src/main.js',
-    jquery: path.resolve(__dirname, './src/asset/plugin/jquery.min.js')
+    jquery: path.resolve(__dirname, './src/asset/plugin/jquery.min.js'),
+    vendor: ['swiper','underscore','./src/common-component/util/util.js','./src/api/Api.js']
   },
   output: {
     path: path.resolve(__dirname, './built'),
@@ -67,8 +69,9 @@ module.exports = {
         'PAGE_SIZE': 10
       }
     }),
+    new CleanWebpackPlugin(['./built']),
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendors','manifest']
+      name: ['vendor','manifest']
     }),
     // remove all comments and desc and copyright
     new webpack.optimize.UglifyJsPlugin({output: {comments: false},compress: {warnings: false}}),
@@ -81,9 +84,9 @@ module.exports = {
       template: './src/index.html', //html模板路径
       inject: true, //js插入的位置，true/'head'/'body'/false
       hash: true, //为静态资源生成hash值
-      chunks: ['manifest', 'jquery', 'vendors', 'main'],
+      chunks: ['manifest', 'jquery', 'vendor', 'main'],
       chunksSortMode: function (chunk1, chunk2) {
-        var order = ['manifest', 'jquery', 'vendors', 'main'];
+        var order = ['manifest', 'jquery', 'vendor', 'main'];
         var order1 = order.indexOf(chunk1.names[0]);
         var order2 = order.indexOf(chunk2.names[0]);
         return order1 - order2;
