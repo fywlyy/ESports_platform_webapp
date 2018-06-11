@@ -357,7 +357,7 @@ module.exports = {
     },
     restFooter: function(key) {
         let noFooter = false;
-        const blacklist = ['/dynamic-details'];
+        const blacklist = ['/dynamic-details'];//footer隐藏黑名单
 
         blacklist.map((item,index) => {
             if(key === item){
@@ -371,6 +371,8 @@ module.exports = {
         }else{
             $(".footer-layout").show();
             $(".container").removeClass('no-footer');
+            key.length > 0 && $(".footer .nav-item.active").removeClass("active");
+            key.length > 0 && $(".footer .nav-item[data-router="+key.split('/')[1]+"]").addClass("active");
         }
     }
 }

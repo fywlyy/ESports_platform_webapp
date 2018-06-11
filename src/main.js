@@ -85,7 +85,7 @@ const router = new Router(routes).configure({
             Util.linkTo('/login');
             return false;
         }
-        //footer显示隐藏控制
+        //footer显示隐藏及底部按钮控制
         Util.restFooter(hash.split('#')[1]);
         //页面滚动条初始化
         $(".container").scrollTop(0);
