@@ -1,9 +1,5 @@
 /**
- * Created with JetBrainsWebStorm.
- * User: xiongpeng
- * Date: 2017/10/11 0011
- * Time: 上午 10:11
- * Desc: 登陆页
+ * 圈子页
  */
 import _ from 'underscore';
 import Swiper from 'swiper';
