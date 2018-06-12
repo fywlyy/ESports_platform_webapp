@@ -2,9 +2,10 @@ import { Router } from 'director/build/director';
 import Util from './common-component/util/util';
 import API from './api/Api.js';
 
-import HomePage from './pages/home-page/home-page.js';
+import PageLayout from './common-component/pageLayout/pageLayout.js';
 
 import './asset/reset.scss';
+import 'swiper/dist/css/swiper.min.css';
 
 // 引入垫片兼容IE
 import "babel-polyfill";
@@ -18,7 +19,7 @@ const LoginCb = function() {
     },'Login')
 };
 /*首页*/
-const GroupsCb = function(userId) {
+const GroupsCb = function(userId) {    
     require.ensure([], (require) => {
         let Groups = require('./pages/groups/groups.js');
         Groups.default(userId);
@@ -58,12 +59,9 @@ $.ajaxSetup({
         
     }
 });
-/*页面结构初始化*/
-HomePage();
 
 const routes = {
     '/': () => {
-        let userId = Util.getCookie('userId');
         Util.linkTo('/groups');
     },
     '/login': LoginCb,
@@ -78,14 +76,30 @@ const router = new Router(routes).configure({
         alert('错误链接！');
     },
     before: () => {
-        let hash = location.hash;
-        let userId = Util.getCookie('userId');
-        if(!userId && hash.indexOf('/login') < 0){
-            Util.linkTo('/login');
-            return false;
+        let currentRote = Util.getRouter();
+        let userId = Util.getCookie('userId');  
+
+        //未登录跳转登陆页
+        // if(!userId && currentRote !== '/login'){
+        //     Util.linkTo('/login');
+        //     return;
+        // }
+
+        if(!Util.isMainPage(currentRote)){
+            return;
         }
-        //footer显示隐藏控制
-        Util.restFooter(hash.split('#')[1]);
+
+        if($(".container").length > 0){
+            //footer显示隐藏及底部按钮控制
+            Util.restFooter(currentRote);
+            //页面滚动条初始化
+            $(".container").scrollTop(0);
+        }else{
+            /*页面结构初始化*/
+            PageLayout();
+            //footer显示隐藏及底部按钮控制
+            Util.restFooter(currentRote);
+        }
     },
     after: () => {
 

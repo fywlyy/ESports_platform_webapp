@@ -1,17 +1,12 @@
 /**
- * Created with JetBrainsWebStorm.
- * User: xiongpeng
- * Date: 2017/10/11 0011
- * Time: 上午 10:11
- * Desc: 登陆页
+ * 圈子页
  */
 import _ from 'underscore';
-import Swiper from 'Swiper';
+import Swiper from 'swiper';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import GroupsTpl from './groups.html';
 import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js';
-import 'swiper/dist/css/swiper.min.css';
 
 import "./groups.scss";
 

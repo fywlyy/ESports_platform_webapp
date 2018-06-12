@@ -15,8 +15,8 @@ export default function Footer($el, cb) {
                 if($this.hasClass('active')){
                     return;
                 }else{
-                    $this.parent().find('.nav-item.active').removeClass('active');
-                    $this.addClass('active');
+                    // $this.parent().find('.nav-item.active').removeClass('active');
+                    // $this.addClass('active');
                     let router = $this.data('router')
                     Util.linkTo(`/${router}`);
                 }

@@ -1,5 +1,5 @@
 @import "common";
-@import "./icon_font/iconfont.css";
+/**@import "./icon_font/iconfont.css";**/
 /**css reset*/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td{ margin: 0; padding: 0; }
 body, button, input, select, textarea { font-family: "Helvetica neue", sans-serif,Arial, "Hiragino Sans GB", "Microsoft Yahei", "WenQuanYi Micro Hei"}
@@ -51,7 +51,7 @@ html,body,#app-container{
   font-weight: bold;
 }
 .price{
-  color: #e8e8e8;//**
+  color: #e8e8e8;
 }
 .danger{
   color: red;
@@ -62,35 +62,45 @@ html,body,#app-container{
 .green{
   color:#00c36a;
 }
+input[type='text'],input[type='password']{
+  width:100%;
+  height:rem(65);
+  padding-left:rem(25);
+  border:1px solid #625b51;
+  background-color:#f1ede8;
+  @include border-radius(rem(65));
+  line-height: rem(63);
+  font-size:rem(30);
+  color:#625b51;
+  @include box-sizing;
+}
+
 .btn {
   display: inline-block;
   vertical-align: baseline;
   margin-bottom: 0;
-  height:rem(98);
-  font-size: rem(34);
+  width:100%;
+  height:rem(65);
+  font-size: rem(30);
   font-weight: normal;
   text-align: center;
   line-height: 1;
   cursor: pointer;
   border: none;
-  border-radius: rem(10);
+  @include border-radius(rem(65));
   white-space: nowrap;
   -moz-user-select: -moz-none;
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  background-color:#6c8ebe;
+  background-color:#ffaf00;
   color:#fff;
 }
 .btn[disabled]{
-  background: #f8f8f8;
-  border: 1px solid #bbb;
-  color: #333;
+
 }
 .btn-danger {
-  color: #fff;
-  border-color: $baseColor;
-  background-color: $baseColor;
+
 }
 .scroll-loading{
   padding: rem(10);
