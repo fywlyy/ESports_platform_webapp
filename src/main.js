@@ -25,6 +25,13 @@ const RegisterCb = function() {
         Register.default();
     },'Register')
 };
+/*注册页*/
+const ForgetPwdCb = function() {
+    require.ensure([], (require) => {
+        let ForgetPwd = require('./pages/forgetPwd/forgetPwd.js');
+        ForgetPwd.default();
+    },'forgetPwd')
+};
 /*首页*/
 const GroupsCb = function(userId) {    
     require.ensure([], (require) => {
@@ -72,7 +79,8 @@ const routes = {
         Util.linkTo('/groups');
     },
     '/login': LoginCb,
-    '/Register': RegisterCb,
+    '/register': RegisterCb,
+    '/forgetPwd': ForgetPwdCb,
     '/groups': GroupsCb,
     '/games': GamesCb,
     '/dynamic-details': DynamicDetailsCb,

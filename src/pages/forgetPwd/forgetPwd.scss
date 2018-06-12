@@ -1,6 +1,6 @@
 @import "../../asset/common";
 
-.register-page{
+.forgetPwd-page{
   position:fixed;
   top:0;
   left:0;
@@ -31,19 +31,19 @@
     padding-top: rem(20);
   }
 
-  >.register-body{
-    width:rem(520);
-    margin:rem(60) auto rem(200);
-    p{
-      margin-bottom:rem(60);
+  >.forgetPwd-body {
+    width: rem(520);
+    margin: rem(60) auto rem(200);
+    p {
+      margin-bottom: rem(60);
       position: relative;
-      input{
+      input {
         text-align: center;
       }
-      .register-phone{
+      .forgetPwd-phone {
         text-align: left;
         padding-right: 200px;
-        & + span{
+        & + span {
           display: inline-block;
           width: rem(190);
           height: rem(65);
@@ -61,34 +61,4 @@
       }
     }
   }
-
-  >.register-agree{
-    font-size: rem(24);
-    color: #625b51;
-    text-align: center;
-
-    span{
-      display: inline-block;
-      vertical-align: middle;
-      position: relative;
-      img{
-        width: rem(40);
-        margin-right: rem(10);
-      }
-    }
-
-    span.checked:after{
-      content: '';
-      display: inline-block;
-      background: url('../../asset/images/register/checked.png') no-repeat center;
-      background-size: rem(43) rem(27);
-      width: rem(43);
-      height: rem(27);
-      position: absolute;
-      bottom: rem(10);
-      left: rem(5);
-    }
-
-  }
-
 }

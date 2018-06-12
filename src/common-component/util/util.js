@@ -377,7 +377,7 @@ module.exports = {
     },
     isMainPage: function(key) {
         let bool = true;
-        const blacklist = ['/login'];//非主页路由
+        const blacklist = ['/login','/register','/forgetPwd'];//非主页路由
 
         blacklist.map((item,index) => {
             if(key === item){
