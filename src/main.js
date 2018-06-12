@@ -18,6 +18,13 @@ const LoginCb = function() {
         Login.default();
     },'Login')
 };
+/*注册页*/
+const RegisterCb = function() {
+    require.ensure([], (require) => {
+        let Register = require('./pages/register/register.js');
+        Register.default();
+    },'Register')
+};
 /*首页*/
 const GroupsCb = function(userId) {    
     require.ensure([], (require) => {
@@ -65,6 +72,7 @@ const routes = {
         Util.linkTo('/groups');
     },
     '/login': LoginCb,
+    '/Register': RegisterCb,
     '/groups': GroupsCb,
     '/games': GamesCb,
     '/dynamic-details': DynamicDetailsCb,
