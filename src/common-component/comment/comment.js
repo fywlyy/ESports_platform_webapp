@@ -38,9 +38,6 @@ export default function Comment($el, commentData) {
                 }
             })
         },
-        handleComment: function(e) {
-
-        },
         handleLike: function(e) {
             
         }

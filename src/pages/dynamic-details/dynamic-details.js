@@ -1,9 +1,5 @@
 /**
- * Created with JetBrainsWebStorm.
- * User: xiongpeng
- * Date: 2017/10/11 0011
- * Time: 上午 10:11
- * Desc: 登陆页
+ * 动态详情
  */
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';

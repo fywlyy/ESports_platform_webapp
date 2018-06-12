@@ -1,9 +1,24 @@
 <div class="login-page">
-    {{if title.length < 10}}
-        <h1>哈哈哈</h1>
-    {{/if}}
-    <h1>登陆页: {{title}}</h1>
-    <div class="btn-module">
-        <button class="login-btn btn">登陆</button>
+    <div class="logos">
+    	<img class="logo-1" src="../../asset/images/login/logo_1.png">
+    	<img class="logo-2" src="../../asset/images/login/logo_2.png">
+    	<p>欢迎来到优加电竞</p>
+    </div>
+    <div class="login-body">
+    	<p><input type="text" name="userName"></p>
+    	<p><input type="password" name="password"></p>
+    	<p><button class="js-handle" data-handle="handleLogin" type="button">登录</button></p>
+    	<div class="links">
+    		<a href="#">忘记密码</a>
+    		<a href="#">注册账号</a>
+    	</div>
+    </div>
+    <div class="login-third-party">
+    	<p class="title"><span>使用第三方账号登录</span></p>
+    	<ul>
+    		<li><img src="../../asset/images/login/icon_weibo.png" alt=""></li>
+    		<li><img src="../../asset/images/login/icon_qq.png" alt=""></li>
+    		<li><img src="../../asset/images/login/icon_weixin.png" alt=""></li>
+    	</ul>
     </div>
 </div>

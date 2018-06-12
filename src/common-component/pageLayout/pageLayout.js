@@ -6,13 +6,13 @@ import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import Footer from '../../common-component/footer/footer.js';
 import Header from '../../common-component/header/header.js';
-import HomePageTpl from './home-page.html';
+import PageLayoutTpl from './pageLayout.html';
 
-import "./home-page.scss";
+import "./pageLayout.scss";
 
-export default function HomePage() {
+export default function PageLayout() {
 	//主页渲染
-    $("#app-container").html( HomePageTpl({userName: '用户名XXX'}) );
+    $("#app-container").html( PageLayoutTpl({userName: '用户名XXX'}) );
 	//header渲染
     Header($(".header-layout"));
     //footer渲染
