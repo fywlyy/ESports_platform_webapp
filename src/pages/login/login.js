@@ -24,9 +24,30 @@ export default function Login() {
             });
 		},
 		handleLogin: function(e) {
-			const userId = '456';
-	        Util.addCookie('userId',userId,1,document.domain);
-	        Util.linkTo('/groups');
+			let userName = $("input[name='userName']").val(),
+				password = $("input[name='password']").val(),
+				Body = JSON.stringify({userName,password});
+
+			if(!userName || !password){
+				Util.alertMessage('请输入用户名及密码！');
+				return;
+			}
+
+			$.ajax({
+				url: API.userLogin,
+				type: 'post',
+				data: {
+					Body
+				},
+				success: function(req){
+					if(!req.IsError){
+						Util.linkTo('/groups');	
+					}			       
+				},
+				error: function(msg){
+					console.log(msg);
+				}
+			})
 		}
 	}   
 
