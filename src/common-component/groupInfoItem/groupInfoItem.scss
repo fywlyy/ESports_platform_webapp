@@ -101,6 +101,7 @@
                         display: inline-block;
                         vertical-align: middle;
                         background-size: rem(46) rem(39);
+                        background-repeat: no-repeat;
                         width: rem(46);
                         height: rem(39);
                     }
@@ -109,14 +110,15 @@
                 span:nth-child(1){
                     &:before{
                         background-image:url('../../asset/images/groupItem/comment.png');
-                        background-repeat: no-repeat;
                     }
                 }
 
                 span:nth-child(2){
                     &:before{
                         background-image:url('../../asset/images/groupItem/like.png');
-                        background-repeat: no-repeat;
+                    }
+                    &.liked:before{
+                        background-image:url('../../asset/images/groupItem/liked.png');
                     }
                 }
 
@@ -126,7 +128,6 @@
                         width: rem(38);
                         height: rem(32);
                         background-image:url('../../asset/images/groupItem/menu.png');
-                        background-repeat: no-repeat;
                     }
                 }
 

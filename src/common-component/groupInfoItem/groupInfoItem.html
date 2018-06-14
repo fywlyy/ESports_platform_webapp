@@ -1,29 +1,32 @@
-<div class="groupItem {{onlyOne ? 'only-one' : ''}}">
+<div class="groupItem {{onlyOne ? 'only-one' : ''}}" data-id="{{Id}}">
     <div class="headerInfo">
         <img src="../../asset/images/groupItem/headImg.png" alt="">
         <div>
-            <p>Day-DD小兔仔解说<img src="../../asset/images/groupItem/live.png" alt=""></p>
-            <span>05-31 21:06</span>
+            <p>{{NickName}}<img src="../../asset/images/groupItem/live.png" alt=""></p>
+            <span>{{InDate}}</span>
         </div>
         <img src="../../asset/images/groupItem/follow.png" alt="">
     </div>
     <div class="content">
-        <p>很绝望，明天早上早点开播~</p>
+        <p>{{Content}}</p>
         <div>
-            <img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=1f6822bc17950a7b753549c232ea05e4/b2de9c82d158ccbf3fe1ccb013d8bc3eb03541de.jpg" alt="">
+            <img src="{{ImageUrlList[0]}}" alt="">
             <div class="operator">
                 <span></span>
-                <span></span>
+                <span class="handleLike"></span>
                 <span></span>
             </div>
         </div>
     </div>
     <div class="comments">
-        <p><span>空城：</span>颜值担当~</p>
-        <p><span>少年们：</span>事实证明颜值很重要！</p>
-        <p><span>蜜罐儿罗什：</span>还真不能分辨谁的颜值更高</p>
+
+        {{each CommentReplyList item i}}
+
+            <p><span>空城：</span>{{item.Content}}</p>
+
+        {{/each}}
         <div class="showAll">
-            <span>查看全部 183 条评论</span>
+            <span>查看全部 {{CommentCount}} 条评论</span>
             <img src="../../asset/images/groupItem/showAll.png" alt="">
         </div>
     </div>

@@ -3,49 +3,24 @@
     <div class="group-list">
 
         <div class="swiper-wrapper">
+
             <div class="swiper-slide active">
                 <img src="../../asset/images/groups/allGroups.png" alt=""/>
-                <div>全部圈子</div>
+                <div>全部</div>
             </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
-            <div class="swiper-slide">
-                <img src="../../asset/images/groups/school.png" alt=""/>
-                <div>清华大学</div>
-            </div>
+
+            {{each circleList item i}}
+
+                <div class="swiper-slide" data-id="{{item.Id}}">
+                    <img src="../../asset/images/groups/allGroups.png" alt=""/>
+                    <div>{{item.Name}}</div>
+                </div>
+
+            {{/each}}
+
         </div>
 
     </div>
 
-    <div class="group-info-list"></div>
+    <ul class="group-info-list"></ul>
 </div>

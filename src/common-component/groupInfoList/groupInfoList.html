@@ -1,7 +1,5 @@
-<ul>
-    {{each infoList as itemData i}}
-        <li>
-            {{include '../groupInfoItem/groupInfoItem.html' itemData}}
-        </li>
-    {{/each}}
-</ul>
+{{each infoList itemData i}}
+    <li>
+    {{include '../groupInfoItem/groupInfoItem.html' itemData}}
+</li>
+{{/each}}
