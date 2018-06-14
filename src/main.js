@@ -64,11 +64,8 @@ const MatchesCb = function() {
 $.ajaxSetup({
     cache: false,
     beforeSend: function(xhr){
-        // if(arguments[1].url.split("?").length > 1){
-        //     arguments[1].url += "&token= " + '123';
-        // }else{
-        //     arguments[1].url += "?token= " + '123';
-        // }
+        let AccessToken = Util.getCookie('AccessToken');
+        arguments[1].data += "&AccessToken=" + AccessToken;
     },
     complete: function (xhr,status) {
         let result = xhr.responseText ? JSON.parse(xhr.responseText) : null;

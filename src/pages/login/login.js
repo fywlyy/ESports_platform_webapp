@@ -26,12 +26,18 @@ export default function Login() {
 		handleLogin: function(e) {
 			let userName = $("input[name='userName']").val(),
 				password = $("input[name='password']").val(),
-				Body = JSON.stringify({userName,password});
+				Body = {};
 
 			if(!userName || !password){
 				Util.alertMessage('请输入用户名及密码！');
 				return;
 			}
+
+			Body = {
+				"LoginName": "188888888888",
+				"Pwd": "123456",
+				"UserType": 2
+			};
 
 			$.ajax({
 				url: API.userLogin,
@@ -40,7 +46,12 @@ export default function Login() {
 					Body
 				},
 				success: function(req){
+					let { Data, IsError } = req;
 					if(!req.IsError){
+						let { UserInfo, AccessToken } = Data;
+						
+						Util.addCookie('AccessToken',AccessToken,1,document.domain);
+						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));
 						Util.linkTo('/groups');	
 					}			       
 				},
