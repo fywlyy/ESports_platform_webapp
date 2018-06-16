@@ -34,7 +34,15 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
                 }
             })
         },
-
+        handleComment: function() {
+            $(".comment-input")
+            .show()
+            .find(".input-box")
+            .attr('data-type','0')
+            .attr('data-user-id',itemData.UserId)
+            .focus();
+            $(".dynamicDetails-layout").addClass("hasCommentInput");
+        }
     }
 
     handlers.init();

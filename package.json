@@ -23,6 +23,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
     "clean-webpack-plugin": "^0.1.19",
     "director": "^1.2.8",
     "echarts": "^3.6.2",

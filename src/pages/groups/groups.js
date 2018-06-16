@@ -42,7 +42,7 @@ export default function Groups() {
 
             });
 
-            Util.setTitle('圈子111');
+            Util.setTitle('圈子');
         },
         bindEvent: function() {
             const that = this;

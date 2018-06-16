@@ -3,8 +3,11 @@
 .dynamicDetails-layout{
     min-height:100%;
     background-color:#f1ede8;
-    padding:rem(16) rem(10) rem(88);
+    padding:rem(16) rem(10);
     @include box-sizing;
+    &.hasCommentInput{
+        padding-bottom:rem(88);
+    }
     .comment-layout{
         margin-top:rem(12);
     }

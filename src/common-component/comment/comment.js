@@ -2,7 +2,7 @@ import CommentTpl from "./comment.html";
 
 import "./comment.scss";
 
-export default function Comment($el, commentData) {
+export default function Comment($el, commentData, callback) {
     const handlers = {
         init: function() {
             $el.append(CommentTpl(commentData));
@@ -24,38 +24,39 @@ export default function Comment($el, commentData) {
             .on('focus',function(e){
                 currentScrollTop = $container.scrollTop();
                 $(this).parent().css({position: 'absolute'});
-                $(".container").on('touchmove',function(event){
+                $container.on('touchmove',function(event){
                     event.preventDefault();
                 }).scrollTop(0);
             })
             .on('blur',function(e){
-                $(this).parent().css({position: 'fixed'});
-                $(".container").off('touchmove').scrollTop(currentScrollTop);
+                $(this).html('').parent().css({position: 'fixed'});
+                $container.off('touchmove').scrollTop(currentScrollTop);
+                $(".dynamicDetails-layout").removeClass("hasCommentInput");
+                $(".comment-input").hide();
             })
             .on("keypress",function(e){
+                e.preventDefault();
                 if(e.keyCode == 13){//回车提交
+                    let $this = $(this);
+                    let type = $this.data('type');
                     debugger;
-                    console.log($(this).html());
+                    callback && callback({
+                        CommentReplyType: type,
+                        ReplyUserId: $this.data('userId'),
+                        Content: $this.html()
+                    });
+                    $this.blur();
                 }
             })
         },
         handleComment: function(e,$this) {
-            $.ajax({
-                url: API.addCommentReply,
-                data: {
-
-                },
-                success: function(req){
-
-                    if(!req.IsError){
-                        
-                    }
-
-                },
-                error: function(msg){
-                    console.log(msg);
-                }
-            })
+            $(".comment-input")
+                .show()
+                .find(".input-box")
+                .attr('data-type','1')
+                .attr('data-user-id',$this.parents("li").data('userId'))
+                .focus();
+            $(".dynamicDetails-layout").addClass("hasCommentInput");
         }
     }
 

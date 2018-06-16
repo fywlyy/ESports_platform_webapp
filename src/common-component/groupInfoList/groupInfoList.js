@@ -26,7 +26,6 @@ export default function GroupInfoList($el, infoList) {
                 success: function(req){
 
                     if(!req.IsError){
-                        debugger;
                         $this.addClass("liked");
                     }
 

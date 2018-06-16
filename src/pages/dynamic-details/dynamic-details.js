@@ -14,7 +14,15 @@ export default function DynamicDetails(id) {
 
     const handlers = {
         init: function() {
-
+            this.renderDetails();
+            Util.setTitle('动态详情');
+            this.bindEvent();
+        },
+        bindEvent: function() {
+            
+        },
+        renderDetails: function() {
+            let _this = this;
             this.getDetails(id,function(data){
                 $(".container").html(DynamicDetailsTpl());
                 GroupInfoItem($(".groupItem-layout"),data,true);
@@ -22,16 +30,11 @@ export default function DynamicDetails(id) {
                     commentList: data.CommentReplyList,
                     commentCount: data.CommentCount,
                     likeCount: data.LikeCount
-                })
+                },_this.sendInfo.bind(_this));
             })
-
-            Util.setTitle('动态详情');
-            this.bindEvent();
-        },
-        bindEvent: function() {
-            
         },
         getDetails: function(id,callback) {
+            let _this = this;
             $.ajax({
                 url: API.getPostMsgDetail,
                 type: 'post',
@@ -39,7 +42,33 @@ export default function DynamicDetails(id) {
                 success: function(req){
                     req = typeof(req) == 'string' ? JSON.parse(req) : req;
                     if(!req.IsError){
+                        _this.detailsData = req.Data;
                         callback && callback(req.Data || []);
+                    }
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+        },
+        sendInfo: function(options = {}) {
+            let _this = this;
+            const UserId = JSON.parse(localStorage.getItem('UserInfo')).Id;
+            
+            $.ajax({
+                url: API.addCommentReply,
+                data: {
+                    Body: {
+                        ...options,
+                        PostMessageId: id,
+                        UserId
+                    }
+                },
+                success: function(req){
+
+                    if(!req.IsError){
+                        alert('评论/回复成功！');
+                        _this.renderDetails();
                     }
 
                 },
