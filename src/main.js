@@ -60,6 +60,20 @@ const MatchesCb = function() {
         Matches.default();
     },'Matches')
 };
+/*新闻列表页*/
+const NewsCb = function() {
+    require.ensure([], (require) => {
+        let News = require('./pages/news/news.js');
+        News.default();
+    },'News')
+};
+/*新闻详情页*/
+const NewsDetailCb = function(id) {
+    require.ensure([], (require) => {
+        let NewsDetail = require('./pages/newsDetail/newsDetail.js');
+        NewsDetail.default(id);
+    },'NewsDetail')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -90,7 +104,9 @@ const routes = {
     '/groups': GroupsCb,
     '/games': GamesCb,
     '/dynamic-details': DynamicDetailsCb,
-    '/matches': MatchesCb
+    '/matches': MatchesCb,
+    '/news': NewsCb,
+    '/newsDetail/:id': NewsDetailCb
 };
 
 const router = new Router(routes).configure({

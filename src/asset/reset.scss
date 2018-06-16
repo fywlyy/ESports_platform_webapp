@@ -8,6 +8,7 @@ input, button, select, textarea { outline: none;-webkit-appearance:none;-webkit-
 h1, h2, h3, h4, h5, h6 {font-size: 100%; }
 i,em{ font-style: normal; }
 a { text-decoration: none; background:transparent;-webkit-tap-highlight-color: transparent;}
+a:hover { text-decoration: none!important;}
 a:focus { outline: none; }
 .main a:hover { text-decoration: underline; }
 a span, a img { cursor: pointer; }

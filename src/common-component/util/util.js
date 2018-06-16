@@ -357,10 +357,10 @@ module.exports = {
     },
     restFooter: function(key) {
         let noFooter = false;
-        const blacklist = ['/dynamic-details'];//footer隐藏黑名单路由
+        const blacklist = ['/dynamic-details', '/news', '/newsDetail'];//footer隐藏黑名单路由
 
         blacklist.map((item,index) => {
-            if(key === item){
+            if(key.indexOf(item) > -1){
                 noFooter = true;
             }
         })
