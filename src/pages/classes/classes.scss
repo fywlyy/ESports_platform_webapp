@@ -1,0 +1,47 @@
+@import "../../asset/common";
+
+.classes-page{
+    background: #f1ede8;
+    position: relative;
+    padding-top: rem(60);
+
+    >.classes-page-tabBar{
+        font-size: rem(30);
+        color: #93908b;
+        background: #252525;
+        height: rem(60);
+        line-height: rem(60);
+        text-align: center;
+        position: fixed;
+        top: rem(60);
+        left: 0;
+        width: 100%;
+
+        span{
+            display: inline-block;
+            width: rem(215);
+        }
+        
+        span.active{
+            color: #ffaf00;
+            position: relative;
+
+            &:after{
+                content:'';
+                display: inline-block;
+                vertical-align: middle;
+                background:url('../../asset/images/groups/bottom.png') no-repeat center;
+                background-size: rem(113) rem(23);
+                width: rem(113);
+                height: rem(23);
+                position: absolute;
+                bottom: rem(-19);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,32 @@
+@import "../../../../asset/common";
+
+.videos-page{
+    padding: rem(30) rem(10) 0;
+
+    .videos-item{
+        background: #ffffff;
+        border: 1px solid #e3e0db;
+        border-radius: rem(10);
+        padding-top: rem(17);
+        margin-bottom: rem(12);
+
+        >img{
+            width: 100%;
+        }
+
+        >.videos-item-info{
+            padding: rem(20) rem(25);
+            span:first-child{
+                font-size: rem(30);
+                color: #050100;
+                vertical-align: text-bottom;
+            }
+            span:last-child{
+                font-size: rem(24);
+                color: #625b51;
+                vertical-align: text-bottom;
+            }
+        }
+
+    }
+}

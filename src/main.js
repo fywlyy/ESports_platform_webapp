@@ -74,6 +74,13 @@ const NewsDetailCb = function(id) {
         NewsDetail.default(id);
     },'NewsDetail')
 };
+/*课程页*/
+const ClassesCb = function(id) {
+    require.ensure([], (require) => {
+        let Classes = require('./pages/classes/classes.js');
+        Classes.default(id);
+    },'Classes')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -112,7 +119,8 @@ const routes = {
     '/dynamic-details/:id': DynamicDetailsCb,
     '/matches': MatchesCb,
     '/news': NewsCb,
-    '/newsDetail/:id': NewsDetailCb
+    '/newsDetail/:id': NewsDetailCb,
+    '/classes': ClassesCb
 };
 
 const router = new Router(routes).configure({
