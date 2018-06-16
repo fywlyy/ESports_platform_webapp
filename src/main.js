@@ -138,6 +138,8 @@ const router = new Router(routes).configure({
         if($(".container").length > 0){
             //footer显示隐藏及底部按钮控制
             Util.restFooter(currentRote);
+            //header显示隐藏及底部按钮控制
+            Util.restHeader(currentRote);            
             //页面滚动条初始化
             $(".container").scrollTop(0);
         }else{
@@ -145,6 +147,8 @@ const router = new Router(routes).configure({
             PageLayout();
             //footer显示隐藏及底部按钮控制
             Util.restFooter(currentRote);
+            //header显示隐藏及底部按钮控制
+            Util.restHeader(currentRote);             
         }
     },
     after: () => {

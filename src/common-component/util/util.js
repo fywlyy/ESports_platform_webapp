@@ -375,6 +375,24 @@ module.exports = {
             key.length > 0 && $(".footer .nav-item[data-router="+key.split('/')[1]+"]").addClass("active");
         }
     },
+    restHeader: function(key) {
+        let noHeader = false;
+        const blacklist = ['/games', '/matches', '/news'];//Header隐藏黑名单路由
+
+        blacklist.map((item,index) => {
+            if(key === item){
+                noHeader = true;
+            }
+        })
+
+        if(noHeader){
+            $(".header-layout").hide();
+            $(".container").addClass('no-header');
+        }else{
+            $(".header-layout").show();
+            $(".container").removeClass('no-header');
+        }
+    },
     isMainPage: function(key) {
         let bool = true;
         const blacklist = ['/login','/register','/forgetPwd'];//非主页路由

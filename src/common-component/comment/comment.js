@@ -40,7 +40,22 @@ export default function Comment($el, commentData) {
             })
         },
         handleComment: function(e,$this) {
-            
+            $.ajax({
+                url: API.addCommentReply,
+                data: {
+
+                },
+                success: function(req){
+
+                    if(!req.IsError){
+                        
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
         }
     }
 

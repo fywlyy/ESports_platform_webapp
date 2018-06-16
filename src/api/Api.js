@@ -8,5 +8,6 @@ module.exports = {
 	userPostMsgList: `${baseUrl}/Circle/QueryUserPostMessageList`,
 	clickLike: `${baseUrl}/Circle/ClickLike`,
 	getPostMsgDetail: `${baseUrl}/Circle/GetPostMessageDetail`,
+	addCommentReply: `${baseUrl}/Circle/AddCommentReply`,
 
 };
