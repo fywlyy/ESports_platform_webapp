@@ -12,8 +12,9 @@ export default function Comment($el, commentData) {
             let _this = this;
             //公共事件添加
             $(".comment-info-list .js-handle").on("click",function(e){
-                let handle = $(this).data('handle');
-                _this[handle] && _this[handle](e);
+                let $this = $(this);
+                let handle = $this.data('handle');
+                _this[handle] && _this[handle](e,$this);
             });
 
             //评论操作
@@ -38,7 +39,7 @@ export default function Comment($el, commentData) {
                 }
             })
         },
-        handleLike: function(e) {
+        handleComment: function(e,$this) {
             
         }
     }
