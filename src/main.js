@@ -109,15 +109,10 @@ const routes = {
     '/forgetPwd': ForgetPwdCb,
     '/groups': GroupsCb,
     '/games': GamesCb,
-<<<<<<< HEAD
-    '/dynamic-details': DynamicDetailsCb,
+    '/dynamic-details/:id': DynamicDetailsCb,
     '/matches': MatchesCb,
     '/news': NewsCb,
     '/newsDetail/:id': NewsDetailCb
-=======
-    '/dynamic-details/:id': DynamicDetailsCb,
-    '/matches': MatchesCb
->>>>>>> xiongpeng
 };
 
 const router = new Router(routes).configure({

@@ -25,7 +25,6 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
                 success: function(req){
 
                     if(!req.IsError){
-                        debugger;
                         $(".comment-header .like-num span:last-child").html(req.Data);
                         $this.addClass("liked");
                     }
