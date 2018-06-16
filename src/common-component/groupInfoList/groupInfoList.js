@@ -11,28 +11,34 @@ export default function GroupInfoList($el, infoList) {
             this.bindEvent();
         },
         bindEvent: function() {
-            $(".group-info-list").on("click", ".showAll", function(){
-                Util.linkTo('/dynamic-details');
+            let _this = this;
+            //公共事件添加
+            $(".groupItem").on("click",".js-handle",function(e){
+                let handle = $(this).data('handle');
+                _this[handle] && _this[handle](e, $(this));
             });
-            $(".groupItem").on("click", ".handleLike", function(){
-                const $this = $(this);
-                $.ajax({
-                    url: API.clickLike,
-                    type: 'post',
-                    data: {Body:$this.parents(".groupItem").data('id')},
-                    success: function(req){
+        },
+        handleLike: function(e, $this) {
+            $.ajax({
+                url: API.clickLike,
+                type: 'post',
+                data: {Body:$this.parents(".groupItem").data('id')},
+                success: function(req){
 
-                        if(!req.IsError){
-                            debugger;
-                            $this.addClass("liked");
-                        }
-
-                    },
-                    error: function(msg){
-                        console.log(msg);
+                    if(!req.IsError){
+                        debugger;
+                        $this.addClass("liked");
                     }
-                })
-            });
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+        },
+        handleLink: function(e,$this) {
+            const id = $this.parents(".groupItem").data("id");
+            Util.linkTo('/dynamic-details/' + id);
         }
     }
 

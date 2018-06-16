@@ -47,10 +47,10 @@ const GamesCb = function(userId) {
     }, 'Games')
 };
 /*动态详情*/
-const DynamicDetailsCb = function() {
+const DynamicDetailsCb = function(id) {
     require.ensure([], (require) => {
         let DynamicDetails = require('./pages/dynamic-details/dynamic-details.js');
-        DynamicDetails.default();
+        DynamicDetails.default(id);
     },'DynamicDetails')
 };
 /*比赛页*/
@@ -77,15 +77,21 @@ const NewsDetailCb = function(id) {
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
+    type: "POST",
     beforeSend: function(xhr){
         let AccessToken = Util.getCookie('AccessToken');
         arguments[1].data += "&AccessToken=" + AccessToken;
     },
     complete: function (xhr,status) {
         let result = xhr.responseText ? JSON.parse(xhr.responseText) : null;
+        let { IsError, ErrCode } = result;
+        let currentRote = Util.getRouter();
 
         if(result.IsError){
             alert(result.Message);
+            if(ErrCode == 400){
+                currentRote != '/login' && Util.linkTo('/login');
+            }
             return false;
         }
     },
@@ -103,10 +109,15 @@ const routes = {
     '/forgetPwd': ForgetPwdCb,
     '/groups': GroupsCb,
     '/games': GamesCb,
+<<<<<<< HEAD
     '/dynamic-details': DynamicDetailsCb,
     '/matches': MatchesCb,
     '/news': NewsCb,
     '/newsDetail/:id': NewsDetailCb
+=======
+    '/dynamic-details/:id': DynamicDetailsCb,
+    '/matches': MatchesCb
+>>>>>>> xiongpeng
 };
 
 const router = new Router(routes).configure({
@@ -116,12 +127,6 @@ const router = new Router(routes).configure({
     before: () => {
         let currentRote = Util.getRouter();
         let userId = Util.getCookie('userId');  
-
-        //未登录跳转登陆页
-        // if(!userId && currentRote !== '/login'){
-        //     Util.linkTo('/login');
-        //     return;
-        // }
 
         if(!Util.isMainPage(currentRote)){
             return;

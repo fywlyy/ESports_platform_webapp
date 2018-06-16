@@ -10,22 +10,43 @@ import Comment from '../../common-component/comment/comment.js';
 
 import "./dynamic-details.scss";
 
-export default function DynamicDetails() {
-    const itemData = {};
-    const commentData = {
-        infoList: [1,2,3,4,5,6]
-    };
+export default function DynamicDetails(id) {
 
     const handlers = {
         init: function() {
-            $(".container").html(DynamicDetailsTpl());
-            GroupInfoItem($(".groupItem-layout"),itemData,true);
-            Comment($(".comment-layout"),commentData)
+
+            this.getDetails(id,function(data){
+                $(".container").html(DynamicDetailsTpl());
+                GroupInfoItem($(".groupItem-layout"),data,true);
+                Comment($(".comment-layout"),{
+                    commentList: data.CommentReplyList,
+                    commentCount: data.CommentCount,
+                    likeCount: data.LikeCount
+                })
+            })
+
             Util.setTitle('动态详情');
             this.bindEvent();
         },
         bindEvent: function() {
             
+        },
+        getDetails: function(id,callback) {
+            $.ajax({
+                url: API.getPostMsgDetail,
+                type: 'post',
+                data: { Body: id },
+                success: function(req){
+                    req = typeof(req) == 'string' ? JSON.parse(req) : req;
+                    if(!req.IsError){
+                        callback && callback(req.Data || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
         }
     }
 

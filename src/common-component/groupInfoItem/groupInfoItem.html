@@ -13,7 +13,7 @@
             <img src="{{ImageUrlList[0]}}" alt="">
             <div class="operator">
                 <span></span>
-                <span class="handleLike"></span>
+                <span class="js-handle" data-handle="handleLike"></span>
                 <span></span>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <p><span>空城：</span>{{item.Content}}</p>
 
         {{/each}}
-        <div class="showAll">
+        <div class="showAll js-handle" data-handle="handleLink">
             <span>查看全部 {{CommentCount}} 条评论</span>
             <img src="../../asset/images/groupItem/showAll.png" alt="">
         </div>

@@ -6,6 +6,7 @@ module.exports = {
 	/*圈子*/
 	circleList: `${baseUrl}/Circle/GetUserCircle`,
 	userPostMsgList: `${baseUrl}/Circle/QueryUserPostMessageList`,
-	clickLike: `${baseUrl}/Circle/ClickLike`
+	clickLike: `${baseUrl}/Circle/ClickLike`,
+	getPostMsgDetail: `${baseUrl}/Circle/GetPostMessageDetail`,
 
 };

@@ -11,27 +11,31 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
         },
         bindEvent: function() {
             let _this = this;
-            //公共事件添加
+            //鍏叡浜嬩欢娣诲姞
             $(".groupItem .js-handle").on("click",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
         },
-        handleLike:function(e, $this){
+        handleLike: function(e, $this) {
             $.ajax({
                 url: API.clickLike,
                 type: 'post',
-                data: {Body:$this.data(id)},
+                data: {Body:$this.parents(".groupItem").data('id')},
                 success: function(req){
 
-
+                    if(!req.IsError){
+                        debugger;
+                        $(".comment-header .like-num span:last-child").html(req.Data);
+                        $this.addClass("liked");
+                    }
 
                 },
                 error: function(msg){
                     console.log(msg);
                 }
             })
-        }
+        },
 
     }
 
