@@ -20,7 +20,6 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
         handleLike: function(e, $this) {
             $.ajax({
                 url: API.clickLike,
-                type: 'post',
                 data: {Body:$this.parents(".groupItem").data('id')},
                 success: function(req){
 
