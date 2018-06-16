@@ -9,9 +9,25 @@
         border-radius: rem(10);
         padding-top: rem(17);
         margin-bottom: rem(12);
+        position: relative;
 
-        >img{
-            width: 100%;
+        >.videos-item-image {
+            img {
+                width: 100%;
+            }
+
+            &:after {
+                content: '';
+                display: inline-block;
+                background: url('../../../../asset/images/matches/playBtn.png') no-repeat center;
+                background-size: rem(92) rem(92);
+                width: rem(92);
+                height: rem(92);
+                position: absolute;
+                top: rem(145);
+                left:rem(320);
+            }
+
         }
 
         >.videos-item-info{

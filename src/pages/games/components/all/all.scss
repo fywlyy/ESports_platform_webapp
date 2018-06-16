@@ -3,8 +3,8 @@
 $themeBlack: #141414;
 $hotColor: #585757;
 $themeYellow: #ffaf00;
-$defaultBorder: rem(1) solid #cec9c3;
-$activeBorder: rem(1) solid #ef9000;
+$defaultBorder: 1px solid #cec9c3;
+$activeBorder: 1px solid #ef9000;
 #header-all{
 
   .hot-recommend{
@@ -31,10 +31,10 @@ $activeBorder: rem(1) solid #ef9000;
         margin-bottom: rem(4);
         color: $hotColor;
         font-size: rem(24);
-        border: rem(2) solid $themeBlack;
+        border: 1px solid $themeBlack;
         &.active{
           color: $themeYellow;
-          border: rem(2) solid $themeYellow;
+          border: 1px solid $themeYellow;
           border-radius: rem(15);
         }
       }
@@ -42,17 +42,17 @@ $activeBorder: rem(1) solid #ef9000;
   }
   .sort{
     font-size: rem(24);
-    padding: rem(15) rem(20) 0;
+    padding: rem(15) rem(18) 0;
     img{
       float: left;
       width: rem(42);
     }
-    sapn{
-      float: left;
-      text-align: center;
+    span{
+      padding: 0 rem(3);
+      line-height: rem(54);
     }
     >div{
-      display: inline-block;
+      float: left;
       border-radius: rem(15);
       height: rem(50);
       line-height: rem(50);
@@ -62,30 +62,30 @@ $activeBorder: rem(1) solid #ef9000;
       text-align: center;
       border: $defaultBorder;
       background: #cec9c3;
-      padding: 0 rem(10);
+      padding: 0 rem(8);
       &.active{
         color: #fff;
         border: $activeBorder;
         background: $themeYellow;
       }
     }
-    //&>div + div{
-    //  margin-left: rem(2);
-    //}
     .account-safe-btn{
       font-size: rem(20);
       color: #259cf6;
       border: $defaultBorder;
-      padding: 0 rem(5) 0 0;
       background: #fff;
     }
     .auto-transport-btn{
       font-size: rem(20);
       color: #252525;
       border: $defaultBorder;
-      padding: 0 rem(5) 0 0;
       background: #fff;
     }
+
+    & > div + div{
+      margin-left: rem(5);
+    }
+
   }
   .container-list{
     padding:rem(15) 0;
