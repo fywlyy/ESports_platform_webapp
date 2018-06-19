@@ -21,7 +21,7 @@ export default function NewsDetail(id) {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".newsDetail-page .js-handle").on("click", function(e){
+            $(".newsDetail-page .js-handle").on("touchend", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
             });

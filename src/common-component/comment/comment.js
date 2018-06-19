@@ -11,7 +11,7 @@ export default function Comment($el, commentData, callback) {
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".comment-info-list .js-handle").on("click",function(e){
+            $(".comment-info-list .js-handle").on("touchend",function(e){
                 let $this = $(this);
                 let handle = $this.data('handle');
                 _this[handle] && _this[handle](e,$this);

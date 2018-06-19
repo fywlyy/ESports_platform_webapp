@@ -91,7 +91,7 @@
                 bottom: rem(15);
                 right: 0;
 
-                span{
+                >span{
                     display: inline-block;
                     font-size: rem(24);
                     color: #b2b1ad;
@@ -107,13 +107,13 @@
                     }
                 }
 
-                span:nth-child(1){
+                >span:nth-child(1){
                     &:before{
                         background-image:url('../../asset/images/groupItem/comment.png');
                     }
                 }
 
-                span:nth-child(2){
+                >span:nth-child(2){
                     &:before{
                         background-image:url('../../asset/images/groupItem/like.png');
                     }
@@ -122,13 +122,44 @@
                     }
                 }
 
-                span:nth-child(3){
+                >span:nth-child(3){
                     &:before{
                         background-size: rem(38) rem(32);
                         width: rem(38);
                         height: rem(32);
                         background-image:url('../../asset/images/groupItem/menu.png');
                     }
+                }
+
+                >.operator_menu{
+                    font-size: rem(24);
+                    color: #625b51;
+                    text-align: center;
+                    width: rem(225);
+                    line-height: rem(80);
+                    position: absolute;
+                    bottom: rem(50);
+                    right: rem(-10);
+                    border: 2px solid #d9d8d4;
+                    border-radius: rem(10);
+                    display:none;
+
+                    >div{
+
+                        >img{
+                            vertical-align: middle;
+                        }
+    
+                        >span{
+                            vertical-align: middle;
+                        }
+
+                    }
+
+                    >div + div{
+                        border-top: 2px solid #d9d9d4;
+                    }
+
                 }
 
             }

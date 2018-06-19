@@ -10,7 +10,7 @@ export default function Footer($el, cb) {
             this.bindEvent();
         },
         bindEvent: function() {
-            $(".footer .nav-item").on("click",function() {
+            $(".footer .nav-item").on("touchend",function() {
                 let $this = $(this);
                 if($this.hasClass('active')){
                     return;

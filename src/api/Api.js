@@ -9,5 +9,5 @@ module.exports = {
 	clickLike: `${baseUrl}/Circle/ClickLike`,
 	getPostMsgDetail: `${baseUrl}/Circle/GetPostMessageDetail`,
 	addCommentReply: `${baseUrl}/Circle/AddCommentReply`,
-
+	reportApi: `${baseUrl}/Circle/SubmitComplainPostMessage`,
 };

@@ -20,7 +20,7 @@ export default function News() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".news-page").on("click", ".news-item .js-handle", function(e){
+            $(".news-page").on("touchend", ".news-item .js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
             });

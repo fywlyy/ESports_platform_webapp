@@ -21,14 +21,14 @@ export default function Classes() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".classes-page").on("click", ".classes-item .js-handle", function(e){
+            $(".classes-page").on("touchend", ".classes-item .js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
             });
 			this.handleChangeTab();
 		},
 		handleChangeTab: function() {
-			$(".classes-page .classes-page-tabBar").on("click", "span", function(e){
+			$(".classes-page .classes-page-tabBar").on("touchend", "span", function(e){
 				let $this = $(this);
 				if($this.hasClass('active')){
 					return;
