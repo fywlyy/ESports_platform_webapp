@@ -17,12 +17,12 @@ export default function GroupInfoList($el, infoList) {
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
-            $("#app-container").on("touchend", function(e){
+            $("#app-container")
+            .off("touchend",function(e){})
+            .on("touchend", function(e){
                 e.stopPropagation();
-                debugger;
-                if($(this).parents().find(".operator_menu").length <= 0){
-                    $(".groupItem .operator_menu").hide(200).removeClass("hasShow");
-                }
+
+                $(".groupItem .operator_menu.hasShow").hide(200).removeClass("hasShow");
             });
         },
         handleLike: function(e, $this) {
@@ -48,9 +48,20 @@ export default function GroupInfoList($el, infoList) {
         },
         handleMenu: function(e,$this){
             e.stopPropagation();
-            $this.siblings(".operator_menu").hasClass("hasShow") 
-            ? $this.siblings(".operator_menu").hide(200).removeClass("hasShow") 
-            : $this.siblings(".operator_menu").show(200).addClass("hasShow");
+            if($this.next().hasClass("hasShow")){
+                $this.next().hide(200).removeClass("hasShow");
+            }else{
+                $this
+                .parents(".group-info-list")
+                .find(".hasShow")
+                .hide(200)
+                .removeClass("hasShow");
+
+                $this
+                .next()
+                .show(200)
+                .addClass("hasShow");
+            }
         },
         handleReport: function(e,$this){
             $.ajax({

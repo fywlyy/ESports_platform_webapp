@@ -3,6 +3,7 @@
  */
 import _ from 'underscore';
 import Swiper from 'swiper';
+import MeScroll from 'mescroll.js';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import GroupsTpl from './groups.html';
@@ -32,7 +33,7 @@ export default function Groups() {
 
                 $(".container").html(GroupsTpl({circleList:data}));
 
-                that.getUserPostMsgList(that.params, that.renderMsgList.bind(that));
+                that.getUserPostMsgList(that.params, that.renderMsgList.bind(that), 'loadMore');
 
                 var swiper = new Swiper('.group-list',{
                     slidesPerView: 4
@@ -56,7 +57,31 @@ export default function Groups() {
 
                     that.params.CircleId = $this.data('id');
 
-                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that));
+                    that.mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
+                        down: {
+                            auto: false,
+                            htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip">下拉刷新</p>',
+                            callback: function(page){
+                                that.params.pageIndex = 1;
+                                setTimeout(function(){
+                                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that),'refresh');
+                                },1000);
+                            }
+                        },
+                        up: {
+                            auto: true,
+                            isBoth: false,
+                            isBounce: false,
+                            noMoreSize: 1,
+                            callback: function(page){
+                                that.params.pageIndex = page.num;
+                                setTimeout(function(){
+                                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that),'loadMore');
+                                },1000);
+                                
+                            }
+                        }
+                    });
 
                 }
             });
@@ -80,7 +105,7 @@ export default function Groups() {
             })
 
         },
-        getUserPostMsgList:function(params, cb){
+        getUserPostMsgList:function(params, cb, type){
 
             $.ajax({
                 url: API.userPostMsgList,
@@ -89,7 +114,7 @@ export default function Groups() {
                 success: function(req){
 
                     if(!req.IsError){
-                        cb && cb(req || {});
+                        cb && cb(req || {}, type);
                     }
 
                 },
@@ -99,9 +124,12 @@ export default function Groups() {
             })
 
         },
-        renderMsgList:function(req){
+        renderMsgList:function(req,type){
+            type == 'refresh' && $(".group-info-list").html('');
             GroupInfoList($(".group-info-list"), req.Result);
             this.params.PageIndex = req.PageIndex;
+
+            this.mescroll && this.mescroll.endBySize(req.Result.length, req.TotalCount);
         }
     }
 

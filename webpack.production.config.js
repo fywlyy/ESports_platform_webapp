@@ -8,7 +8,7 @@ module.exports = {
   entry: {
     main: './src/main.js',
     jquery: path.resolve(__dirname, './src/asset/plugin/jquery.min.js'),
-    vendor: ['swiper','underscore','./src/common-component/util/util.js','./src/api/Api.js']
+    vendor: ['swiper','underscore','mescroll.js','./src/common-component/util/util.js','./src/api/Api.js']
   },
   output: {
     path: path.resolve(__dirname, './built'),

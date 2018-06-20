@@ -6,6 +6,7 @@ import PageLayout from './common-component/pageLayout/pageLayout.js';
 
 import './asset/reset.scss';
 import 'swiper/dist/css/swiper.min.css';
+import './asset/mescroll.css';
 
 // 引入垫片兼容IE
 import "babel-polyfill";
