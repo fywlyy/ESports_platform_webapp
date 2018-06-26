@@ -10,4 +10,10 @@ module.exports = {
 	getPostMsgDetail: `${baseUrl}/Circle/GetPostMessageDetail`,
 	addCommentReply: `${baseUrl}/Circle/AddCommentReply`,
 	reportApi: `${baseUrl}/Circle/SubmitComplainPostMessage`,
+	/*比赛*/
+	getCompetitionList:`${baseUrl}/Competition/GetRecommendCompetitionList`,
+	getVideoList:`${baseUrl}/Competition/GetAdvertisingList`,
+	getNewsList:`${baseUrl}/Competition/GetRecommendNewsList`,
+	/*新闻*/
+	getAllNewsList:`${baseUrl}/Competition/SearchNewsList`
 };

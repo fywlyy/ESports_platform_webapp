@@ -13,9 +13,13 @@ export default function News() {
 
 	const handlers = {
 		init: function() {
-			$(".container").html( NewsTpl() );
+
+			this.getAllNewsList(function(data){
+				$(".container").html( NewsTpl({newsList:data}) );
+			});
 			this.bindEvent();
 			Util.setTitle('全部新闻');
+
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -61,6 +65,23 @@ export default function News() {
 					console.log(msg);
 				}
 			})
+		},
+		getAllNewsList:function(cb){
+			$.ajax({
+                url: API.getAllNewsList,
+                type: 'post',
+                data: {Body:null},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req.Result || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
 		}
 	}   
 
