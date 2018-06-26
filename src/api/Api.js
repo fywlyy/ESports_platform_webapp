@@ -15,5 +15,6 @@ module.exports = {
 	getVideoList:`${baseUrl}/Competition/GetAdvertisingList`,
 	getNewsList:`${baseUrl}/Competition/GetRecommendNewsList`,
 	/*新闻*/
-	getAllNewsList:`${baseUrl}/Competition/SearchNewsList`
+	getAllNewsList:`${baseUrl}/Competition/SearchNewsList`,
+	getNewsInfo:`${baseUrl}/Competition/GetNewsDetail`
 };

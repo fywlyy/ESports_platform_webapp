@@ -48,10 +48,12 @@
 
             {{each newsList item i}}
 
-                <div class="news-item">
-                    <span>{{item.Title}}</span>
-                    <span>{{item.InDate.substring(5,10)}}</span>
-                </div>
+                <a href="#/newsDetail/{{item.Id}}">
+                    <div class="news-item">
+                        <span>{{item.Title}}</span>
+                        <span>{{item.InDate.substring(5,10)}}</span>
+                    </div>
+                </a>
 
             {{/each}}
 

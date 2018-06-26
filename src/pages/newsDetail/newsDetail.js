@@ -10,13 +10,13 @@ import "./newsDetail.scss";
 
 export default function NewsDetail(id) {
 
-	console.log(id);
-
 	const handlers = {
 		init: function() {
-			$(".container").html( NewsDetailTpl() );
-			this.bindEvent();
-			Util.setTitle('新闻详情');
+			this.getNewsInfo(function(data){
+				$(".container").html( NewsDetailTpl({newsDetail:data}) );
+				this.bindEvent();
+				Util.setTitle('新闻详情');
+			});
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -28,6 +28,23 @@ export default function NewsDetail(id) {
 		},
 		handleLogin: function(e) {
 
+		},
+		getNewsInfo: function(cb){
+			$.ajax({
+                url: API.getNewsInfo,
+                type: 'post',
+                data: {Body:id},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req.Data || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
 		}
 	}   
 

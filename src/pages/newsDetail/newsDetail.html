@@ -1,20 +1,21 @@
 <div class="newsDetail-page">
 
-	<p>山东鲁能王牌外援最现实妻子：别回巴西！中超才有钱！</p>
+	<p>{{newsDetail.Title}}</p>
 
 	<div class="headerInfo">
-		<img src="../../asset/images/groupItem/headImg.png" alt="">
+		<img src={{newsDetail.UserUrl}} alt="">
 		<div>
-			<p>Day-DD 小兔仔解说</p>
-			<span>05-31 21:06</span>
+			<p>{{newsDetail.PublishNickName}}</p>
+			<span>{{newsDetail.InDate}}</span>
 		</div>
 	</div>
 
 	<p>
-		农历5月初5端午节，是中华民族的传统节日之一。端午又称作“端五”，或者是叫“端阳”。《荆楚岁时记》记载，因仲夏登高，顺阳在上，五月是仲夏，其第一个午日正是登高顺阳好天气之日，故五月初五亦称为“端阳节”。端午节是中国首个入选世界非遗的传统节日，在中华民族的传统节日中也唯有端午节注入了爱国主义精神，反映了民众自古就有的国家意识和民族意识。
+		{{newsDetail.Content}}
 	</p>
 
-	<img src="http://file06.16sucai.com/2016/0825/5203cb96ceadafa0f2f26d11c572d727.jpg" alt=""/>
-	<img src="http://file06.16sucai.com/2016/0825/5203cb96ceadafa0f2f26d11c572d727.jpg" alt=""/>
+	{{each newsDetail.ImageUrlList imgItem}}
+		<img src={{imgItem}} alt=""/>
+	{{/each}}
 
 </div>

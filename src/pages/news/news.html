@@ -2,10 +2,10 @@
 
 	{{each newsList item i}}
 
-		<a href="#/newsDetail/1">
+		<a href="#/newsDetail/{{item.Id}}">
 			<div class="news-item">
 				<div class="news-title">{{item.Title}}</div>
-				<div class="news-images">
+				<div class="news-images clearFix">
 					{{each item.ImageUrlList nextItem}}
 						<img src={{nextItem}} alt=""/>
 					{{/each}}
