@@ -7,6 +7,7 @@ import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import ClassesTpl from './classes.html';
 import Videos from './components/videos/videos.js';
+import Interaction from './components/interaction/interaction.js';
 
 import "./classes.scss";
 
@@ -40,7 +41,8 @@ export default function Classes() {
 					let $container = $(".classes-item-container");
 					switch (index){
 						case 0 : Videos($container,{}); break;
-						default : console.log('错误')
+						case 2 : Interaction($container); break;
+						default : Videos($container,{});
 					}
 
 				}

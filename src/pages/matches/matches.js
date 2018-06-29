@@ -33,7 +33,7 @@ export default function Matches() {
             this.getNewsList(function(data){
                 _that.newsList = data;
                 _that.renderHtml();
-            });
+            });        
 
         },
         bindEvent: function() {
