@@ -3,17 +3,41 @@
 .game-sign-up-entr{
   background: #f1ede8;
   padding: rem(20) rem(10);
-  .info-list{
-    padding:0 rem(20) rem(100);
+  .head-info{
+    padding-bottom:rem(10);
+    font-size:rem(24);
+    color:#625b51;
+    text-align: center;
+    @include box-sizing();
+  }
+  .info-list{    
+    padding:rem(8) rem(20) rem(20);
     border:1px solid #e3e0db;
     border-radius: rem(20);
     background-color:#fff;
     @include box-sizing();
-    li{
-      padding:rem(50) rem(14) 0;
-      height:rem(100);
-      border-bottom:2px solid #d9d8d4;
+    & + .info-list{
+      margin-top:rem(15);
+    }
+    li{      
+      position: relative;
+      padding:rem(22) rem(50) 0 rem(14);
+      height:rem(72);
       @include box-sizing();
+      & + li{
+        border-top:2px solid #d9d8d4;
+      }
+      .info-box{
+        position: relative;
+        height:100%;
+        .icon{
+          top: rem(8);
+          right:rem(-38);
+        }
+        background-color:#fff;
+        z-index: 10;
+        pointer-events: none;
+      }
       .info-title{
         font-size:rem(30);
         color:#050100;
@@ -21,6 +45,31 @@
       .info-con{
         font-size:rem(30);
         color:#625b51;
+      }
+      .icon{
+        position: absolute;
+        top:rem(30);
+        right:rem(14);
+        width:rem(13);
+        height:rem(26);
+        background:url('../../asset/images/icon_right.png') 0 0 no-repeat;
+        background-size:100% 100%;
+        z-index:1;
+      }
+      .select-box{
+        position: absolute;
+        top:rem(22);
+        left:0;
+        padding:0 rem(14);
+        width:100%;
+        height:rem(50);
+        z-index: 0;
+        @include box-sizing();
+        select{
+          width:100%;
+          height:100%;
+          border:none;
+        }
       }
     }
   }

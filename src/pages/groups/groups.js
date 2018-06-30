@@ -33,8 +33,9 @@ export default function Groups() {
 
                 $(".container").html(GroupsTpl({circleList:data}));
 
+                that.params.CircleId = data[0].Id;
                 that.getUserPostMsgList(that.params, that.renderMsgList.bind(that), 'loadMore');
-
+                that.renderMescroll.call(that);
                 var swiper = new Swiper('.group-list',{
                     slidesPerView: 4
                 });
@@ -59,32 +60,36 @@ export default function Groups() {
 
                     that.params.CircleId = $this.data('id');
 
-                    that.mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
-                        down: {
-                            auto: false,
-                            htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip">下拉刷新</p>',
-                            callback: function(page){
-                                that.params.pageIndex = 1;
-                                setTimeout(function(){
-                                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that),'refresh');
-                                },1000);
-                            }
-                        },
-                        up: {
-                            auto: true,
-                            isBoth: false,
-                            isBounce: false,
-                            noMoreSize: 1,
-                            callback: function(page){
-                                that.params.pageIndex = page.num;
-                                setTimeout(function(){
-                                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that),'loadMore');
-                                },1000);
-                                
-                            }
-                        }
-                    });
+                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that),'refresh');
 
+                }
+            });
+        },
+        renderMescroll: function() {
+            const _this = this;
+            this.mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
+                down: {
+                    auto: false,
+                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip">下拉刷新</p>',
+                    callback: function(page){
+                        _this.params.pageIndex = 1;
+                        setTimeout(function(){
+                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this),'refresh');
+                        },1000);
+                    }
+                },
+                up: {
+                    auto: true,
+                    isBoth: false,
+                    isBounce: false,
+                    noMoreSize: 1,
+                    callback: function(page){
+                        _this.params.pageIndex = page.num;
+                        setTimeout(function(){
+                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this),'loadMore');
+                        },1000);
+                        
+                    }
                 }
             });
         },

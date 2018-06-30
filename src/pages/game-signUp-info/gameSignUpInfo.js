@@ -19,7 +19,7 @@ export default function NewsDetail(id) {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".game-sign-up .js-handle").on("touchend",function(e){
+            $(".game-sign-up-info .js-handle").on("touchend",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
