@@ -110,6 +110,8 @@
       border-top: 1px solid #d9d8d4;
       height: rem(63);
       line-height: rem(63);
+      font-size: 0.32rem;
+      color: #625b51;
 
       span{
         display: inline-block;
@@ -150,6 +152,9 @@
         height: rem(40);
         background: #ffaf00;
         margin-right: rem(10);
+        vertical-align: sub;
+        position: relative;
+        top: rem(3);
       }
 
     }

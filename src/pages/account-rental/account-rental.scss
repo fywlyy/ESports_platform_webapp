@@ -1,0 +1,42 @@
+@import "../../asset/common";
+
+.account-rental-page{
+  
+    >img{
+        width: 100%;
+        display: block;
+    }
+
+    >div{
+        background: #252525;
+        padding: rem(20);
+        position: relative;
+
+        .name{
+            font-size: rem(28);
+            color: #fff;
+            margin-bottom: rem(35);
+        }
+
+        .price{
+            font-size: rem(36);
+            color: #ffaf00;
+        }
+
+        .operator{
+            font-size: rem(30);
+            color: #fff;
+            height: rem(55);
+            line-height: rem(55);
+            border-radius: rem(55);
+            padding: 0 rem(25);
+            text-align: center;
+            background: #ffaf00;
+            position: absolute;
+            right: rem(35);
+            bottom: rem(15);
+        }
+
+    }
+    
+}

@@ -37,7 +37,12 @@ export default function Matches() {
 
         },
         bindEvent: function() {
-
+            let _this = this;
+            //公共事件添加
+            $(".matches-page").on("touchend",".js-handle",function(e){
+                let handle = $(this).data('handle');
+                _this[handle] && _this[handle](e, $(this));
+            });
         },
         renderHtml:function(){
             this.count--;
@@ -53,6 +58,7 @@ export default function Matches() {
                 Util.setTitle('比赛');
     
                 this.bindEvent();
+
             }
         },
         getCompetitionList: function(cb){
@@ -111,6 +117,14 @@ export default function Matches() {
                 }
             })
 
+        },
+        toSignUpInfo:function(e,$this){
+            const id = $this.parents(".event-item").data("id");
+            Util.linkTo('/game-sign-up-info/' + id);
+        },
+        toMatchDetails:function(e,$this){
+            const id = $this.parents(".event-item").data("id");
+            Util.linkTo('/match-details/' + id);
         }
     }
 

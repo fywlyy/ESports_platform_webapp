@@ -96,6 +96,27 @@ const GameSignUpEntrCb = function(id) {
         GameSignUpEntr.default(id);
     },'GameSignUpEntr')
 };
+/*赛事详情*/
+const MatchDetailsCb = function(id) {
+    require.ensure([], (require) => {
+        let MatchDetails = require('./pages/match-details/match-details.js');
+        MatchDetails.default(id);
+    },'MatchDetails')
+};
+/*账号租用详情*/
+const AccountRentalCb = function(id) {
+    require.ensure([], (require) => {
+        let AccountRental = require('./pages/account-rental/account-rental.js');
+        AccountRental.default(id);
+    },'AccountRental')
+};
+/*直播详情*/
+const LiveDetailsCb = function(id) {
+    require.ensure([], (require) => {
+        let LiveDetails = require('./pages/live-details/live-details.js');
+        LiveDetails.default(id);
+    },'LiveDetails')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -136,8 +157,11 @@ const routes = {
     '/news': NewsCb,
     '/newsDetail/:id': NewsDetailCb,
     '/classes': ClassesCb,
-    '/game-sign-up-info': GameSignUpInfoCb,
+    '/game-sign-up-info/:id': GameSignUpInfoCb,
     '/game-sign-up-entr': GameSignUpEntrCb,
+    '/match-details/:id':MatchDetailsCb,
+    '/account-rental':AccountRentalCb,
+    '/live-details':LiveDetailsCb
 };
 
 const router = new Router(routes).configure({

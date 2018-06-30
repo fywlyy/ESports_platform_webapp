@@ -357,7 +357,7 @@ module.exports = {
     },
     restFooter: function(key) {
         let noFooter = false;
-        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up'];//footer隐藏黑名单路由
+        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up', '/match-details', '/account-rental'];//footer隐藏黑名单路由
 
         blacklist.map((item,index) => {
             if(key.indexOf(item) > -1){
