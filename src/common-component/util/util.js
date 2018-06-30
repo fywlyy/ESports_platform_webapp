@@ -357,7 +357,7 @@ module.exports = {
     },
     restFooter: function(key) {
         let noFooter = false;
-        const blacklist = ['/dynamic-details', '/news', '/newsDetail'];//footer隐藏黑名单路由
+        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up'];//footer隐藏黑名单路由
 
         blacklist.map((item,index) => {
             if(key.indexOf(item) > -1){
@@ -377,7 +377,7 @@ module.exports = {
     },
     restHeader: function(key) {
         let noHeader = false;
-        const blacklist = ['/games', '/matches', '/news'];//Header隐藏黑名单路由
+        const blacklist = ['/games', '/matches', '/news', '/classes'];//Header隐藏黑名单路由
 
         blacklist.map((item,index) => {
             if(key === item){

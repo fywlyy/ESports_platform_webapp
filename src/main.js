@@ -82,6 +82,20 @@ const ClassesCb = function(id) {
         Classes.default(id);
     },'Classes')
 };
+/*赛事报名*/
+const GameSignUpInfoCb = function(id) {
+    require.ensure([], (require) => {
+        let GameSignUpInfo = require('./pages/game-signUp-info/gameSignUpInfo.js');
+        GameSignUpInfo.default(id);
+    },'GameSignUpInfo')
+};
+/*赛事报名入口*/
+const GameSignUpEntrCb = function(id) {
+    require.ensure([], (require) => {
+        let GameSignUpEntr = require('./pages/game-signUp-entr/gameSignUpEntr.js');
+        GameSignUpEntr.default(id);
+    },'GameSignUpEntr')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -121,7 +135,9 @@ const routes = {
     '/matches': MatchesCb,
     '/news': NewsCb,
     '/newsDetail/:id': NewsDetailCb,
-    '/classes': ClassesCb
+    '/classes': ClassesCb,
+    '/game-sign-up-info': GameSignUpInfoCb,
+    '/game-sign-up-entr': GameSignUpEntrCb,
 };
 
 const router = new Router(routes).configure({
