@@ -12,8 +12,8 @@ import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js
 import "./groups.scss";
 
 export default function Groups() {
-
-    const userId = JSON.parse(localStorage.getItem('UserInfo')).id;
+    const userInfo = localStorage.getItem('UserInfo');
+    const userId = userInfo && JSON.parse(userInfo).Id;
 
     const handlers = {
 
@@ -38,6 +38,8 @@ export default function Groups() {
                 var swiper = new Swiper('.group-list',{
                     slidesPerView: 4
                 });
+                
+                $(".group-list .swiper-slide").eq(0).addClass("active");
 
                 that.bindEvent();
 
