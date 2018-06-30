@@ -1,83 +1,19 @@
 <div class="videos-page">
 
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
+	{{each videoList item}}
+		<div class="videos-item">
+			<div class="videos-item-image">
+				<img src={{item.DefaultImageUrl}} alt=""/>
+			</div>
+			<div class="videos-item-info">
+				<span>{{item.SchoolName}}&nbsp;</span>
+				<span>{{item.PublishName}}</span>
+			</div>
 		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
+	{{/each}}
 
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
-
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
-
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
-
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
-
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
-
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
-
-	<div class="videos-item">
-		<div class="videos-item-image">
-			<img src="../../../../asset/images/matches/video.png" alt=""/>
-		</div>
-		<div class="videos-item-info">
-			<span>清华大学&nbsp;</span>
-			<span>2018级电子信息工程 电子竞技专业</span>
-		</div>
-	</div>
+	{{if videoList.length <= 0}}
+		<div>暂无数据-。-</div>
+	{{/if}}
 
 </div>

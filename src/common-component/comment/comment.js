@@ -39,7 +39,6 @@ export default function Comment($el, commentData, callback) {
                 if(e.keyCode == 13){//回车提交
                     let $this = $(this);
                     let type = $this.data('type');
-                    debugger;
                     callback && callback({
                         CommentReplyType: type,
                         ReplyUserId: $this.data('userId'),

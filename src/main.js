@@ -161,7 +161,7 @@ const routes = {
     '/game-sign-up-entr': GameSignUpEntrCb,
     '/match-details/:id':MatchDetailsCb,
     '/account-rental':AccountRentalCb,
-    '/live-details':LiveDetailsCb
+    '/live-details/:id':LiveDetailsCb
 };
 
 const router = new Router(routes).configure({

@@ -18,7 +18,6 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
             });
             $("#app-container").on("touchend", function(e){
                 e.stopPropagation();
-                debugger;
                 if($(this).parents().find(".operator_menu").length <= 0){
                     $(".groupItem .operator_menu").hide(200).removeClass("hasShow");
                 }

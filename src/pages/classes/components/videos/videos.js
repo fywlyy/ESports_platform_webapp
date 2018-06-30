@@ -13,11 +13,32 @@ export default function Videos($el, infoList) {
 
 	const handlers = {
 		init: function() {
-			$el.html( VideosTpl() );
-			this.bindEvent();
+			let _this = this;
+
+			this.getVideoList((data)=>{
+				$el.html( VideosTpl({videoList: data}) );
+				_this.bindEvent();
+			});
 		},
 		bindEvent: function() {
 
+		},
+		getVideoList: function(cb){
+			$.ajax({
+                url: API.getVideoList,
+                type: 'post',
+                data: {Body:null},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req.Result || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
 		}
 	}   
 

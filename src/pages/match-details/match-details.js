@@ -5,15 +5,19 @@ import MatchDetailsTpl from './match-details.html';
 
 import "./match-details.scss";
 
-export default function MatchDetails() {
+export default function MatchDetails(id) {
 
     const handlers = {
 
         init: function() {
 
-            $(".container").html(MatchDetailsTpl());
-            Util.setTitle('赛程详情');
-            this.bindEvent();
+            let _this = this;
+
+            this.getMatchDetailsInfo(function(data){
+                $(".container").html(MatchDetailsTpl({info: data}));
+                Util.setTitle('赛程详情');
+                _this.bindEvent();
+            });
 
         },
         bindEvent: function() {
@@ -23,7 +27,24 @@ export default function MatchDetails() {
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
-        }
+        },
+		getMatchDetailsInfo: function(cb){
+			$.ajax({
+                url: API.getMatchDetailsInfo,
+                type: 'post',
+                data: {Body:id},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req.Data || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		}
 
     }
 

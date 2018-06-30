@@ -13,11 +13,34 @@ export default function Live($el, infoList) {
 
 	const handlers = {
 		init: function() {
-			$el.html( LiveTpl() );
-			this.bindEvent();
+
+			let _this = this;
+
+			this.getLiveList(function(data){
+                $el.html( LiveTpl({liveList: data}) );
+				_this.bindEvent();
+            });
+			
 		},
 		bindEvent: function() {
 
+		},
+		getLiveList: function(cb){
+			$.ajax({
+                url: API.getLiveList,
+                type: 'post',
+                data: {Body:null},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req.Result || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
 		}
 	}   
 

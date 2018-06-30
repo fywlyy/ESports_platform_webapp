@@ -14,7 +14,13 @@ module.exports = {
 	getCompetitionList:`${baseUrl}/Competition/GetRecommendCompetitionList`,
 	getVideoList:`${baseUrl}/Competition/GetAdvertisingList`,
 	getNewsList:`${baseUrl}/Competition/GetRecommendNewsList`,
+	getMatchDetailsInfo:`${baseUrl}/Competition/GetCompetitionDetail`,
 	/*新闻*/
 	getAllNewsList:`${baseUrl}/Competition/SearchNewsList`,
-	getNewsInfo:`${baseUrl}/Competition/GetNewsDetail`
+	getNewsInfo:`${baseUrl}/Competition/GetNewsDetail`,
+	/*课程*/
+	getLiveList:`${baseUrl}/Lesson/QueryLessonHourList`,
+	getLiveDetailsInfo:`${baseUrl}/Lesson/GetLesson`,
+	getVideoList:`${baseUrl}/Lesson/QueryVideoList`,
+	getVideoDetailsInfo:`${baseUrl}/Lesson/GetVideo`,
 };
