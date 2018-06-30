@@ -357,7 +357,9 @@ module.exports = {
     },
     restFooter: function(key) {
         let noFooter = false;
-        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up'];//footer隐藏黑名单路由
+        let isMainRoter = false;
+        const blacklist = ['/dynamic-details', '/news', '/newsDetail'];//footer隐藏黑名单路由
+        const mainRoters = ['/groups','/games','/matches','/classes'];//主页路由
 
         blacklist.map((item,index) => {
             if(key.indexOf(item) > -1){
@@ -371,8 +373,15 @@ module.exports = {
         }else{
             $(".footer-layout").show();
             $(".container").removeClass('no-footer');
-            key.length > 0 && $(".footer .nav-item.active").removeClass("active");
-            key.length > 0 && $(".footer .nav-item[data-router="+key.split('/')[1]+"]").addClass("active");
+
+            mainRoters.map((item,index) => {
+                if(key.indexOf(item) > -1){
+                    isMainRoter = true;
+                }
+            })
+
+            key.length > 0 && isMainRoter && $(".footer .nav-item.active").removeClass("active");
+            key.length > 0 && isMainRoter && $(".footer .nav-item[data-router="+key.split('/')[1]+"]").addClass("active");
         }
     },
     restHeader: function(key) {
