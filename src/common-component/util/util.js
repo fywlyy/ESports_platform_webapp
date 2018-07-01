@@ -388,7 +388,7 @@ module.exports = {
     },
     restHeader: function(key) {
         let noHeader = false;
-        const blacklist = ['/games', '/matches', '/news', '/classes', '/personal'];//Header隐藏黑名单路由
+        const blacklist = ['/games', '/matches', '/classes', '/personal'];//Header隐藏黑名单路由
 
         blacklist.map((item,index) => {
             if(key === item){

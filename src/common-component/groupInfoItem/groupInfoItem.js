@@ -12,7 +12,7 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".groupItem .js-handle").on("touchend",function(e){
+            $(".groupItem .js-handle").on("click",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });

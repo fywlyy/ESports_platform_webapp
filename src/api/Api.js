@@ -30,4 +30,8 @@ module.exports = {
 	getLiveDetailsInfo:`${baseUrl}/Lesson/GetLesson`,
 	getVideoList:`${baseUrl}/Lesson/QueryVideoList`,
 	getVideoDetailsInfo:`${baseUrl}/Lesson/GetVideo`,
+	/*游戏*/
+	getSchoolList:`${baseUrl}/GameOrder/GetSchoolList`,
+	SeachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
+	SeachPlayWithList:`${baseUrl}/GameOrder/SeachPlayWithList`,
 };

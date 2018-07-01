@@ -1,7 +1,5 @@
 import HelpPracticeTpl from './helpPractice.html'
 
-import './helpPractice.scss'
-
 /**
  *
  * @param $el 选择器

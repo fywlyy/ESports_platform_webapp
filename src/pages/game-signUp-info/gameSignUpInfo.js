@@ -12,20 +12,40 @@ export default function NewsDetail(id) {
 
 	const handlers = {
 		init: function() {
+			let _this = this;
 			Util.setTitle('赛事报名');
-			$(".container").html( GameSignUpInfoTpl({}) );
-			this.bindEvent();
+			this.getDetail(function(data) {
+				$(".container").html( GameSignUpInfoTpl(data) );
+				_this.bindEvent();
+			})
 		},
 		bindEvent: function() {
 			let _this = this;
-            //公共事件添加
+			//公共事件添加
             $(".game-sign-up-info .js-handle").on("touchend",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
 		},
+		getDetail: function(callback) {
+			$.ajax({
+                url: API.getMatchDetailsInfo,
+                type: 'post',
+                data: {Body:id},
+                success: function(req){
+
+                    if(!req.IsError){
+                        callback && callback(req.Data || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		},
 		handleSignUp: function() {
-			Util.linkTo('/game-sign-up-entr');
+			Util.linkTo('/game-sign-up-entr/1');
 		}
 	}   
 
