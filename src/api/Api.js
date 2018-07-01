@@ -1,8 +1,14 @@
 const baseUrl = 'http://www.troycd.com:8999/api';
 
 module.exports = {
-	/*登陆*/
+	/*登陆、注册、修改密码*/
 	userLogin: `${baseUrl}/User/UserLogin`,
+	sendRegisterUserMsg: `${baseUrl}/User/SendRegisterUserMsg`,
+	registerUser: `${baseUrl}/User/RegisterUser`,
+	sendResetPwdMsg: `${baseUrl}/User/SendResetPwdMsg`,
+	resetPwd: `${baseUrl}/User/ResetPwd`,
+
+
 	/*圈子*/
 	circleList: `${baseUrl}/Circle/GetUserCircle`,
 	userPostMsgList: `${baseUrl}/Circle/QueryUserPostMessageList`,

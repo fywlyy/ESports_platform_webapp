@@ -34,9 +34,9 @@ export default function Login() {
 			}
 
 			Body = {
-				"LoginName": "188888888888",
-				"Pwd": "123456",
-				"UserType": 2
+				LoginName: userName,
+				Pwd: password,
+				UserType: 2
 			};
 
 			$.ajax({
