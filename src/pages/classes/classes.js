@@ -15,9 +15,10 @@ import "./classes.scss";
 export default function Classes() {
 
 	const handlers = {
+		videoObjs: [],
 		init: function() {
 			$(".container").html( ClassesTpl() );
-			Videos($('.classes-item-container'),{});
+			Videos($('.classes-item-container'),this);
 			this.bindEvent();
 		},
 		bindEvent: function() {
@@ -30,6 +31,7 @@ export default function Classes() {
 			this.handleChangeTab();
 		},
 		handleChangeTab: function() {
+			let _this = this;
 			$(".classes-page .classes-page-tabBar").on("touchend", "span", function(e){
 				let $this = $(this);
 				if($this.hasClass('active')){
@@ -41,10 +43,10 @@ export default function Classes() {
 					let index = $this.index();
 					let $container = $(".classes-item-container");
 					switch (index){
-						case 0 : Videos($container,{}); break;
-						case 1 : Live($container,{}); break;
+						case 0 : Videos($container,_this); break;
+						case 1 : Live($container); break;
 						case 2 : Interaction($container); break;
-						default : Videos($container,{});
+						default : Videos($container);
 					}
 
 				}

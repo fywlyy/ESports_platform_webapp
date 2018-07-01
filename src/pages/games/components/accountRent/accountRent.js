@@ -1,19 +1,27 @@
 import API from '../../../../api/Api.js';
-import AccountRentTpl from './accountRent.html'
+import Util from '../../../../common-component/util/util.js';
+import AccountRentTpl from './accountRent.html';
 
 /**
  *
  * @param $el 选择器
- * @param infoList 组件对象
  * @constructor
  */
-export default function AccountRent($el, infoList) {
+export default function AccountRent($el) {
     const handlers = {
+        params: {
+            GameInfoId: '',
+            OrderByType: 0,
+            PageIndex: 1,
+            PageSize: 10
+        },
         init: function() {
             let _this = this;
-            this.getSchoolList(function(data) {
-                $el.html(AccountRentTpl({infoList}));
-                _this.bindEvent();
+            this.getSchoolList(function(schoolList) {
+                _this.getAccountList(_this.params,function(accountList) {
+                    $el.html(AccountRentTpl({schoolList,accountList}));
+                    _this.bindEvent();
+                })
             })
         },
         bindEvent: function() {
@@ -46,8 +54,32 @@ export default function AccountRent($el, infoList) {
                 }
             })
         },
+        getAccountList: function(params,callback) {
+            $.ajax({
+                url: API.SeachAccountList,
+                data: {
+                    Body: params
+                },
+                success: function(req) {
+                    let { Result, IsError } = req;
+
+					if(!IsError){
+                        callback && callback(Result || []);
+                    }
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })            
+        },
         toAccountRental: function(e, $this){
-            Util.linkTo('/account-rental');
+            let id = $this.data('id');
+            Util.linkTo('/account-rental/' + id);
+        },
+        placeOrder: function(e, $this) {
+            e.stopPropagation();
+
+            let id = $this.data('id');
         }
     }
     handlers.init();

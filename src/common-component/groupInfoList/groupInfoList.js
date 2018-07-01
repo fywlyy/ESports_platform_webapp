@@ -46,6 +46,10 @@ export default function GroupInfoList($el, infoList) {
             const id = $this.parents(".groupItem").data("id");
             Util.linkTo('/dynamic-details/' + id);
         },
+        handleComment: function(e,$this){
+            const id = $this.parents(".groupItem").data("id");
+            Util.linkTo('/dynamic-details/' + id);
+        },
         handleMenu: function(e,$this){
             e.stopPropagation();
             if($this.next().hasClass("hasShow")){

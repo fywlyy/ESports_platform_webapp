@@ -4,14 +4,9 @@
                 <span>热门推荐:</span>
             </div>
             <div class="hot-list">
-                <div class="hot-list-item active"><span>中超竞猜</span></div>
-                <div class="hot-list-item active"><span>王者荣耀</span></div>
-                <div class="hot-list-item"><span>疯狂体育</span></div>
-                <div class="hot-list-item"><span>中超竞猜</span></div>
-                <div class="hot-list-item"><span>飞车</span></div>
-                <div class="hot-list-item active"><span>中超竞猜</span></div>
-                <div class="hot-list-item active"><span>猎人</span></div>
-                <div class="hot-list-item"><span>中超竞猜</span></div>
+                {{each schoolList item i}}
+                <div class="hot-list-item" data-id={{item.Id}}><span>{{item.GameIName}}</span></div>
+                {{/each}}
             </div>
         </div>
         <div class="sort clearFix">
@@ -28,95 +23,22 @@
             </div>
         </div>
         <div class="container-list">
-            <div class="components-item">
-                <div class="item-container">
-                    <div class="images-type"></div>
-                    <div class="prod-detail">
-                        <div class="detail-name">绝地求生账号出租</div>
-                        <div class="detail-advantage">稳定不挤号, 楚霸王</div>
-                        <div class="detail-price">
-                            ￥<sapn>999.00</sapn>
+            {{each accountList item i}}
+                <div class="components-item js-handle" data-id="{{item.Id}}" data-handle="toAccountRental">
+                    <div class="item-container">
+                        <img class="images-type" src="{{item.DetailImageUrl}}" alt="">
+                        <div class="prod-detail">
+                            <div class="detail-name">{{item.Title}}</div>
+                            <div class="detail-advantage">{{item.Remark}}</div>
+                            <div class="detail-price">
+                                ￥<sapn>{{item.UnitPrice}}</sapn>
+                            </div>
+                        </div>
+                        <div class="now-use">
+                            <div class="now-use-btn js-handle" data-id="{{item.Id}}" data-handle="placeOrder">立即使用</div>
                         </div>
                     </div>
-                    <div class="now-use">
-                        <div class="now-use-btn js-handle" data-handle="toAccountRental">立即使用</div>
-                    </div>
                 </div>
-            </div>
-            <div class="components-item">
-                <div class="item-container">
-                    <div class="images-type"></div>
-                    <div class="prod-detail">
-                        <div class="detail-name">绝地求生账号出租</div>
-                        <div class="detail-advantage">稳定不挤号, 楚霸王</div>
-                        <div class="detail-price">
-                            ￥<sapn>999.00</sapn>
-                        </div>
-                    </div>
-                    <div class="now-use">
-                        <div class="now-use-btn">立即使用</div>
-                    </div>
-                </div>
-            </div>
-            <div class="components-item">
-                <div class="item-container">
-                    <div class="images-type"></div>
-                    <div class="prod-detail">
-                        <div class="detail-name">绝地求生账号出租</div>
-                        <div class="detail-advantage">稳定不挤号, 楚霸王</div>
-                        <div class="detail-price">
-                            ￥<sapn>999.00</sapn>
-                        </div>
-                    </div>
-                    <div class="now-use">
-                        <div class="now-use-btn">立即使用</div>
-                    </div>
-                </div>
-            </div>
-            <div class="components-item">
-                <div class="item-container">
-                    <div class="images-type"></div>
-                    <div class="prod-detail">
-                        <div class="detail-name">绝地求生账号出租</div>
-                        <div class="detail-advantage">稳定不挤号, 楚霸王</div>
-                        <div class="detail-price">
-                            ￥<sapn>999.00</sapn>
-                        </div>
-                    </div>
-                    <div class="now-use">
-                        <div class="now-use-btn">立即使用</div>
-                    </div>
-                </div>
-            </div>
-            <div class="components-item">
-                <div class="item-container">
-                    <div class="images-type"></div>
-                    <div class="prod-detail">
-                        <div class="detail-name">绝地求生账号出租</div>
-                        <div class="detail-advantage">稳定不挤号, 楚霸王</div>
-                        <div class="detail-price">
-                            ￥<sapn>999.00</sapn>
-                        </div>
-                    </div>
-                    <div class="now-use">
-                        <div class="now-use-btn">立即使用</div>
-                    </div>
-                </div>
-            </div>
-            <div class="components-item">
-                <div class="item-container">
-                    <div class="images-type"></div>
-                    <div class="prod-detail">
-                        <div class="detail-name">绝地求生账号出租</div>
-                        <div class="detail-advantage">稳定不挤号, 楚霸王</div>
-                        <div class="detail-price">
-                            ￥<sapn>999.00</sapn>
-                        </div>
-                    </div>
-                    <div class="now-use">
-                        <div class="now-use-btn">立即使用</div>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
         </div>
     </div>

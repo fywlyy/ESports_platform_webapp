@@ -43,19 +43,20 @@ $activeBorder: 1px solid #ef9000;
 
     .hot-recommend{
       background: $themeBlack;
-      padding-top: rem(16);
+      padding: rem(16) 0 rem(5);
       .hot-title{
         float: left;
         margin: 0 rem(18) 0 rem(25);
         color: $hotColor;
         font-size: rem(30);
-        height: rem(100);
+        height: rem(50);
         line-height: rem(50);
         text-align: center;
       }
       .hot-list{
         font-size: rem(30);
         color: $hotColor;
+        overflow: hidden;
         .hot-list-item{
           display: inline-block;
           width: rem(120);
@@ -96,7 +97,7 @@ $activeBorder: 1px solid #ef9000;
         text-align: center;
         border: $defaultBorder;
         background: #cec9c3;
-        padding: 0 rem(8);
+        padding: 0 rem(12);
         &.active{
           color: #fff;
           border: $activeBorder;
@@ -104,12 +105,14 @@ $activeBorder: 1px solid #ef9000;
         }
       }
       .account-safe-btn{
+        padding-right:rem(5);
         font-size: rem(20);
         color: #259cf6;
         border: $defaultBorder;
         background: #fff;
       }
       .auto-transport-btn{
+        padding-right:rem(5);
         font-size: rem(20);
         color: #252525;
         border: $defaultBorder;
@@ -145,10 +148,10 @@ $activeBorder: 1px solid #ef9000;
             vertical-align: middle;
           }
           .images-type{
+            display: inline-block;
+            vertical-align: middle;
             width: rem(250);
             height: rem(160);
-            background: url("../../asset/images/games/DJ_KT16.png") no-repeat;
-            background-size: cover;
           }
           .prod-detail{
             width: rem(275);
@@ -160,6 +163,8 @@ $activeBorder: 1px solid #ef9000;
               padding: rem(8) 0;
             }
             .detail-advantage{
+              height:rem(30);
+              line-height: rem(30);
               font-size: rem(24);
               color: #625b51;
               padding: rem(8) 0;

@@ -174,7 +174,7 @@ const routes = {
     '/game-sign-up-info/:id': GameSignUpInfoCb,
     '/game-sign-up-entr/:id': GameSignUpEntrCb,
     '/match-details/:id':MatchDetailsCb,
-    '/account-rental':AccountRentalCb,
+    '/account-rental/:id':AccountRentalCb,
     '/live-details/:id':LiveDetailsCb,
     '/personal':PersonalCb,
     '/personal-details':PersonalDetailsCb
