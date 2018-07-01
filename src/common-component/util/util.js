@@ -358,8 +358,8 @@ module.exports = {
     restFooter: function(key) {
         let noFooter = false;
         let isMainRoter = false;
-        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up', '/match-details', '/account-rental'];//footer隐藏黑名单路由
-        const mainRoters = ['/groups','/games','/matches','/classes'];//主页路由
+        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up', '/match-details', '/account-rental', '/personal-details'];//footer隐藏黑名单路由
+        const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {
             if(key.indexOf(item) > -1){
@@ -386,7 +386,7 @@ module.exports = {
     },
     restHeader: function(key) {
         let noHeader = false;
-        const blacklist = ['/games', '/matches', '/news', '/classes'];//Header隐藏黑名单路由
+        const blacklist = ['/games', '/matches', '/news', '/classes', '/personal'];//Header隐藏黑名单路由
 
         blacklist.map((item,index) => {
             if(key === item){
