@@ -32,7 +32,6 @@ export default function Login() {
 					Body: { ...params }
 				},
 				success: function(result) {
-					debugger;
 					alert('密码修改成功！');
 					Util.linkTo('/login');
 				},
@@ -51,13 +50,13 @@ export default function Login() {
 				return;
 			} 
 
-			if(!loginName || !/^1[3|4|5|8][0-9]\d{4,8}$/.test(loginName)){
+			if(!loginName || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(loginName)){
 				// Util.alertMessage('请输入手机号！');
 				alert('请输入正确格式的注册手机号！');
 				return;
 			}			
 
-			if(!phoneNum || !/^1[3|4|5|8][0-9]\d{4,8}$/.test(phoneNum)){
+			if(!phoneNum || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(phoneNum)){
 				// Util.alertMessage('请输入手机号！');
 				alert('请输入正确格式的手机号！');
 				return;
@@ -113,12 +112,12 @@ export default function Login() {
 				NewPwd = $("input[name='password']").val(),
 				AffirmNewPwd = $("input[name='conPassword']").val();
 
-			if(!LoginName || !/^1[3|4|5|8][0-9]\d{4,8}$/.test(LoginName)){
+			if(!LoginName || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(LoginName)){
 				alert('请输入正确格式的注册手机号码！');
 				return false;
 			}
 
-			if(!MobilePhone || !/^1[3|4|5|8][0-9]\d{4,8}$/.test(MobilePhone)){
+			if(!MobilePhone || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(MobilePhone)){
 				alert('请输入正确格式的手机号码！');
 				return false;
 			}

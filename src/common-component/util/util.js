@@ -358,7 +358,9 @@ module.exports = {
     restFooter: function(key) {
         let noFooter = false;
         let isMainRoter = false;
-        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up', '/match-details', '/account-rental', '/personal-details'];//footer隐藏黑名单路由
+        const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up',
+                             '/match-details', '/account-rental', '/personal-details',
+                            '/all-matches'];//footer隐藏黑名单路由
         const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {

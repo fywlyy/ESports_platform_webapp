@@ -1,0 +1,45 @@
+<div class="all-matches-page">
+
+	<div class="select-recommend clearFix">
+        <div class="select-title">
+            <span>赛事级别:</span>
+        </div>
+        <div class="select-list">
+            <div class="select-list-item active"><span>全部</span></div>
+            <div class="select-list-item"><span>业余赛事</span></div>
+            <div class="select-list-item"><span>三级赛事</span></div>
+            <div class="select-list-item"><span>一级赛事</span></div>
+            <div class="select-list-item"><span>二级赛事</span></div>
+        </div>
+	</div>
+	<div class="select-recommend clearFix">
+        <div class="select-title">
+            <span>赛事状态:</span>
+        </div>
+        <div class="select-list">
+            <div class="select-list-item active"><span>全部</span></div>
+            <div class="select-list-item"><span>未开始</span></div>
+            <div class="select-list-item"><span>比赛中</span></div>
+            <div class="select-list-item"><span>已结束</span></div>
+        </div>
+	</div>
+	
+	<div class="matches-list">
+
+		{{each list item}}
+			<div class="matches-item">
+				<img src={{item.DefaultImageUrl}} alt="">
+				<div class="matches-info">
+					<p>{{item.CompetitionName}}</p>
+					<span>{{item.CompetitionStatus}}</span>
+					<div>
+						<span class="js-handle" data-handle="toMatchDetails">赛事详情</span>
+						<span class="js-handle" data-handle="toSignUpInfo">比赛报名</span>
+					</div>
+				</div>
+			</div>
+		{{/each}}
+
+	</div>
+
+</div>

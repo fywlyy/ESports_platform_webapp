@@ -125,6 +125,9 @@ export default function Matches() {
         toMatchDetails:function(e,$this){
             const id = $this.parents(".event-item").data("id");
             Util.linkTo('/match-details/' + id);
+        },
+        toAllMatches:function(e,$this){
+            Util.linkTo('/all-matches');
         }
     }
 

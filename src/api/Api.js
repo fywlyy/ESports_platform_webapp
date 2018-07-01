@@ -21,6 +21,7 @@ module.exports = {
 	getVideoList:`${baseUrl}/Competition/GetAdvertisingList`,
 	getNewsList:`${baseUrl}/Competition/GetRecommendNewsList`,
 	getMatchDetailsInfo:`${baseUrl}/Competition/GetCompetitionDetail`,
+	getAllMatchesList:`${baseUrl}/Competition/SearchCompetitionList`,
 	/*新闻*/
 	getAllNewsList:`${baseUrl}/Competition/SearchNewsList`,
 	getNewsInfo:`${baseUrl}/Competition/GetNewsDetail`,

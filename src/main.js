@@ -131,6 +131,13 @@ const PersonalDetailsCb = function(id) {
         PersonalDetails.default(id);
     },'PersonalDetails')
 };
+/*全部赛事*/
+const AllMatchesCb = function(id) {
+    require.ensure([], (require) => {
+        let AllMatches = require('./pages/all-matches/all-matches.js');
+        AllMatches.default(id);
+    },'AllMatches')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -177,7 +184,8 @@ const routes = {
     '/account-rental':AccountRentalCb,
     '/live-details/:id':LiveDetailsCb,
     '/personal':PersonalCb,
-    '/personal-details':PersonalDetailsCb
+    '/personal-details':PersonalDetailsCb,
+    '/all-matches':AllMatchesCb
 };
 
 const router = new Router(routes).configure({
