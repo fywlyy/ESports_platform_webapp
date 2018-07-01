@@ -1,6 +1,5 @@
 import Util from '../../common-component/util/util.js';
 import GamesTpl from './games.html';
-import All from './components/all/all.js';
 import HelpPractice from './components/helpPractice/helpPractice.js'
 import OnlineAccompany from './components/onlineAccompany/onlineAccompany.js'
 import AccountRent from './components/accountRent/accountRent.js'
@@ -10,7 +9,7 @@ export default function Games() {
         init: function() {
             $(".container").html(GamesTpl());
             //默认加载
-            All($(".item-container"),{});
+            AccountRent($(".item-container"),{});
             this.bindEvent();
         },
         bindEvent: function() {
@@ -23,10 +22,9 @@ export default function Games() {
                     _this.addClass('active');
                     let index = _this.index()
                     switch (index){
-                        case 0 : All($(".item-container"),{}); break;
-                        case 1 : HelpPractice($(".item-container"),{}); break;
-                        case 2 : OnlineAccompany($(".item-container"),{}); break;
-                        case 3 : AccountRent($(".item-container"),{});break;
+                        case 0 : AccountRent($(".item-container"),{});break;
+                        case 1 : OnlineAccompany($(".item-container"),{}); break;
+                        case 2 : HelpPractice($(".item-container"),{}); break;
                         default : console.log('错误')
                     }
                 }

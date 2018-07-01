@@ -1,9 +1,18 @@
 <div class="videos-page">
 
-	{{each videoList item}}
+	{{each videoList item i}}
 		<div class="videos-item">
 			<div class="videos-item-image">
-				<img src={{item.DefaultImageUrl}} alt=""/>
+				<video
+				id="my-player-{{i}}"
+				class="video-js vjs-default-skin vjs-fluid  vjs-big-play-centered"
+				controls 
+				preload="none" 
+				playsinline
+				poster="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+				style="background: transparent url({{item.DefaultImageUrl}}) no-repeat 0 0;background-size:cover;">
+					<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+				</video>				
 			</div>
 			<div class="videos-item-info">
 				<span>{{item.SchoolName}}&nbsp;</span>
@@ -15,5 +24,4 @@
 	{{if videoList.length <= 0}}
 		<div>暂无数据-。-</div>
 	{{/if}}
-
 </div>

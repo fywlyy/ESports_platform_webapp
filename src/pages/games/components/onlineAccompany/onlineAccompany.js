@@ -1,6 +1,5 @@
 import OnlineAccompanyTpl from './onlineAccompany.html'
 
-import './onlineAccompany.scss'
 
 /**
  *

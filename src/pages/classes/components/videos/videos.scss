@@ -12,12 +12,14 @@
         position: relative;
 
         >.videos-item-image {
+            position: relative;
+            height: rem(385);
             img {
                 width: 100%;
                 height: rem(385);
             }
 
-            &:after {
+            .icon-play {
                 content: '';
                 display: inline-block;
                 background: url('../../../../asset/images/matches/playBtn.png') no-repeat center;
@@ -27,8 +29,68 @@
                 position: absolute;
                 top: rem(145);
                 left:rem(320);
+                z-index: 100;
             }
 
+            .video-js.vjs-fluid{
+                position: absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                z-index: 10;
+            }
+            .vjs-poster{
+                background:transparent;
+            }
+
+            .vjs-paused .vjs-big-play-button,
+            .vjs-paused.vjs-has-started .vjs-big-play-button {
+                display: block;
+            }
+            .video-js .vjs-big-play-button{
+                font-size: 4em;
+                line-height: 3.8em;
+                height: 4em;
+                width: 4em;
+                -webkit-border-radius: 4em;
+                -moz-border-radius: 4em;
+                border-radius: 4em;
+                background-color: #73859f;
+                background-color: rgba(115,133,159,.5);
+                border-width: 0.15em;
+                margin-top: -2em;
+                margin-left: -2.5em;
+            }
+            /* 中间的播放箭头 */
+            .video-js .vjs-big-play-button .vjs-icon-placeholder {
+                font-size: 2.5em;
+            }
+            
+            .video-js.vjs-has-started .vjs-control-bar,.video-js.vjs-has-started .vjs-loading-spinner{
+                font-size:4em;
+            }
+
+            .video-js.vjs-fullscreen .vjs-big-play-button{
+                font-size: 2.5em;
+                line-height: 2.3em;
+                height: 2.5em;
+                width: 2.5em;
+                -webkit-border-radius: 2.5em;
+                -moz-border-radius: 2.5em;
+                border-radius: 2.5em;
+                background-color: #73859f;
+                background-color: rgba(115,133,159,.5);
+                border-width: 0.1em;
+                margin-top: -1.25em;
+                margin-left: -1.75em;
+            }
+            .video-js.vjs-fullscreen .vjs-big-play-button .vjs-icon-placeholder {
+                font-size: 1.6em;
+            }
+            .video-js.vjs-fullscreen  .vjs-control-bar,.video-js.vjs-fullscreen  .vjs-loading-spinner{
+                font-size:1.5em;
+            }
         }
 
         >.videos-item-info{

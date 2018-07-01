@@ -22,9 +22,12 @@ export default function NewsDetail(id) {
 
 	const handlers = {
 		init: function() {
+			let _this = this;
 			Util.setTitle('xxx赛事报名入口');
-			$(".container").html( GameSignUpEntrTpl({options}) );
-			this.bindEvent();
+			this.getDetail(function(data) {
+				$(".container").html( GameSignUpEntrTpl({...data,options}) );
+				_this.bindEvent();
+			})
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -44,6 +47,23 @@ export default function NewsDetail(id) {
 
 				$this.parent().prev().find(".info-con").html(selectItem.name);
 			})
+		},
+		getDetail: function(callback) {
+			$.ajax({
+                url: API.getMatchDetailsInfo,
+                type: 'post',
+                data: {Body:id},
+                success: function(req){
+
+                    if(!req.IsError){
+                        callback && callback(req.Data || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
 		},
 		handleSelect: function(e,$this) {
 			$("#clubSelect").trigger('click');

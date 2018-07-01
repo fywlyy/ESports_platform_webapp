@@ -172,7 +172,7 @@ const routes = {
     '/newsDetail/:id': NewsDetailCb,
     '/classes': ClassesCb,
     '/game-sign-up-info/:id': GameSignUpInfoCb,
-    '/game-sign-up-entr': GameSignUpEntrCb,
+    '/game-sign-up-entr/:id': GameSignUpEntrCb,
     '/match-details/:id':MatchDetailsCb,
     '/account-rental':AccountRentalCb,
     '/live-details/:id':LiveDetailsCb,
