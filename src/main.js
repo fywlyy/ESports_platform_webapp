@@ -117,6 +117,20 @@ const LiveDetailsCb = function(id) {
         LiveDetails.default(id);
     },'LiveDetails')
 };
+/*我的*/
+const PersonalCb = function(id) {
+    require.ensure([], (require) => {
+        let Personal = require('./pages/personal/personal.js');
+        Personal.default(id);
+    },'Personal')
+};
+/*个人详情*/
+const PersonalDetailsCb = function(id) {
+    require.ensure([], (require) => {
+        let PersonalDetails = require('./pages/personal-details/personal-details.js');
+        PersonalDetails.default(id);
+    },'PersonalDetails')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -161,7 +175,9 @@ const routes = {
     '/game-sign-up-entr': GameSignUpEntrCb,
     '/match-details/:id':MatchDetailsCb,
     '/account-rental':AccountRentalCb,
-    '/live-details/:id':LiveDetailsCb
+    '/live-details/:id':LiveDetailsCb,
+    '/personal':PersonalCb,
+    '/personal-details':PersonalDetailsCb
 };
 
 const router = new Router(routes).configure({
