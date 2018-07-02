@@ -138,6 +138,13 @@ const AllMatchesCb = function(id) {
         AllMatches.default(id);
     },'AllMatches')
 };
+/*下单*/
+const CreateOrderCb = function(id) {
+    require.ensure([], (require) => {
+        let CreateOrder = require('./pages/create-order/create-order.js');
+        CreateOrder.default(id);
+    },'CreateOrder')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -185,7 +192,8 @@ const routes = {
     '/live-details/:id':LiveDetailsCb,
     '/personal':PersonalCb,
     '/personal-details':PersonalDetailsCb,
-    '/all-matches':AllMatchesCb
+    '/all-matches':AllMatchesCb,
+    '/create-order':CreateOrderCb
 };
 
 const router = new Router(routes).configure({

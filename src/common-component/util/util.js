@@ -360,7 +360,7 @@ module.exports = {
         let isMainRoter = false;
         const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up',
                              '/match-details', '/account-rental', '/personal-details',
-                            '/all-matches'];//footer隐藏黑名单路由
+                            '/all-matches', '/create-order'];//footer隐藏黑名单路由
         const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {
