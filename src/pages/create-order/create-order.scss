@@ -1,0 +1,122 @@
+@import "../../asset/common";
+
+.create-order-page{
+    background: #fff;
+    border: 1px solid #e3e0db;
+    border-radius: rem(12);
+    margin: rem(15) rem(10);
+    padding: rem(5) rem(20) 0;
+
+    .account-info{
+        padding: rem(35) rem(15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >img{
+            width: rem(245);
+            height: rem(160);
+        }
+        >div{
+            font-size: rem(24);
+            color: #050100;
+            line-height: rem(38);
+            padding-left: rem(35);
+        }
+    }
+
+    .price-info{
+        border-top: 1px solid #d9d8d4;
+        border-bottom: 1px solid #d9d8d4;
+        font-size: rem(30);
+        color: #050100;
+        padding: 0 rem(15) rem(25);
+
+        .single-price{
+            line-height: rem(115);
+            >div{
+                float: right;
+                font-size: rem(36);
+                color: #ffaf00;
+            }
+        }
+
+        .hours{
+            line-height: rem(135);
+            >div{
+                float: right;
+
+                >span{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                >span:nth-child(1){
+                    background: url('../../asset/images/games/less.png') no-repeat center;
+                    width: rem(53);
+                    height: rem(58);
+                    background-size: rem(53) rem(58);
+                }
+
+                >span:nth-child(2){
+                    width: rem(135);
+                    height: rem(58);
+                    line-height: rem(58);
+                    text-align: center;
+                    background: #eeedeb;
+                    border-top: 1px solid #cec9c3;
+                    border-bottom: 1px solid #cec9c3;
+                    box-sizing: border-box;
+                }
+
+                >span:nth-child(3){
+                    background: url('../../asset/images/games/plus.png') no-repeat center;
+                    width: rem(52);
+                    height: rem(58);
+                    background-size: rem(52) rem(58);
+                    margin-right: rem(25);
+                }
+
+            }
+        }
+
+    }
+
+    .submitBtn{
+        font-size: rem(30);
+        color: #fff;
+        width: rem(340);
+        height: rem(65);
+        line-height: rem(65);
+        text-align: center;
+        background: #ffaf00;
+        margin: rem(100) auto rem(145);
+        border-radius: rem(65);
+    }
+
+    .pay-way{
+        padding: rem(70) 0;
+        border-top: 1px solid #d9d8d4;
+        position: relative;
+        >.title{
+            font-size: rem(24);
+            color: #625b51;
+            width: rem(120);
+            text-align: center;
+            position: absolute;
+            top: rem(-15);
+            left: 50%;
+            margin-left: rem(-60);
+            background: #fff;
+        }
+        >.way{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            >img{
+                width: rem(101);
+                height: rem(101);
+            }
+        }
+    }
+
+}

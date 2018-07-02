@@ -23,6 +23,9 @@ export default function AccountRental() {
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
+        },
+        toCreateOrder: function(e, $this){
+            Util.linkTo("/create-order");
         }
 
     }
