@@ -31,9 +31,14 @@ export default function Login() {
 				data: {
 					Body: { ...params }
 				},
-				success: function(result) {
-					alert('注册成功！');
-					Util.linkTo('/login');
+				success: function(req) {
+                    let { IsError } = req;
+					if(!IsError){
+                        alert('注册成功！');
+                        Util.linkTo('/login');	
+					}else{
+                        alert(req.Message);
+                    }	
 				},
 				error: function(msg) {
 					console.log(msg);

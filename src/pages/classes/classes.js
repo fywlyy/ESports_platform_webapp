@@ -15,8 +15,12 @@ import "./classes.scss";
 export default function Classes() {
 
 	const handlers = {
-		videoObjs: [],
 		init: function() {
+            window.videoObjs = window.videoObjs || [];
+            window.videoObjs.map((item,index) => { //销毁
+				item.dispose();
+            });
+            window.videoObjs = [];
 			$(".container").html( ClassesTpl() );
 			Videos($('.classes-item-container'),this);
 			this.bindEvent();

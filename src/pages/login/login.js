@@ -29,7 +29,7 @@ export default function Login() {
 				Body = {};
 
 			if(!userName || !password){
-				Util.alertMessage('请输入用户名及密码！');
+				alert('请输入用户名及密码！');
 				return;
 			}
 
@@ -47,13 +47,15 @@ export default function Login() {
 				},
 				success: function(req){
 					let { Data, IsError } = req;
-					if(!req.IsError){
+					if(!IsError){
 						let { UserInfo, AccessToken } = Data;
 						
 						Util.addCookie('AccessToken',AccessToken,1,document.domain);
 						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));
-						Util.linkTo('/groups');	
-					}			       
+						Util.linkTo('/matches');	
+					}else{
+                        alert(req.Message);
+                    }			       
 				},
 				error: function(msg){
 					console.log(msg);

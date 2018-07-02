@@ -31,9 +31,13 @@ export default function Login() {
 				data: {
 					Body: { ...params }
 				},
-				success: function(result) {
-					alert('密码修改成功！');
-					Util.linkTo('/login');
+				success: function(req) {
+                    if(!req.IsError){
+                        alert('密码修改成功！');
+                        Util.linkTo('/login');
+                    }else{
+                        alert(req.Message);
+                    }
 				},
 				error: function(msg) {
 					console.log(msg);

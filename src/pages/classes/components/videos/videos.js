@@ -11,15 +11,16 @@ import VideosTpl from './videos.html';
 
 import "./videos.scss";
 
-export default function Videos($el, $parent) {
+export default function Videos($el) {
 
 	const handlers = {
 		init: function() {
 			let _this = this;
-
-			$parent.videoObjs.map((item,index) => { //销毁
+            window.videoObjs = window.videoObjs || [];
+			window.videoObjs.map((item,index) => { //销毁
 				item.dispose();
-			});
+            });
+            window.videoObjs= [];
 			this.getVideoList((data)=>{
 				$el.html( VideosTpl({videoList: data}) );
 				_this.initVideo(data);
@@ -53,7 +54,7 @@ export default function Videos($el, $parent) {
 		},
 		initVideo: function(videoList) {
 			videoList.map((item,index) => {
-				$parent.videoObjs[index] = videojs('my-player-' + index,{
+				window.videoObjs[index] = videojs('my-player-' + index,{
 					width: '100%',
 					height: '100%'
 				},function() {
