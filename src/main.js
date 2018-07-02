@@ -138,6 +138,13 @@ const AllMatchesCb = function(id) {
         AllMatches.default(id);
     },'AllMatches')
 };
+/*申请认证*/
+const ApplyCertificationCb = function() {
+    require.ensure([], (require) => {
+        let ApplyCertification = require('./pages/apply-certification/apply-certification.js');
+        ApplyCertification.default();
+    },'ApplyCertification')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -185,7 +192,8 @@ const routes = {
     '/live-details/:id':LiveDetailsCb,
     '/personal':PersonalCb,
     '/personal-details':PersonalDetailsCb,
-    '/all-matches':AllMatchesCb
+    '/all-matches':AllMatchesCb,
+    '/apply-certf':ApplyCertificationCb,
 };
 
 const router = new Router(routes).configure({
