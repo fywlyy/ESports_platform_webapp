@@ -152,6 +152,13 @@ const CreateOrderCb = function(id) {
         CreateOrder.default(id);
     },'CreateOrder')
 };
+/*账号租用下单成功*/
+const AccountRentSuccessCb = function(id) {
+    require.ensure([], (require) => {
+        let AccountRentSuccess = require('./pages/accountRent-success/accountRent-success.js');
+        AccountRentSuccess.default(id);
+    },'AccountRentSuccess')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -201,7 +208,8 @@ const routes = {
     '/personal-details':PersonalDetailsCb,
     '/all-matches':AllMatchesCb,
     '/apply-certf':ApplyCertificationCb,
-    '/create-order':CreateOrderCb
+    '/create-order/:id':CreateOrderCb,
+    '/accountRent-success/:id':AccountRentSuccessCb
 };
 
 const router = new Router(routes).configure({
@@ -240,6 +248,6 @@ router.init();
 
 //初始化默认路由
 if(!Util.getRouter()){
-    Util.linkTo('/');
+    Util.linkTo('/matches');
 }
 

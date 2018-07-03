@@ -25,7 +25,7 @@ export default function AllMatches() {
             //公共事件添加
             $(".all-matches-page").on("touchend", ".js-handle", function(e){
                 let handle = $(this).data('handle');
-                _this[handle] && _this[handle](e);
+                _this[handle] && _this[handle](e,$(this));
 			});
 			$(".select-list").on("touchend", ".select-list-item", function(e){
 				let $this = $(this);
@@ -48,6 +48,14 @@ export default function AllMatches() {
                     console.log(msg);
                 }
             })
+		},
+		toMatchDetails: function(e,$this) {
+			let id = $this.parents(".matches-item").data('id');
+			Util.linkTo('/match-details/' + id);
+		},
+		toSignUpInfo: function(e,$this) {
+			let id = $this.parents(".matches-item").data('id');
+			Util.linkTo('/game-sign-up-info/' + id);
 		}
 	}   
 
