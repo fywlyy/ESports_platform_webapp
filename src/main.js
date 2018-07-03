@@ -138,6 +138,20 @@ const AllMatchesCb = function(id) {
         AllMatches.default(id);
     },'AllMatches')
 };
+/*申请认证*/
+const ApplyCertificationCb = function() {
+    require.ensure([], (require) => {
+        let ApplyCertification = require('./pages/apply-certification/apply-certification.js');
+        ApplyCertification.default();
+    },'ApplyCertification')
+}
+/*下单*/
+const CreateOrderCb = function(id) {
+    require.ensure([], (require) => {
+        let CreateOrder = require('./pages/create-order/create-order.js');
+        CreateOrder.default(id);
+    },'CreateOrder')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -185,7 +199,9 @@ const routes = {
     '/live-details/:id':LiveDetailsCb,
     '/personal':PersonalCb,
     '/personal-details':PersonalDetailsCb,
-    '/all-matches':AllMatchesCb
+    '/all-matches':AllMatchesCb,
+    '/apply-certf':ApplyCertificationCb,
+    '/create-order':CreateOrderCb
 };
 
 const router = new Router(routes).configure({
@@ -226,7 +242,4 @@ router.init();
 if(!Util.getRouter()){
     Util.linkTo('/');
 }
-
-
-
 
