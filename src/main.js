@@ -158,6 +158,13 @@ const InviteSuccessCb = function(id) {
         let InviteSuccess = require('./pages/invite-success/invite-success.js');
         InviteSuccess.default(id);
     },'InviteSuccess')
+}
+/*账号租用下单成功*/
+const AccountRentSuccessCb = function(id) {
+    require.ensure([], (require) => {
+        let AccountRentSuccess = require('./pages/accountRent-success/accountRent-success.js');
+        AccountRentSuccess.default(id);
+    },'AccountRentSuccess')
 };
 /*jquery ajax setup*/
 $.ajaxSetup({
@@ -209,7 +216,8 @@ const routes = {
     '/all-matches':AllMatchesCb,
     '/apply-certf':ApplyCertificationCb,
     '/create-order/:id':CreateOrderCb,
-    '/invite-success':InviteSuccessCb
+    '/invite-success':InviteSuccessCb,
+    '/accountRent-success/:id':AccountRentSuccessCb
 };
 
 const router = new Router(routes).configure({
@@ -248,6 +256,5 @@ router.init();
 
 //初始化默认路由
 if(!Util.getRouter()){
-    Util.linkTo('/');
+    Util.linkTo('/matches');
 }
-

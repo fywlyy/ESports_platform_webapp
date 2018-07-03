@@ -27,7 +27,7 @@
 	<div class="matches-list">
 
 		{{each list item}}
-			<div class="matches-item">
+			<div class="matches-item" data-id="{{item.Id}}">
 				<img src={{item.DefaultImageUrl}} alt="">
 				<div class="matches-info">
 					<p>{{item.CompetitionName}}</p>

@@ -42,7 +42,7 @@
       }
       .forgetPwd-phone {
         text-align: left;
-        padding-right: 200px;
+        padding-right: rem(200);
         & + span {
           display: inline-block;
           width: rem(190);

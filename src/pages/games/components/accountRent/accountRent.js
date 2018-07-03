@@ -80,6 +80,7 @@ export default function AccountRent($el) {
             e.stopPropagation();
 
             let id = $this.data('id');
+            Util.linkTo('/create-order/' + id);
         }
     }
     handlers.init();
