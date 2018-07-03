@@ -47,6 +47,9 @@ export default function Personal() {
 
 				}
 			});
+		},
+		toApplyCert: function(){
+			Util.linkTo('/apply-certf')
 		}
 	}   
 

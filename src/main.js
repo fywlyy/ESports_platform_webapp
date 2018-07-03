@@ -152,6 +152,13 @@ const CreateOrderCb = function(id) {
         CreateOrder.default(id);
     },'CreateOrder')
 };
+/*下单*/
+const InviteSuccessCb = function(id) {
+    require.ensure([], (require) => {
+        let InviteSuccess = require('./pages/invite-success/invite-success.js');
+        InviteSuccess.default(id);
+    },'InviteSuccess')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -201,7 +208,8 @@ const routes = {
     '/personal-details':PersonalDetailsCb,
     '/all-matches':AllMatchesCb,
     '/apply-certf':ApplyCertificationCb,
-    '/create-order':CreateOrderCb
+    '/create-order/:id':CreateOrderCb,
+    '/invite-success':InviteSuccessCb
 };
 
 const router = new Router(routes).configure({
