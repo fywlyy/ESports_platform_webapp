@@ -152,6 +152,20 @@ const CreateOrderCb = function(id) {
         CreateOrder.default(id);
     },'CreateOrder')
 };
+/*下单*/
+const InviteSuccessCb = function(id) {
+    require.ensure([], (require) => {
+        let InviteSuccess = require('./pages/invite-success/invite-success.js');
+        InviteSuccess.default(id);
+    },'InviteSuccess')
+}
+/*账号租用下单成功*/
+const AccountRentSuccessCb = function(id) {
+    require.ensure([], (require) => {
+        let AccountRentSuccess = require('./pages/accountRent-success/accountRent-success.js');
+        AccountRentSuccess.default(id);
+    },'AccountRentSuccess')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -201,7 +215,9 @@ const routes = {
     '/personal-details':PersonalDetailsCb,
     '/all-matches':AllMatchesCb,
     '/apply-certf':ApplyCertificationCb,
-    '/create-order':CreateOrderCb
+    '/create-order/:id':CreateOrderCb,
+    '/invite-success':InviteSuccessCb,
+    '/accountRent-success/:id':AccountRentSuccessCb
 };
 
 const router = new Router(routes).configure({
@@ -240,6 +256,5 @@ router.init();
 
 //初始化默认路由
 if(!Util.getRouter()){
-    Util.linkTo('/');
+    Util.linkTo('/matches');
 }
-

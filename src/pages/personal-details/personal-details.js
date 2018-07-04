@@ -73,6 +73,9 @@ export default function PersonalDetails() {
 				let $this = $(this);
 				$this.hasClass('active') ? '' : $this.addClass('active').siblings().removeClass('active');
 			});
+		},
+		toApplyCert: function(){
+			Util.linkTo('/apply-certf')
 		}
 	}   
 

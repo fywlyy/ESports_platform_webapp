@@ -9,7 +9,7 @@ import CreateOrderTpl from './create-order.html';
 
 import "./create-order.scss";
 
-export default function CreateOrder() {
+export default function CreateOrder(id) {
 
 	const handlers = {
 		init: function() {
@@ -35,6 +35,9 @@ export default function CreateOrder() {
 		plusHours: function(e, $this){
 			let hours = parseInt($this.siblings(".num").text());
 			$this.siblings(".num").text(hours + 1);
+		},
+		createOrder: function(e,$this){
+			Util.linkTo('/accountRent-success/' + id)
 		}
 	}   
 

@@ -23,6 +23,23 @@
                 right: rem(15);
                 bottom: rem(5);
             }
+            >div.cert-info{
+                position: absolute;
+                right: rem(-240);
+                bottom: rem(5);
+                line-height: rem(32);
+                >img{
+                    width: rem(92);
+                    height: rem(32);
+                    vertical-align: middle;
+                    margin-right: rem(15);
+                }
+                >span{
+                    vertical-align: middle;
+                    font-size: rem(30);
+                    color: #ffaf00;
+                }
+            }
         }
         >p{
             font-size: rem(35);
