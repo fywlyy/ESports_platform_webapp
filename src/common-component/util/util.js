@@ -360,7 +360,7 @@ module.exports = {
         let isMainRoter = false;
         const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up',
             '/match-details', '/account-rental', '/personal-details','/all-matches',
-            '/create-order','/apply-certf', '/invite-success'];//footer隐藏黑名单路由
+            '/create-order','/apply-certf', '/invite-success', '/edit-dynamic'];//footer隐藏黑名单路由
         const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {
@@ -415,5 +415,35 @@ module.exports = {
         })
 
         return bool;
+    },
+    previewImg: function($input,changCb,loadCb) {
+        //判断本浏览器是否支持这个API。
+        if(typeof FileReader==='undefined'){ 
+            alert("抱歉，你的浏览器不支持 FileReader"); 
+            $input.attr('disabled','disabled'); 
+        }else{ 
+            $input.on('change',function(){
+                var i=0;
+                var files = this.files;
+                var func = function(){
+                    var file = files[i];
+                    var reader = new FileReader();
+            
+                    // show表示<div id='show'></div>，用来展示图片预览的
+                    if(!/image\/\w+/.test(file.type)){
+                        show.innerHTML = "请确保文件为图像类型";
+                        return false;
+                    }
+                    reader.onload = function(e){
+                        loadCb && loadCb(this.result);
+                        i++;
+                        i < files.length && func(); //选取下一张图片
+                    }
+                    reader.readAsDataURL(file);
+                }
+                func();
+                changCb && changCb(files);
+            }); //如果支持就监听改变事件，一旦改变了就运行readFile函数。
+        }
     }
 }

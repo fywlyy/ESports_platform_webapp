@@ -5,9 +5,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: './src/main.js',
-    jquery: path.resolve(__dirname, './src/asset/plugin/jquery.min.js'),
-    vendor: ['swiper','underscore','mescroll.js','./src/common-component/util/util.js','./src/api/Api.js']
+    'main': './src/main.js',
+    'jquery': path.resolve(__dirname, './src/asset/plugin/jquery.min.js'),
+    'vendor': ['swiper','underscore','mescroll.js','./src/common-component/util/util.js','./src/api/Api.js']
   },
   output: {
     path: path.resolve(__dirname, './built'),

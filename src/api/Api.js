@@ -8,6 +8,8 @@ module.exports = {
 	sendResetPwdMsg: `${baseUrl}/User/SendResetPwdMsg`,
 	resetPwd: `${baseUrl}/User/ResetPwd`,
 
+	/*文件上传*/
+	uploadFile: `${baseUrl}/Common/UploadFile`,
 
 	/*圈子*/
 	circleList: `${baseUrl}/Circle/GetUserCircle`,
@@ -16,6 +18,7 @@ module.exports = {
 	getPostMsgDetail: `${baseUrl}/Circle/GetPostMessageDetail`,
 	addCommentReply: `${baseUrl}/Circle/AddCommentReply`,
 	reportApi: `${baseUrl}/Circle/SubmitComplainPostMessage`,
+	addPostMessage: `${baseUrl}/Circle/AddPostMessage`,
 	/*比赛*/
 	getCompetitionList:`${baseUrl}/Competition/GetRecommendCompetitionList`,
 	getVideoList:`${baseUrl}/Competition/GetAdvertisingList`,

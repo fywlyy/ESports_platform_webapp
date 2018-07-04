@@ -166,6 +166,13 @@ const AccountRentSuccessCb = function(id) {
         AccountRentSuccess.default(id);
     },'AccountRentSuccess')
 };
+/*编辑动态*/
+const EditDynamicCb = function(id) {
+    require.ensure([], (require) => {
+        let EditDynamic = require('./pages/edit-dynamic/edit-dynamic.js');
+        EditDynamic.default(id);
+    },'EditDynamic')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -217,7 +224,8 @@ const routes = {
     '/apply-certf':ApplyCertificationCb,
     '/create-order/:id':CreateOrderCb,
     '/invite-success':InviteSuccessCb,
-    '/accountRent-success/:id':AccountRentSuccessCb
+    '/accountRent-success/:id':AccountRentSuccessCb,
+    '/edit-dynamic':EditDynamicCb
 };
 
 const router = new Router(routes).configure({
