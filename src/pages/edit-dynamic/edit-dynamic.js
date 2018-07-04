@@ -10,8 +10,9 @@ import EditDynamicTpl from './edit-dynamic.html';
 import "./edit-dynamic.scss";
 
 export default function EditDynamic(id) {
-
+	const accessToken = Util.getCookie('AccessToken');
 	const handlers = {
+		imgUrls: [],
 		init: function() {
 
 			$(".container").html( EditDynamicTpl() );
@@ -28,17 +29,24 @@ export default function EditDynamic(id) {
 			});
 			
 			Util.previewImg($("input[type='file']"),function(files){
-				debugger;
-				$.ajax({
-					url: API.uploadFile,
-					body: files,
-					success: function(req) {
-						debugger;
-					},
-					error: function(msg){
+				let uploadFile = new FormData($("#file")[0]);
 
+				$.ajax({
+					url: API.uploadFile + '?accessToken=' + accessToken,
+					data:uploadFile,
+					isUpload: true,
+					contentType: false, //不设置内容类型
+					processData: false, //不处理数据
+					success:function(req){
+						if(!req.isError){
+							_this.imgUrls.push(req.Data.AbsoluteUrl);
+						}
+					},
+					error:function(){
+						alert("上传失败！");
 					}
 				})
+		
 			},function(result){
 				$(".image-picker").children().eq(0).before("<div><img src='"+result+"'></div>");
 			});
@@ -50,18 +58,18 @@ export default function EditDynamic(id) {
 				alert('请输入您此刻的想法！');
 				return;
 			}
-			return;
+
 			$.ajax({
 				url: API.addPostMessage,
 				data: {
 					Body: {
-						CircleId: id,
+						CircleId: 1,
 						Content: con,
-						ImageUrlList: []
+						ImageUrlList: this.imgUrls
 					}
 				},
 				success: function(req) {
-					if(!req.isErr){
+					if(!req.IsError){
 						alert('动态信息发布成功！');
 					}
 				},

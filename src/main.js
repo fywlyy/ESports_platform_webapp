@@ -178,6 +178,10 @@ $.ajaxSetup({
     cache: false,
     type: "POST",
     beforeSend: function(xhr){
+        if(arguments[1].isUpload){
+            return;
+        }
+
         let AccessToken = Util.getCookie('AccessToken');
         arguments[1].data += "&AccessToken=" + AccessToken;
     },

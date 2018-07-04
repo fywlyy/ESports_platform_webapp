@@ -3,8 +3,10 @@
 	<textarea class="dynamic-content" name="dynamic-content" rows="5" placeholder="输入此刻的想法..."></textarea>
 
 	<div class="image-picker img-box clearFix">
-		<div class="choose-image fl">
-			<input type="file" multiple />
+		<div class="choose-image fl">			
+			<form id="file" action="" enctype="multipart/form-data">
+				<input type="file" name="uploadFile" />
+			</form>
 			<div></div>
 		</div>
 	</div>
