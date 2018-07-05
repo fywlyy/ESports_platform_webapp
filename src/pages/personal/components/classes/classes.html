@@ -8,77 +8,23 @@
 
 	<div class="classes-list">
 
-		<div class="classes-item flex-common">
-			<div>
-				<img class="classes-image" src="../../../../asset/images/games/DJ_KT16.png" alt="">
-				<div class="classes-info">
-					<p>2018 夏季针对性训练实战班</p>
-					<div>￥286.00</div>
+		{{each allData item}}
+			<div class="classes-item flex-common">
+				<div>
+					<img class="classes-image" src={{item.DefaultImageUrl}} alt="">
+					<div class="classes-info">
+						<p>{{item.LessonName}}</p>
+						<div>￥286.00</div>
+					</div>
 				</div>
+				<div>待上课</div>
+				<div>评价课程</div>
 			</div>
-			<div>待上课</div>
-			<div>评价课程</div>
-		</div>
+		{{/each}}
 
-		<div class="classes-item flex-common">
-			<div>
-				<img class="classes-image" src="../../../../asset/images/games/DJ_KT16.png" alt="">
-				<div class="classes-info">
-					<p>2018 夏季针对性训练实战班</p>
-					<div>￥286.00</div>
-				</div>
-			</div>
-			<div>待上课</div>
-			<div>评价课程</div>
-		</div>
-
-		<div class="classes-item flex-common">
-			<div>
-				<img class="classes-image" src="../../../../asset/images/games/DJ_KT16.png" alt="">
-				<div class="classes-info">
-					<p>2018 夏季针对性训练实战班</p>
-					<div>￥286.00</div>
-				</div>
-			</div>
-			<div>待上课</div>
-			<div>评价课程</div>
-		</div>
-
-		<div class="classes-item flex-common">
-			<div>
-				<img class="classes-image" src="../../../../asset/images/games/DJ_KT16.png" alt="">
-				<div class="classes-info">
-					<p>2018 夏季针对性训练实战班</p>
-					<div>￥286.00</div>
-				</div>
-			</div>
-			<div>待上课</div>
-			<div>评价课程</div>
-		</div>
-
-		<div class="classes-item flex-common">
-			<div>
-				<img class="classes-image" src="../../../../asset/images/games/DJ_KT16.png" alt="">
-				<div class="classes-info">
-					<p>2018 夏季针对性训练实战班</p>
-					<div>￥286.00</div>
-				</div>
-			</div>
-			<div>待上课</div>
-			<div>评价课程</div>
-		</div>
-
-		<div class="classes-item flex-common">
-			<div>
-				<img class="classes-image" src="../../../../asset/images/games/DJ_KT16.png" alt="">
-				<div class="classes-info">
-					<p>2018 夏季针对性训练实战班</p>
-					<div>￥286.00</div>
-				</div>
-			</div>
-			<div>待上课</div>
-			<div>评价课程</div>
-		</div>
+		{{if allData.length <= 0}}
+			<div>暂无数据-_-</div>
+		{{/if}}
 
 	</div>
 

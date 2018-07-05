@@ -37,4 +37,9 @@ module.exports = {
 	getSchoolList:`${baseUrl}/GameOrder/GetSchoolList`,
 	SeachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
 	SeachPlayWithList:`${baseUrl}/GameOrder/SeachPlayWithList`,
+
+	/*我的*/
+	getPersonalActivityList:`${baseUrl}/User/QueryApplyCompetitionList`,
+	getPersonalClassesList:`${baseUrl}/User/QueryUserStudentLessonHourList`
+	
 };

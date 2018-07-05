@@ -15,12 +15,10 @@ export default function PersonalClasses($el, infoList) {
 		init: function() {
 
 			let _this = this;
-
-            $el.html( PersonalClassesTpl() );
-            _this.bindEvent();
-			// this.getPersonalClassesList(function(data){
-                
-            // });
+			this.getPersonalClassesList(function(data){
+                $el.html( PersonalClassesTpl({allData: data}) );
+                _this.bindEvent();
+            });
 			
 		},
 		bindEvent: function() {
@@ -30,7 +28,10 @@ export default function PersonalClasses($el, infoList) {
 			$.ajax({
                 url: API.getPersonalClassesList,
                 type: 'post',
-                data: {Body:null},
+                data: {Body:{
+                    "PageIndex": 1,
+                    "PageSize": 2
+                }},
                 success: function(req){
 
                     if(!req.IsError){

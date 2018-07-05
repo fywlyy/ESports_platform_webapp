@@ -16,11 +16,10 @@ export default function Activity($el, infoList) {
 
 			let _this = this;
 
-            $el.html( ActivityTpl() );
-            _this.bindEvent();
-			// this.getActivityList(function(data){
-                
-            // });
+			this.getActivityList(function(data){
+                $el.html( ActivityTpl({allData: data}) );
+                _this.bindEvent();
+            });
 			
 		},
 		bindEvent: function() {
@@ -28,9 +27,12 @@ export default function Activity($el, infoList) {
 		},
 		getActivityList: function(cb){
 			$.ajax({
-                url: API.getActivityList,
+                url: API.getPersonalActivityList,
                 type: 'post',
-                data: {Body:null},
+                data: {Body:{
+                    "PageIndex": 1,
+                    "PageSize": 2
+                }},
                 success: function(req){
 
                     if(!req.IsError){
