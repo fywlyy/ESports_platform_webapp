@@ -9,6 +9,7 @@ import ApplyCertificationTpl from './apply-certification.html';
 import "./apply-certification.scss";
 
 export default function ApplyCertification() {    
+	const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
 	const handlers = {
 		init: function() {
 			let _this = this;
@@ -26,7 +27,7 @@ export default function ApplyCertification() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".forgetPwd-page .js-handle").on("touchend",function(e){
+            $(".apply-certification .js-handle").on("touchend",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
@@ -63,8 +64,8 @@ export default function ApplyCertification() {
 		},
 		handleSubmit: function() {
 			let Name = $("input[name='Name']").val(),
-				StudentNumber = $("input[name='StudentNumber']").val,
-				SchoolId = $("select[name='SchoolId']").val;
+				StudentNumber = $("input[name='StudentNumber']").val(),
+				SchoolId = $("select[name='SchoolId']").val();
 
 			if(!Name){
 				alert('请输入姓名！');
@@ -82,7 +83,24 @@ export default function ApplyCertification() {
 			}
 
 			$.ajax({
-				url: API.submitAuthUser
+				url: API.submitAuthUser,
+				data: {
+					Body: {
+						UserId: userInfo.Id,
+						Name,
+						StudentNumber,
+						SchoolId
+					}
+				},
+				success: function(req) {
+					if(!req.IsError){
+						alert('申请认证成功！');
+						window.history.go(-1);
+					}
+				},
+				error: function(msg) {
+
+				}
 			})
 		}
 	}   
