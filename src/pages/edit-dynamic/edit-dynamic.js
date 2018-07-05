@@ -39,7 +39,7 @@ export default function EditDynamic(id) {
 					processData: false, //不处理数据
 					success:function(req){
 						if(!req.isError){
-							_this.imgUrls.push(req.Data.AbsoluteUrl);
+							_this.imgUrls.push(req.Data.RelativeUrl);
 						}
 					},
 					error:function(){
@@ -70,7 +70,8 @@ export default function EditDynamic(id) {
 				},
 				success: function(req) {
 					if(!req.IsError){
-						alert('动态信息发布成功！');
+                        alert('动态信息发布成功！');
+                        Util.linkTo('/groups');
 					}
 				},
 				error: function(msg){

@@ -34,7 +34,7 @@ export default function Groups() {
                 $(".container").html(GroupsTpl({circleList:data}));
 
                 that.params.CircleId = data[0].Id;
-                that.getUserPostMsgList(that.params, that.renderMsgList.bind(that), 'loadMore');
+                // that.getUserPostMsgList(that.params, that.renderMsgList.bind(that), 'loadMore');
                 that.renderMescroll.call(that);
                 var swiper = new Swiper('.group-list',{
                     slidesPerView: 4
@@ -79,7 +79,6 @@ export default function Groups() {
                     }
                 },
                 up: {
-                    auto: true,
                     isBoth: false,
                     isBounce: false,
                     noMoreSize: 1,
@@ -113,7 +112,6 @@ export default function Groups() {
 
         },
         getUserPostMsgList:function(params, cb, type){
-
             $.ajax({
                 url: API.userPostMsgList,
                 type: 'post',

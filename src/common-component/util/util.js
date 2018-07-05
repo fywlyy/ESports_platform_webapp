@@ -428,8 +428,11 @@ module.exports = {
                 var func = function(){
                     var file = files[i];
                     var reader = new FileReader();
-            
-                    // show表示<div id='show'></div>，用来展示图片预览的
+                    
+                    if(!file.type){
+                        return;
+                    }
+                    
                     if(!/image\/\w+/.test(file.type)){
                         show.innerHTML = "请确保文件为图像类型";
                         return false;
