@@ -17,9 +17,9 @@ export default function AccountRent($el) {
         },
         init: function() {
             let _this = this;
-            this.getSchoolList(function(schoolList) {
+            this.getGameInfoList(function(gameInfoList) {
                 _this.getAccountList(_this.params,function(accountList) {
-                    $el.html(AccountRentTpl({schoolList,accountList}));
+                    $el.html(AccountRentTpl({gameInfoList,accountList}));
                     _this.bindEvent();
                 })
             })
@@ -37,9 +37,9 @@ export default function AccountRent($el) {
                 _this[handle] && _this[handle](e, $(this));
             });
         },
-        getSchoolList: function(callback) {
+        getGameInfoList: function(callback) {
             $.ajax({
-                url: API.getSchoolList,
+                url: API.getGameInfoList,
                 data: {
                     Body: null
                 },
@@ -56,7 +56,7 @@ export default function AccountRent($el) {
         },
         getAccountList: function(params,callback) {
             $.ajax({
-                url: API.SeachAccountList,
+                url: API.seachAccountList,
                 data: {
                     Body: params
                 },

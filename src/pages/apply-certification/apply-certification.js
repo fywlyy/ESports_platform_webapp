@@ -8,23 +8,20 @@ import ApplyCertificationTpl from './apply-certification.html';
 
 import "./apply-certification.scss";
 
-export default function ApplyCertification() {
-    const options = [{
-		id: '1',
-		name: '南京大学'
-	},{
-		id: '2',
-		name: '浙江大学'
-	},{
-		id: '3',
-		name: '四川大学'
-    }]
-    
+export default function ApplyCertification() {    
 	const handlers = {
 		init: function() {
-            Util.setTitle('申请认证');
-			$(".container").html( ApplyCertificationTpl({options}) );
-			this.bindEvent();
+			let _this = this;
+			Util.setTitle('申请认证');
+			this.getSchoolList(function(schoolList) {
+				schoolList.splice(0,0,{
+					Id: '',
+					Name: '请选择'
+				});
+				_this.schoolList = schoolList;
+				$(".container").html( ApplyCertificationTpl({schoolList}) );
+				_this.bindEvent();
+			})
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -34,20 +31,60 @@ export default function ApplyCertification() {
                 _this[handle] && _this[handle](e, $(this));
             });
 
-            $("select[name='university']").on("change",function(e) {
+            $("select[name='SchoolId']").on("change",function(e) {
 				let $this = $(this);
 				let value = $this.val();
-
-				let selectItem = _.find(options,function(item){
-					return item.id === value;
+				let selectItem = _.find(_this.schoolList,function(item){
+					return item.Id === value;
 				});
 
-				$this.parents(".select-module").find(".select-value").html(selectItem.name);
+				$this.parents(".select-module").find(".select-value").html(selectItem.Name);
 			})
         },
         handleSelect: function(e,$this) {
-            $("select[name='university']").trigger('click');
-        }
+            $("select[name='SchoolId']").trigger('click');
+		},
+		getSchoolList: function(callback) {
+			$.ajax({
+                url: API.getSchoolList,
+                data: {
+                    Body: null
+                },
+                success: function(req) {
+                    let { Data, IsError } = req;
+					if(!IsError){
+                        callback && callback(Data || []);
+                    }
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		},
+		handleSubmit: function() {
+			let Name = $("input[name='Name']").val(),
+				StudentNumber = $("input[name='StudentNumber']").val,
+				SchoolId = $("select[name='SchoolId']").val;
+
+			if(!Name){
+				alert('请输入姓名！');
+				return;
+			}
+
+			if(!StudentNumber){
+				alert('请输入学号！');
+				return;
+			}
+
+			if(!SchoolId){
+				alert('请选择学校！');
+				return;
+			}
+
+			$.ajax({
+				url: API.submitAuthUser
+			})
+		}
 	}   
 
 	handlers.init(); 

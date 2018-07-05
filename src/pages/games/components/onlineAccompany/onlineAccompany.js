@@ -19,9 +19,9 @@ export default function OnlineAccompany($el) {
         },
         init: function() {
             let _this = this;
-            this.getSchoolList(function(schoolList) {
-                _this.getAccountList(_this.params,function(seachPlayList) {
-                    $el.html(OnlineAccompanyTpl({schoolList,seachPlayList}));
+            this.getGameInfoList(function(gameInfoList) {
+                _this.seachPlayWithList(_this.params,function(seachPlayList) {
+                    $el.html(OnlineAccompanyTpl({gameInfoList,seachPlayList}));
                     _this.bindEvent();
                 })
             })
@@ -39,9 +39,9 @@ export default function OnlineAccompany($el) {
                 _this[handle] && _this[handle](e, $(this));
             });
         },
-        getSchoolList: function(callback) {
+        getGameInfoList: function(callback) {
             $.ajax({
-                url: API.getSchoolList,
+                url: API.getGameInfoList,
                 data: {
                     Body: null
                 },
@@ -56,9 +56,9 @@ export default function OnlineAccompany($el) {
                 }
             })
         },
-        getAccountList: function(params,callback) {
+        seachPlayWithList: function(params,callback) {
             $.ajax({
-                url: API.SeachPlayWithList,
+                url: API.seachPlayWithList,
                 data: {
                     Body: params
                 },
