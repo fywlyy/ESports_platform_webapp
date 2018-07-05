@@ -34,12 +34,13 @@ module.exports = {
 	getVideoList:`${baseUrl}/Lesson/QueryVideoList`,
 	getVideoDetailsInfo:`${baseUrl}/Lesson/GetVideo`,
 	/*游戏*/
-	getSchoolList:`${baseUrl}/GameOrder/GetSchoolList`,
-	SeachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
-	SeachPlayWithList:`${baseUrl}/GameOrder/SeachPlayWithList`,
+	getGameInfoList:`${baseUrl}/GameOrder/GetGameInfoList`,
+	seachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
+	seachPlayWithList:`${baseUrl}/GameOrder/SeachPlayWithList`,
 
 	/*我的*/
+	submitAuthUser:`${baseUrl}/User/SubmitAuthUser`,
+	getSchoolList:`${baseUrl}/User/GetSchoolList`,
 	getPersonalActivityList:`${baseUrl}/User/QueryApplyCompetitionList`,
 	getPersonalClassesList:`${baseUrl}/User/QueryUserStudentLessonHourList`
-	
 };

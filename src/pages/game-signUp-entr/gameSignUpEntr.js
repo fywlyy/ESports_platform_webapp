@@ -23,9 +23,11 @@ export default function NewsDetail(id) {
 	const handlers = {
 		init: function() {
 			let _this = this;
-			Util.setTitle('xxx赛事报名入口');
+			let userInfo = JSON.parse(localStorage.getItem('UserInfo'));
+
 			this.getDetail(function(data) {
-				$(".container").html( GameSignUpEntrTpl({...data,options}) );
+				Util.setTitle(data.CompetitionName);
+				$(".container").html( GameSignUpEntrTpl({...data,...userInfo,options}) );
 				_this.bindEvent();
 			})
 		},
