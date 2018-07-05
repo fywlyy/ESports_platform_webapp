@@ -1,16 +1,16 @@
 <div class="account-rental-page">
     
-    <img src="../../asset/images/games/rentalImg.png" alt="">
+    <img src={{data.DefaultImageUrl}} alt="">
 
     <div>
-        <p class="name">绝地求生账号出租 稳定不挤号【80英雄+186皮肤】30页250多个5级铭文随意搭配！!可打排位!</p>
+        <p class="name">{{data.Title}}</p>
         <div class="infos">
-            <span>游戏区服：绝地求生 / 全区 / 全服</span>
+            <span>游戏区服：{{data.GameArea}}</span>
             <span>租号限制：起租时间2小时，租号0次及以上才可租用此号</span>
-            <span>服务保障： 赔 商 租3送1</span>
+            <span>服务保障： {{data.ServiceAssurance}}</span>
             <span>温馨提示：禁止使用外挂</span>
         </div>
-        <div class="price">￥ 286.00 / 小时</div>
+        <div class="price">￥ {{data.UnitPrice}} / 小时</div>
         <div class="operator js-handle" data-handle="toCreateOrder">立即租用</div>
     </div>
 
@@ -19,27 +19,28 @@
         <div class="account-info infoItem-common">
             <div class="title-common">账号概要</div>
             <div class="content-common">
-                <span>适用系统: 安卓</span><span>适用系统: 安卓</span><span>适用系统: 安卓</span>
-                <span>适用系统: 安卓</span><span>适用系统: 安卓</span><span>适用系统: 安卓</span>
+                {{data.AccountSummary}}
+                <!-- <span>适用系统: 安卓</span><span>适用系统: 安卓</span><span>适用系统: 安卓</span>
+                <span>适用系统: 安卓</span><span>适用系统: 安卓</span><span>适用系统: 安卓</span> -->
             </div>
         </div>
 
         <div class="infoItem-common">
             <div class="title-common">详细描述</div>
             <div class="content-common">
-                88区!到时间请自动下号!不要挂机!不要骂人!你可以不会玩，可以负战绩，但如果因为挂机扣分!那么黑名单见!本人手下十多个极品账号，你以后将无法租用!
+                {{data.Content}}
             </div>
         </div>
 
         <div class="infoItem-common">
             <div class="title-common">图片展示</div>
             <div class="images-show content-common">
-                <img src="../../asset/images/games/DJ_KT16.png" alt="">
-                <img src="../../asset/images/games/DJ_KT16.png" alt="">
-                <img src="../../asset/images/games/DJ_KT16.png" alt="">
-                <img src="../../asset/images/games/DJ_KT16.png" alt="">
-                <img src="../../asset/images/games/DJ_KT16.png" alt="">
-                <img src="../../asset/images/games/DJ_KT16.png" alt="">
+                {{each data.ImageUrlList item}}
+                    <img src={{item}} alt="">
+                {{/each}}
+                {{if data.ImageUrlList && data.ImageUrlList.length % 3 === 2}}
+                    <div></div>
+                {{/if}}
             </div>
         </div>
 

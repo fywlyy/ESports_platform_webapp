@@ -37,6 +37,7 @@ module.exports = {
 	getGameInfoList:`${baseUrl}/GameOrder/GetGameInfoList`,
 	seachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
 	seachPlayWithList:`${baseUrl}/GameOrder/SeachPlayWithList`,
+	getAccountDetail:`${baseUrl}/GameOrder/GetAccount`,
 
 	/*我的*/
 	submitAuthUser:`${baseUrl}/User/SubmitAuthUser`,

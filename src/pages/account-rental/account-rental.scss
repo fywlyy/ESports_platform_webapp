@@ -4,6 +4,7 @@
   
     >img{
         width: 100%;
+        height: rem(385);
         display: block;
     }
 
@@ -50,7 +51,7 @@
             text-align: center;
             background: #ffaf00;
             position: absolute;
-            right: rem(85);
+            right: rem(45);
             bottom: rem(15);
         }
 
@@ -97,8 +98,9 @@
             justify-content: space-between;
             flex-wrap: wrap;
             padding-bottom: 0;
-            >img{
+            >img, >div{
                 width: rem(170);
+                height: rem(170);
                 margin-bottom: rem(15);
             }
         }

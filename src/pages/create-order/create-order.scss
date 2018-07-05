@@ -15,12 +15,14 @@
         >img{
             width: rem(245);
             height: rem(160);
+            flex: 1;
         }
         >div{
             font-size: rem(24);
             color: #050100;
             line-height: rem(38);
             padding-left: rem(35);
+            flex: 3;
         }
     }
 

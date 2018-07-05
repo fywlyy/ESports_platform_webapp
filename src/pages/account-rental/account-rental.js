@@ -11,9 +11,12 @@ export default function AccountRental(id) {
 
         init: function() {
 
-            $(".container").html(AccountRentalTpl());
-            Util.setTitle('账号租用');
-            this.bindEvent();
+            let _this = this;
+            this.getAccountDetail(function(data){
+                $(".container").html(AccountRentalTpl({data}));
+                Util.setTitle('账号租用');
+                _this.bindEvent();
+            });
 
         },
         bindEvent: function() {
@@ -26,7 +29,22 @@ export default function AccountRental(id) {
         },
         toCreateOrder: function(e, $this){
             Util.linkTo("/create-order/" + id);
-        }
+        },
+		getAccountDetail: function(cb){
+			$.ajax({
+                url: API.getAccountDetail,
+                type: 'post',
+                data: { Body: id },
+                success: function(req){
+                    if(!req.IsError){
+                        cb && cb(req.Data || []);
+                    }
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		}
 
     }
 
