@@ -20,7 +20,8 @@ export default function Videos($el) {
 			window.videoObjs.map((item,index) => { //销毁
 				item.dispose();
             });
-            window.videoObjs= [];
+			window.videoObjs= [];
+			$el.html('');
 			this.getVideoList((data)=>{
 				$el.html( VideosTpl({videoList: data}) );
 				_this.initVideo(data);

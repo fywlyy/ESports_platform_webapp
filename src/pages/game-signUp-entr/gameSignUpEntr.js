@@ -9,25 +9,16 @@ import GameSignUpEntrTpl from './gameSignUpEntr.html';
 import "./gameSignUpEntr.scss";
 
 export default function NewsDetail(id) {
-	const options = [{
-		id: '1',
-		name: 'IG'
-	},{
-		id: '2',
-		name: 'LGD'
-	},{
-		id: '3',
-		name: 'EHOME'
-	}]
-
+	const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
 	const handlers = {
 		init: function() {
 			let _this = this;
 			let userInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
 			this.getDetail(function(data) {
+				_this.GameCategory = data.GameCategory;
 				Util.setTitle(data.CompetitionName);
-				$(".container").html( GameSignUpEntrTpl({...data,...userInfo,options}) );
+				$(".container").html( GameSignUpEntrTpl({...data,...userInfo}) );
 				_this.bindEvent();
 			})
 		},
@@ -57,10 +48,17 @@ export default function NewsDetail(id) {
             })
 		},
 		handleSignUp: function() {
-			let ApplyUserId = '',
+			let ApplyUserId = userInfo.Id,
 				CompetitionId = id,
-				Project = '',
+				Project = this.GameCategory,
 				Club = $("input[name='Club']").val();
+			debugger;
+			if(!Club){
+				Util.alertMessage('请输入所属俱乐部！');
+				return;
+			}
+
+			Util.loading(true,'请求中...');
 
 			$.ajax({
 				url: API.submitApplyCompetition,
@@ -71,6 +69,20 @@ export default function NewsDetail(id) {
 						Project,
 						Club
 					}
+				},
+				success: function(req) {
+					if(!req.IsError){
+						Util.alertMessage('报名成功！');
+						Util.linkTo('/matches');
+					}else{
+						Util.alertMessage(req.Message,function(){
+							Util.linkTo('/matches');
+						});
+					}
+					Util.loading(false);
+				},
+				error: function(msg) {
+
 				}
 			})
 		}
