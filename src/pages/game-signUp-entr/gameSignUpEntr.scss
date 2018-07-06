@@ -46,6 +46,23 @@
         font-size:rem(30);
         color:#625b51;
       }
+      .input-box{
+        position: relative;
+        display: block;
+        height:100%;
+        padding-left:rem(20);
+        overflow: hidden;
+        z-index: 11;
+        input{
+          // padding-right:rem(20);
+          height:100%;
+          border:none;
+          border-radius: 0;
+          background-color:#fff;
+          text-align: right;
+          color:#050100;
+        }
+      }
       .icon{
         position: absolute;
         top:rem(30);

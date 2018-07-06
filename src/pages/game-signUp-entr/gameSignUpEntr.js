@@ -37,18 +37,7 @@ export default function NewsDetail(id) {
             $(".game-sign-up-entr .js-handle").on("touchend",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
-			});
-			
-			$("#clubSelect").on("change",function(e) {
-				let $this = $(this);
-				let value = $this.val();
-
-				let selectItem = _.find(options,function(item){
-					return item.id === value;
-				});
-
-				$this.parent().prev().find(".info-con").html(selectItem.name);
-			})
+			});		
 		},
 		getDetail: function(callback) {
 			$.ajax({
@@ -67,11 +56,23 @@ export default function NewsDetail(id) {
                 }
             })
 		},
-		handleSelect: function(e,$this) {
-			$("#clubSelect").trigger('click');
-		},
 		handleSignUp: function() {
+			let ApplyUserId = '',
+				CompetitionId = id,
+				Project = '',
+				Club = $("input[name='Club']").val();
 
+			$.ajax({
+				url: API.submitApplyCompetition,
+				data: {
+					Body: {
+						ApplyUserId,
+						CompetitionId,
+						Project,
+						Club
+					}
+				}
+			})
 		}
 	}   
 
