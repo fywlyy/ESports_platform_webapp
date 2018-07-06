@@ -242,7 +242,7 @@ const routes = {
 
 const router = new Router(routes).configure({
     notfound: () => {
-        alert('错误链接！');
+        Util.alertMessage('错误链接！');
     },
     before: () => {
         let currentRote = Util.getRouter();

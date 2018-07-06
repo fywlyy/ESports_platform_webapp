@@ -39,6 +39,8 @@ export default function Login() {
 				UserType: 2
 			};
 
+            Util.loading(true,'登陆中...');
+
 			$.ajax({
 				url: API.userLogin,
 				type: 'post',
@@ -55,7 +57,8 @@ export default function Login() {
 						Util.linkTo('/matches');	
 					}else{
                         alert(req.Message);
-                    }			       
+                    }		
+                    Util.loading(false);	       
 				},
 				error: function(msg){
 					console.log(msg);
