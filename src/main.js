@@ -198,7 +198,7 @@ $.ajaxSetup({
         let currentRote = Util.getRouter();
 
         if(result.IsError){
-            alert(result.Message);
+            console.log(result.Message);
             if(ErrCode == 400){
                 currentRote != '/login' && Util.linkTo('/login');
             }
