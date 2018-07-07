@@ -187,6 +187,13 @@ const InvitingCreateOrderCb = function(id) {
         InvitingCreateOrder.default(id);
     },'InvitingCreateOrder')
 };
+/*订单详情*/
+const OrderDetailsCb = function(id) {
+    require.ensure([], (require) => {
+        let OrderDetails = require('./pages/order-details/order-details.js');
+        OrderDetails.default(id);
+    },'OrderDetails')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -245,7 +252,8 @@ const routes = {
     '/accountRent-success/:id':AccountRentSuccessCb,
     '/edit-dynamic':EditDynamicCb,
     '/inviting-to-play/:id':InvitingToPlayCb,
-    '/inviting-create-order/:id':InvitingCreateOrderCb
+    '/inviting-create-order/:id':InvitingCreateOrderCb,
+    '/order-details':OrderDetailsCb
 };
 
 const router = new Router(routes).configure({
