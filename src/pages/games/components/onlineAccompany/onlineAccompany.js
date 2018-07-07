@@ -76,7 +76,7 @@ export default function OnlineAccompany($el) {
         },
         toAccountRental: function(e, $this){
             let id = $this.data('id');
-            Util.linkTo('/account-rental/' + id);
+            Util.linkTo('/inviting-to-play/' + id);
         },
         placeOrder: function(e, $this) {
             e.stopPropagation();

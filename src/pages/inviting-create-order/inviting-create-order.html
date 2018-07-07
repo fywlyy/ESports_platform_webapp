@@ -1,0 +1,43 @@
+<div class="inviting-create-order-page">
+
+	<div class="inviting-info">
+		<img src="../../asset/images/games/DJ_KT16.png" alt="">
+		<div>{{data.TeacherName}}</div>
+	</div>
+
+	<div class="price-info">
+		<div>
+			<span>服务</span>
+			<div class="grayText">{{data.Title}}</div>
+		</div>
+		<div class="hours">
+			<span>数量</span>
+			<div>
+				<span class="js-handle" data-handle="lessHours"></span><span class="num">4</span><span class="js-handle" data-handle="plusHours"></span><span>小时</span>
+			</div>
+		</div>
+		<div>
+			<span>单价</span>
+			<div class="single-price">￥ {{data.UnitPrice}} / 小时</div>
+		</div>
+		<div>
+			<span>QQ号码</span>
+			<div>
+				<input class="QQNum" type="number" placeholder="请填写您的QQ，方便导师与您联系">
+			</div>
+		</div>
+		<div>
+			<span>手机号码</span>
+			<div class="grayText">123465465</div>
+		</div>
+		<div>
+			<span>手机号码</span>
+			<div class="single-price">
+				<input class="telNum" type="number" placeholder="选填">
+			</div>
+		</div>
+	</div>
+
+	<div class="submitBtn js-handle" data-handle="createOrder">确认下单</div>
+
+</div>

@@ -15,7 +15,8 @@ export default function Personal() {
 
 	const handlers = {
 		init: function() {
-			$(".container").html( PersonalTpl() );
+			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
+			$(".container").html( PersonalTpl({userInfo}) );
 			Activity($('.personal-page-container'),{});
 			this.bindEvent();
 		},

@@ -173,12 +173,19 @@ const EditDynamicCb = function(id) {
         EditDynamic.default(id);
     },'EditDynamic')
 };
-/*编辑动态*/
+/*邀请陪玩*/
 const InvitingToPlayCb = function(id) {
     require.ensure([], (require) => {
         let InvitingToPlay = require('./pages/inviting-to-play/inviting-to-play.js');
         InvitingToPlay.default(id);
     },'InvitingToPlay')
+};
+/*邀请下单*/
+const InvitingCreateOrderCb = function(id) {
+    require.ensure([], (require) => {
+        let InvitingCreateOrder = require('./pages/inviting-create-order/inviting-create-order.js');
+        InvitingCreateOrder.default(id);
+    },'InvitingCreateOrder')
 };
 /*jquery ajax setup*/
 $.ajaxSetup({
@@ -237,7 +244,8 @@ const routes = {
     '/invite-success':InviteSuccessCb,
     '/accountRent-success/:id':AccountRentSuccessCb,
     '/edit-dynamic':EditDynamicCb,
-    '/inviting-to-play':InvitingToPlayCb
+    '/inviting-to-play/:id':InvitingToPlayCb,
+    '/inviting-create-order/:id':InvitingCreateOrderCb
 };
 
 const router = new Router(routes).configure({

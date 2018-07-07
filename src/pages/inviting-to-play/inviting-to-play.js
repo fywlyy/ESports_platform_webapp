@@ -1,17 +1,17 @@
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
-import AccountRentalTpl from './inviting-to-play.html';
+import InvitingToPlayTpl from './inviting-to-play.html';
 
 import "./inviting-to-play.scss";
 
-export default function AccountRental(id) {
+export default function InvitingToPlay(id) {
 
     const handlers = {
 
         init: function() {
 
-            $(".container").html(AccountRentalTpl());
+            $(".container").html(InvitingToPlayTpl());
             Util.setTitle('邀请陪玩');
             this.bindEvent();
 
@@ -25,8 +25,23 @@ export default function AccountRental(id) {
             });
         },
         toCreateOrder: function(e, $this){
-            Util.linkTo("/create-order/" + id);
-        }
+            Util.linkTo("/inviting-create-order/" + 1);
+        },
+		getPlayWithDetail: function(cb){
+			$.ajax({
+                url: API.getPlayWithDetail,
+                type: 'post',
+                data: { Body: 1 },
+                success: function(req){
+                    if(!req.IsError){
+                        cb && cb(req.Data || []);
+                    }
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		}
 
     }
 

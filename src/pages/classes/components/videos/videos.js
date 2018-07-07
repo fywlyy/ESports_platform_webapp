@@ -34,7 +34,7 @@ export default function Videos($el) {
             $(".videos-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e,$(this));
-            });
+			});
 		},
 		getVideoList: function(cb){
 			$.ajax({
@@ -62,6 +62,14 @@ export default function Videos($el) {
 					
 				});
 			})
+		},
+		beforePlay: function(){
+			$(".videos-modal-mask").show();
+		},
+		closeMask: function(e, $this){
+			if($(e.target).hasClass("js-handle")){
+				$(".videos-modal-mask").hide();
+			}
 		}
 	}   
 

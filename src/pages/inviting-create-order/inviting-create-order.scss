@@ -1,20 +1,20 @@
 @import "../../asset/common";
 
-.create-order-page{
+.inviting-create-order-page{
     background: #fff;
     border: 1px solid #e3e0db;
     border-radius: rem(12);
     margin: rem(15) rem(10);
     padding: rem(5) rem(20) 0;
 
-    .account-info{
-        padding: rem(35) rem(15);
+    .inviting-info{
+        padding: rem(15);
         display: flex;
         align-items: center;
         justify-content: center;
         >img{
-            width: rem(245);
-            height: rem(160);
+            width: rem(200);
+            height: rem(200);
             flex: 1;
         }
         >div{
@@ -23,6 +23,7 @@
             line-height: rem(38);
             padding-left: rem(35);
             flex: 2;
+            text-align: center;
         }
     }
 
@@ -31,21 +32,29 @@
         border-bottom: 1px solid #d9d8d4;
         font-size: rem(30);
         color: #050100;
-        padding: 0 rem(15) rem(25);
+        padding: rem(20) rem(20) rem(65);
 
-        .single-price{
-            line-height: rem(115);
+        >div{
+            line-height: rem(80);
             >div{
                 float: right;
-                font-size: rem(36);
-                color: #ffaf00;
             }
         }
 
+        .grayText{
+            color: #625b51;
+        }
+
+        .single-price{
+            font-size: rem(36);
+            color: #ffaf00;
+        }
+
         .hours{
-            line-height: rem(135);
+            >span{
+                vertical-align: middle;
+            }
             >div{
-                float: right;
 
                 >span{
                     display: inline-block;
@@ -81,6 +90,24 @@
             }
         }
 
+        input{
+            height: rem(58);
+            background: #eeedeb;
+            color: #625b51;
+            border: 1px solid #cec9c3;
+            border-radius: rem(12);
+            text-align: right;
+            font-size: rem(24);
+            padding: 0 rem(10) 0 rem(15);
+        }
+        
+        .QQNum{
+            width: rem(380);
+        }
+        .telNum{
+            width: rem(155);
+        }
+
     }
 
     .submitBtn{
@@ -91,34 +118,8 @@
         line-height: rem(65);
         text-align: center;
         background: #ffaf00;
-        margin: rem(100) auto rem(145);
+        margin: rem(80) auto rem(90);
         border-radius: rem(65);
-    }
-
-    .pay-way{
-        padding: rem(70) 0;
-        border-top: 1px solid #d9d8d4;
-        position: relative;
-        >.title{
-            font-size: rem(24);
-            color: #625b51;
-            width: rem(120);
-            text-align: center;
-            position: absolute;
-            top: rem(-15);
-            left: 50%;
-            margin-left: rem(-60);
-            background: #fff;
-        }
-        >.way{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            >img{
-                width: rem(101);
-                height: rem(101);
-            }
-        }
     }
 
 }
