@@ -27,7 +27,7 @@ export default function ApplyCertification() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".apply-certification .js-handle").on("touchend",function(e){
+            $(".apply-certification .js-handle").on("click",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });

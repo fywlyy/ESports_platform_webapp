@@ -19,7 +19,7 @@ export default function AccountRental(id) {
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".inviting-to-play-page").on("touchend",".js-handle",function(e){
+            $(".inviting-to-play-page").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });

@@ -39,7 +39,7 @@ export default function Matches() {
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".matches-page").on("touchend",".js-handle",function(e){
+            $(".matches-page").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });

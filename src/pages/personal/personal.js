@@ -22,14 +22,14 @@ export default function Personal() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".personal-page").on("touchend", ".js-handle", function(e){
+            $(".personal-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
 			});
 			this.handleChangeTab();
 		},
 		handleChangeTab: function() {
-			$(".personal-page .personal-page-tabBar").on("touchend", ">div", function(e){
+			$(".personal-page .personal-page-tabBar").on("click", ">div", function(e){
 				let $this = $(this);
 				if($this.hasClass('active')){
 					return;

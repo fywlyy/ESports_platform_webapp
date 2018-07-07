@@ -65,11 +65,11 @@ export default function PersonalDetails() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".personal-details-page").on("touchend", ".js-handle", function(e){
+            $(".personal-details-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
 			});
-			$(".selector span").on("touchend",function(e){
+			$(".selector span").on("click",function(e){
 				let $this = $(this);
 				$this.hasClass('active') ? '' : $this.addClass('active').siblings().removeClass('active');
 			});

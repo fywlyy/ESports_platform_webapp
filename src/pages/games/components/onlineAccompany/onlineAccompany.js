@@ -28,13 +28,13 @@ export default function OnlineAccompany($el) {
         },
         bindEvent: function() {
             let _this = this;
-            $('.hot-list').on('touchend', '.hot-list-item', function () {
+            $('.hot-list').on('click', '.hot-list-item', function () {
                 let $this = $(this);
                 $this.hasClass('active') ? $this.removeClass('active') : $this.addClass('active')
             })
             
             //公共事件添加
-            $("#header-all").on("touchend",".js-handle",function(e){
+            $("#header-all").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
