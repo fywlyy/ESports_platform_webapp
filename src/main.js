@@ -180,6 +180,13 @@ const InvitingToPlayCb = function(id) {
         InvitingToPlay.default(id);
     },'InvitingToPlay')
 };
+/*编辑动态*/
+const OrderDetailsCb = function(id) {
+    require.ensure([], (require) => {
+        let OrderDetails = require('./pages/order-details/order-details.js');
+        OrderDetails.default(id);
+    },'OrderDetails')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -237,7 +244,8 @@ const routes = {
     '/invite-success':InviteSuccessCb,
     '/accountRent-success/:id':AccountRentSuccessCb,
     '/edit-dynamic':EditDynamicCb,
-    '/inviting-to-play':InvitingToPlayCb
+    '/inviting-to-play':InvitingToPlayCb,
+    '/order-details':OrderDetailsCb
 };
 
 const router = new Router(routes).configure({

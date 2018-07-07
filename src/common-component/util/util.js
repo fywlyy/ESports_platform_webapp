@@ -441,7 +441,7 @@ module.exports = {
         let isMainRoter = false;
         const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up',
             '/match-details', '/account-rental', '/personal-details','/all-matches',
-            '/create-order','/apply-certf', '/invite-success', '/edit-dynamic'];//footer隐藏黑名单路由
+            '/create-order','/apply-certf', '/invite-success', '/edit-dynamic', '/Order-details'];//footer隐藏黑名单路由
         const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {
