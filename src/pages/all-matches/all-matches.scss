@@ -69,6 +69,7 @@ $themeYellow: #ffaf00;
                     font-size: rem(30);
                     color: #050100;
                     margin-bottom: rem(20);
+                    @include ellipsis1();
                 }
                 >span{
                     font-size: rem(24);

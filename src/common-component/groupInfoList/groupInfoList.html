@@ -3,3 +3,6 @@
     {{include '../groupInfoItem/groupInfoItem.html' itemData}}
 </li>
 {{/each}}
+{{if !infoList || infoList.length == 0}}
+    <li class="noData">暂无数据</li>
+{{/if}}

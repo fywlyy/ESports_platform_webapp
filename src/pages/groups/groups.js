@@ -82,6 +82,7 @@ export default function Groups() {
                     isBoth: false,
                     isBounce: false,
                     noMoreSize: 1,
+                    htmlNodata:"<p class='upwarp-nodata'>没有更多了-_-</p>",
                     callback: function(page){
                         _this.params.pageIndex = page.num;
                         setTimeout(function(){

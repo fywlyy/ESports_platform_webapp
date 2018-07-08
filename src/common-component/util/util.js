@@ -530,5 +530,12 @@ module.exports = {
                 changCb && changCb(files);
             }); //如果支持就监听改变事件，一旦改变了就运行readFile函数。
         }
+    },
+    htmlEncode: function(html) {
+        var temp = document.createElement("div"); 
+        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        var output = temp.innerHTML; 
+        temp = null; 
+        return output;
     }
 }

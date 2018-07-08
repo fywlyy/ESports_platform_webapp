@@ -34,12 +34,14 @@
                 font-size: rem(30);
                 color: #050100;
                 margin-bottom: rem(20);
+                @include ellipsis1();
             }
             .info{
                 height:rem(60);
                 line-height: rem(30);
                 font-size: rem(24);
                 color: #625b51;
+                @include ellipsis(2);
             }
             .name{
                 text-align: right;
