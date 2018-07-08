@@ -25,9 +25,11 @@
             }
             >div.cert-info{
                 position: absolute;
-                right: rem(-240);
+                left: rem(150);
                 bottom: rem(5);
                 line-height: rem(32);
+                width: rem(250);
+                text-align: left;
                 >img{
                     width: rem(92);
                     height: rem(32);

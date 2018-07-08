@@ -30,13 +30,16 @@
                         <div class="prod-detail">
                             <div class="detail-name">{{item.Title}}</div>
                             <div class="detail-advantage">{{item.Remark}}</div>
-                            <div class="detail-price">
-                                ￥<sapn>{{item.UnitPrice}}</sapn>
+                            <div>
+                                <div class="detail-price">
+                                    ￥<sapn>{{item.UnitPrice}}</sapn>
+                                </div>
+                                <div class="now-use">
+                                    <div class="now-use-btn js-handle" data-id="{{item.Id}}" data-handle="placeOrder">立即使用</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="now-use">
-                            <div class="now-use-btn js-handle" data-id="{{item.Id}}" data-handle="placeOrder">立即使用</div>
-                        </div>
+                        
                     </div>
                 </div>
             {{/each}}

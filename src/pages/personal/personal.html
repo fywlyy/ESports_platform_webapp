@@ -10,19 +10,27 @@
 			{{else}}
 				<img src="../../asset/images/personal/headImg.png" alt="">
 			{{/if}}
-			<img src="../../asset/images/personal/female.png" alt="">
+			{{if userInfo.Sex == 1}}
+			<img src="../../asset/images/personal/male.png" alt="">
+			{{else if userInfo.Sex == 2}}
+				<img src="../../asset/images/personal/female.png" alt="">
+			{{/if}}
 			<div class="cert-info">
-				<img src="../../asset/images/personal/notCert.png" alt="">
-				<span class="js-handle" data-handle="toApplyCert">点击认证</span>
+				{{if userInfo.AuthStatus=='20'}}
+					<img src="../../asset/images/personal/notCert.png" alt="">
+					<span class="js-handle" data-handle="toApplyCert">点击认证</span>
+				{{else}}
+					<img src="../../asset/images/personal/hasCert.png" alt="">
+				{{/if}}
 			</div>
 		</div>
 		<p>{{userInfo.NickName}}</p>
-		<span>啊哦~！这家伙很懒，什么都没留下~</span>
+		<span>{{userInfo.Idiograph || '啊哦~！这家伙很懒，什么都没留下~'}}</span>
 		<div class="schoolInfo clearFix">
-			<div><span>学校</span> : {{userInfo.SchoolName}}</div>
-			<div><span>专业</span> : {{userInfo.ProfessionName}}</div>
-			<div><span>学号</span> : {{userInfo.StudentNumber}}</div>
-			<div><span>学分</span> : {{userInfo.Score}}</div>
+			<div><span>学校</span> : {{userInfo.SchoolName || '未知'}}</div>
+			<div><span>专业</span> : {{userInfo.ProfessionName || '未知'}}</div>
+			<div><span>学号</span> : {{userInfo.StudentNumber || '未知'}}</div>
+			<div><span>学分</span> : {{userInfo.Score || '未知'}}</div>
 		</div>
 		<div class="personal-page-tabBar clearFix">
 			<div class="activity active">

@@ -10,7 +10,6 @@ export default function AccountRental(id) {
     const handlers = {
 
         init: function() {
-
             let _this = this;
             this.getAccountDetail(function(data){
                 $(".container").html(AccountRentalTpl({data}));

@@ -162,13 +162,14 @@ $activeBorder: 1px solid #ef9000;
             height: rem(160);
           }
           .prod-detail{
-            width: rem(275);
+            width: rem(430);
             height: rem(160);
             padding-left: rem(5);
             .detail-name{
               font-size: rem(30);
               color: #050100;
               padding: rem(8) 0;
+              @include ellipsis1();
             }
             .detail-advantage{
               height:rem(30);
@@ -176,6 +177,7 @@ $activeBorder: 1px solid #ef9000;
               font-size: rem(24);
               color: #625b51;
               padding: rem(8) 0;
+              @include ellipsis1();
             }
             .detail-price{
               font-size: rem(36);
@@ -185,9 +187,6 @@ $activeBorder: 1px solid #ef9000;
           }
           .now-use{
             float: right;
-            width: rem(165);
-            height: rem(160);
-            position: relative;
             .now-use-btn{
               position: absolute;
               bottom: rem(3);

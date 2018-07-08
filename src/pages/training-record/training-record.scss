@@ -88,6 +88,9 @@ $themeYellow: #ffaf00;
                 &.underway{
                     background: #9f63e4;
                 }
+                &.hasCancel{
+                    background: #cec9c3;
+                }
             }
         }
         .record-info{
@@ -106,6 +109,7 @@ $themeYellow: #ffaf00;
                 font-size: rem(24);
                 color: #050100;
                 line-height: rem(37);
+                @include ellipsis(4);
             }
             >div{
                 flex: 3.5;
