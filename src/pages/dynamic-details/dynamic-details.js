@@ -67,7 +67,7 @@ export default function DynamicDetails(id) {
                 success: function(req){
 
                     if(!req.IsError){
-                        alert('评论/回复成功！');
+                        Util.alertMessage('评论/回复成功！');
                         _this.renderDetails();
                     }
 

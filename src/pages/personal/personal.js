@@ -16,6 +16,12 @@ export default function Personal() {
 	const handlers = {
 		init: function() {
 			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
+
+			if(!userInfo){
+				Util.linkTo('/login');
+				return;
+			}
+
 			$(".container").html( PersonalTpl({userInfo}) );
 			Activity($('.personal-page-container'),{});
 			this.bindEvent();
@@ -25,7 +31,7 @@ export default function Personal() {
             //公共事件添加
             $(".personal-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
-                _this[handle] && _this[handle](e);
+                _this[handle] && _this[handle](e,$(this));
 			});
 			this.handleChangeTab();
 		},
@@ -49,8 +55,15 @@ export default function Personal() {
 				}
 			});
 		},
-		toApplyCert: function(){
-			Util.linkTo('/apply-certf')
+		toApplyCert: function(e,$this){
+			let status = $this.data("status");
+
+			if(status == '20'){
+				Util.alertMessage('您提交的认证信息正在认证中！');
+				return;
+			}else{
+				Util.linkTo('/apply-certf');
+			}
 		}
 	}   
 

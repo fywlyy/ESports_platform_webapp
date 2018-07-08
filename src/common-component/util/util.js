@@ -501,7 +501,7 @@ module.exports = {
     previewImg: function($input,changCb,loadCb) {
         //判断本浏览器是否支持这个API。
         if(typeof FileReader==='undefined'){ 
-            alert("抱歉，你的浏览器不支持 FileReader"); 
+            this.alertMessage("抱歉，你的浏览器不支持 FileReader"); 
             $input.attr('disabled','disabled'); 
         }else{ 
             $input.on('change',function(){

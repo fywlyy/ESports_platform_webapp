@@ -49,7 +49,12 @@ export default function Groups() {
             Util.setTitle('圈子');
         },
         bindEvent: function() {
-            const that = this;
+            let _this = this;
+            //公共事件添加
+            $(".groups-layout").on("click", ".js-handle", function(e){
+                let handle = $(this).data('handle');
+                _this[handle] && _this[handle](e,$(this));
+			});
             $('.group-list .swiper-wrapper').on('click','.swiper-slide',function(){
                 let $this = $(this);
                 if($this.hasClass('active')){
@@ -58,9 +63,9 @@ export default function Groups() {
                     $this.parent().find('.swiper-slide.active').removeClass('active');
                     $this.addClass('active');
 
-                    that.params.CircleId = $this.data('id');
+                    _this.params.CircleId = $this.data('id');
 
-                    that.getUserPostMsgList(that.params,that.renderMsgList.bind(that),'refresh');
+                    _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this),'refresh');
 
                 }
             });
@@ -70,7 +75,7 @@ export default function Groups() {
             this.mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
                 down: {
                     auto: false,
-                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip">下拉刷新</p>',
+                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip" style="font-size:0.32rem;">下拉刷新</p>',
                     callback: function(page){
                         _this.params.pageIndex = 1;
                         setTimeout(function(){
@@ -82,7 +87,8 @@ export default function Groups() {
                     isBoth: false,
                     isBounce: false,
                     noMoreSize: 1,
-                    htmlNodata:"<p class='upwarp-nodata'>没有更多了-_-</p>",
+                    htmlLoading: '<p class="upwarp-progress mescroll-rotate"></p><p class="upwarp-tip" style="font-size:0.32rem;">加载中..</p>',
+                    htmlNodata:"<p class='upwarp-nodata' style='font-size:0.32rem;'>没有更多了-_-</p>",
                     callback: function(page){
                         _this.params.pageIndex = page.num;
                         setTimeout(function(){
@@ -136,6 +142,15 @@ export default function Groups() {
             this.params.PageIndex = req.PageIndex;
 
             this.mescroll && this.mescroll.endBySize(req.Result.length, req.TotalCount);
+        },
+        addGroups: function() {
+            let token = Util.getCookie('AccessToken');
+
+            if(!!token){
+                Util.linkTo('/edit-dynamic');
+            }else{
+                Util.linkTo('/login');
+            }
         }
     }
 

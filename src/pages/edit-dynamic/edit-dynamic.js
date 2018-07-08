@@ -43,7 +43,7 @@ export default function EditDynamic(id) {
 						}
 					},
 					error:function(){
-						alert("上传失败！");
+						Util.alertMessage("上传失败！");
 					}
 				})
 		
@@ -55,7 +55,7 @@ export default function EditDynamic(id) {
 			let con = $(".dynamic-content").val();
 
 			if(!con){
-				alert('请输入您此刻的想法！');
+				Util.alertMessage('请输入您此刻的想法！');
 				return;
 			}
 
@@ -70,7 +70,7 @@ export default function EditDynamic(id) {
 				},
 				success: function(req) {
 					if(!req.IsError){
-                        alert('动态信息发布成功！');
+                        Util.alertMessage('动态信息发布成功！');
                         Util.linkTo('/groups');
 					}
 				},

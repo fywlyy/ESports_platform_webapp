@@ -221,6 +221,8 @@ $.ajaxSetup({
         if(result.IsError){
             console.log(result.Message);
             if(ErrCode == 400){
+                localStorage.removeItem('UserInfo');
+                Util.deleteCookie('AccessToken',document.domain);
                 currentRote != '/login' && Util.linkTo('/login');
             }
             return false;
@@ -251,7 +253,7 @@ const routes = {
     '/account-rental/:id':AccountRentalCb,
     '/live-details/:id':LiveDetailsCb,
     '/personal':PersonalCb,
-    '/personal-details':PersonalDetailsCb,
+    '/personal-details/:id':PersonalDetailsCb,
     '/all-matches':AllMatchesCb,
     '/apply-certf':ApplyCertificationCb,
     '/create-order/:id':CreateOrderCb,

@@ -88,13 +88,13 @@
                 border-radius: rem(12);
                 text-align: center;
             }
+            // >div:nth-child(1){
+            //     color: #93908b;
+            //     background: #cec9c3;
+            //     float: left;
+            //     margin-left: rem(-10);
+            // }
             >div:nth-child(1){
-                color: #93908b;
-                background: #cec9c3;
-                float: left;
-                margin-left: rem(-10);
-            }
-            >div:nth-child(2){
                 color: #fff;
                 background: #ffaf00;
                 float: right;

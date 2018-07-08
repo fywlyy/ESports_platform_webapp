@@ -10,12 +10,22 @@ import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js
 
 import "./personal-details.scss";
 
-export default function PersonalDetails() {
+export default function PersonalDetails(id) {
 
 	const handlers = {
 		init: function() {
 			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
-			$(".container").html( PersonalDetailsTpl({userInfo}) );
+			const isLoginUser = userInfo.id == id ? true : false;
+
+			if(isLoginUser){
+				$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
+			}else{
+				this.getUserInfo(function(data){
+					$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
+				})
+			}
+			
+			$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
 			GroupInfoList($(".gropusList .group-info-list"), [{
 				"UserUrl":null,
 				"NickName":"打不死的小强",
@@ -68,16 +78,35 @@ export default function PersonalDetails() {
             //公共事件添加
             $(".personal-details-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
-                _this[handle] && _this[handle](e);
+                _this[handle] && _this[handle](e,$(this));
 			});
 			$(".selector span").on("click",function(e){
 				let $this = $(this);
 				$this.hasClass('active') ? '' : $this.addClass('active').siblings().removeClass('active');
 			});
 		},
-		toApplyCert: function(){
-			Util.linkTo('/apply-certf')
-		}
+		getUserInfo: function(callback){
+			callback && callback({});
+		},
+		toApplyCert: function(e,$this){
+			let status = $this.data("status");
+
+			if(status == '20'){
+				Util.alertMessage('您提交的认证信息正在认证中！');
+				return;
+			}else{
+				Util.linkTo('/apply-certf');
+			}
+		},
+        addGroups: function() {
+            let token = Util.getCookie('AccessToken');
+
+            if(!!token){
+                Util.linkTo('/edit-dynamic');
+            }else{
+                Util.linkTo('/login');
+            }
+        }
 	}   
 
 	handlers.init(); 

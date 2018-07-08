@@ -29,7 +29,7 @@ export default function Login() {
 				Body = {};
 
 			if(!userName || !password){
-				alert('请输入用户名及密码！');
+				Util.alertMessage('请输入用户名及密码！');
 				return;
 			}
 
@@ -56,7 +56,7 @@ export default function Login() {
 						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));
 						Util.linkTo('/matches');	
 					}else{
-                        alert(req.Message);
+                        Util.alertMessage(req.Message);
                     }		
                     Util.loading(false);	       
 				},

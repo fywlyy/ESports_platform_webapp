@@ -68,17 +68,17 @@ export default function ApplyCertification() {
 				SchoolId = $("select[name='SchoolId']").val();
 
 			if(!Name){
-				alert('请输入姓名！');
+				Util.alertMessage('请输入姓名！');
 				return;
 			}
 
 			if(!StudentNumber){
-				alert('请输入学号！');
+				Util.alertMessage('请输入学号！');
 				return;
 			}
 
 			if(!SchoolId){
-				alert('请选择学校！');
+				Util.alertMessage('请选择学校！');
 				return;
 			}
 
@@ -94,7 +94,7 @@ export default function ApplyCertification() {
 				},
 				success: function(req) {
 					if(!req.IsError){
-						alert('申请认证成功！');
+						Util.alertMessage('申请认证成功！');
 						window.history.go(-1);
 					}
 				},

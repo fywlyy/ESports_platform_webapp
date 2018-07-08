@@ -1,7 +1,6 @@
 @import "../../asset/common";
 
 .personal-details-page{
-    
     .page-head{
         color: #93908b;
         text-align: center;
@@ -101,6 +100,17 @@
           margin-bottom: rem(10);
         }
     
+    }
+
+    .add-groups{
+        position: fixed;
+        right:rem(30);
+        bottom:rem(50);
+        width:rem(70);
+        height:rem(70);
+        background:url("../../asset/images/groups/icon_add.png") 0 0 no-repeat;
+        background-size:100% 100%;
+        z-index: 1001;
     }
 
 }

@@ -31,9 +31,21 @@
         position: relative;
         padding-top: rem(15);
 
-        >img:first-child{
-            width: rem(80);
-            height: rem(80);
+        // >img:first-child{
+        //     width: rem(80);
+        //     height: rem(80);
+        // }
+
+        >a{
+            display: inline-block;
+            width:rem(80);
+            height:rem(80);
+            border-radius: rem(80);
+            img{
+                width: rem(80);
+                height: rem(80);
+                border-radius: rem(80);
+            }
         }
 
         >div{
@@ -59,12 +71,12 @@
 
         }
 
-        >img:last-child{
-            position: absolute;
-            top: rem(20);
-            right: rem(10);
-            height: rem(31);
-        }
+        // >img:last-child{
+        //     position: absolute;
+        //     top: rem(20);
+        //     right: rem(10);
+        //     height: rem(31);
+        // }
 
     }
 
