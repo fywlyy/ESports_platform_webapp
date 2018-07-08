@@ -63,13 +63,48 @@ export default function Videos($el) {
 				});
 			})
 		},
-		beforePlay: function(){
+		beforePlay: function(e,$this){
+			this.VideoId = $this.data('videoId');
 			$(".videos-modal-mask").show();
 		},
 		closeMask: function(e, $this){
 			if($(e.target).hasClass("js-handle")){
 				$(".videos-modal-mask").hide();
+				$("input[name='PINCode']").val('');
 			}
+		},
+		handleConfirm: function(e,$this) {
+			let _this = this;
+			let $input = $("input[name='PINCode']");
+			let PINCode = $input.val();
+
+			if(!PINCode){
+				Util.alertMeassage('请输入PIN码！');
+				return;
+			}
+
+			$.ajax({
+				url: API.lookVVideoLesson,
+				data: {
+					LookType: 1,
+					VideoId: this.VideoId,
+					PINCode
+				},
+				success: function(req) {
+					req = JSON.parse(req);
+					if(!req.IsError){
+						$(".videos-modal-mask").hide();
+						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();
+					}else{
+						Util.alertMessage(req.Message);
+						debugger;
+						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();
+					}
+				},
+				error: function(msg){
+
+				}
+			})
 		}
 	}   
 

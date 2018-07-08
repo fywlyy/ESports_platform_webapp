@@ -91,6 +91,24 @@
             .video-js.vjs-fullscreen  .vjs-control-bar,.video-js.vjs-fullscreen  .vjs-loading-spinner{
                 font-size:1.5em;
             }
+            .video-mask{
+                position: absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                z-index: 100;
+                & > span{
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    width:3.2em;
+                    height:3.2em;
+                    margin-top: -1.6em;
+                    margin-left: -1.8em;
+                    background-color:transparent;
+                }
+            }
         }
 
         >.videos-item-info{

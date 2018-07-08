@@ -34,6 +34,7 @@ module.exports = {
 	getLiveDetailsInfo:`${baseUrl}/Lesson/GetLesson`,
 	getVideoList:`${baseUrl}/Lesson/QueryVideoList`,
 	getVideoDetailsInfo:`${baseUrl}/Lesson/GetVideo`,
+	lookVVideoLesson:`${baseUrl}/Lesson/LookVVideoLesson`,
 	/*游戏*/
 	getGameInfoList:`${baseUrl}/GameOrder/GetGameInfoList`,
 	seachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
