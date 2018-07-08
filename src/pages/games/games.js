@@ -13,7 +13,7 @@ export default function Games() {
             this.bindEvent();
         },
         bindEvent: function() {
-            $('.games .game-header').on('touchend','.game-header-item',function () {
+            $('.games .game-header').on('click','.game-header-item',function () {
                 let _this = $(this);
                 if(_this.hasClass('active')){
                     return;

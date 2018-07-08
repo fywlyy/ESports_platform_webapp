@@ -18,7 +18,7 @@ export default function Login() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".login-page .js-handle").on("touchend",function(e){
+            $(".login-page .js-handle").on("click",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
             });
@@ -39,6 +39,8 @@ export default function Login() {
 				UserType: 2
 			};
 
+            Util.loading(true,'登陆中...');
+
 			$.ajax({
 				url: API.userLogin,
 				type: 'post',
@@ -55,7 +57,8 @@ export default function Login() {
 						Util.linkTo('/matches');	
 					}else{
                         alert(req.Message);
-                    }			       
+                    }		
+                    Util.loading(false);	       
 				},
 				error: function(msg){
 					console.log(msg);

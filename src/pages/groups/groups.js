@@ -50,7 +50,7 @@ export default function Groups() {
         },
         bindEvent: function() {
             const that = this;
-            $('.group-list .swiper-wrapper').on('touchend','.swiper-slide',function(){
+            $('.group-list .swiper-wrapper').on('click','.swiper-slide',function(){
                 let $this = $(this);
                 if($this.hasClass('active')){
                     return;

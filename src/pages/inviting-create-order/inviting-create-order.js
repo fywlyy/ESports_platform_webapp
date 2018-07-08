@@ -1,21 +1,21 @@
 /**
- * 下单页
+ * 陪玩下单页
  */
 
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
-import CreateOrderTpl from './create-order.html';
+import InvitingCreateOrderTpl from './inviting-create-order.html';
 
-import "./create-order.scss";
+import "./inviting-create-order.scss";
 
-export default function CreateOrder(id) {
+export default function InvitingCreateOrder(id) {
 
 	const handlers = {
 		init: function() {
 			let _this = this;
-			this.getAccountDetail(function(data){
-				$(".container").html( CreateOrderTpl({data}) );
+			this.getPlayWithDetail(function(data){
+				$(".container").html( InvitingCreateOrderTpl({data}) );
 				_this.bindEvent();
 				Util.setTitle('下单');
 			});
@@ -23,7 +23,7 @@ export default function CreateOrder(id) {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".create-order-page").on("click", ".js-handle", function(e){
+            $(".inviting-create-order-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
 			});
@@ -39,11 +39,11 @@ export default function CreateOrder(id) {
 			$this.siblings(".num").text(hours + 1);
 		},
 		createOrder: function(e,$this){
-			Util.linkTo('/accountRent-success/' + id)
+			Util.linkTo('/invite-success')
 		},
-		getAccountDetail: function(cb){
+		getPlayWithDetail: function(cb){
 			$.ajax({
-                url: API.getAccountDetail,
+                url: API.getPlayWithDetail,
                 type: 'post',
                 data: { Body: id },
                 success: function(req){

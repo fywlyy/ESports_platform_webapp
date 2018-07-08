@@ -5,20 +5,18 @@
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
-import CreateOrderTpl from './create-order.html';
+import CreateOrderTpl from './order-details.html';
 
-import "./create-order.scss";
+import "./order-details.scss";
 
 export default function CreateOrder(id) {
 
 	const handlers = {
 		init: function() {
 			let _this = this;
-			this.getAccountDetail(function(data){
-				$(".container").html( CreateOrderTpl({data}) );
-				_this.bindEvent();
-				Util.setTitle('下单');
-			});
+			$(".container").html( CreateOrderTpl() );
+			_this.bindEvent();
+			Util.setTitle('下单');
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -42,19 +40,7 @@ export default function CreateOrder(id) {
 			Util.linkTo('/accountRent-success/' + id)
 		},
 		getAccountDetail: function(cb){
-			$.ajax({
-                url: API.getAccountDetail,
-                type: 'post',
-                data: { Body: id },
-                success: function(req){
-                    if(!req.IsError){
-                        cb && cb(req.Data || []);
-                    }
-                },
-                error: function(msg){
-                    console.log(msg);
-                }
-            })
+			
 		}
 	}   
 

@@ -9,7 +9,7 @@ export default function Header($el, cb) {
             this.bindEvent();
         },
         bindEvent: function() {
-            $(".btn-back").on('touchend',function(){
+            $(".btn-back").on('click',function(){
                 window.history.go(-1);
             })
         }

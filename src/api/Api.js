@@ -25,6 +25,7 @@ module.exports = {
 	getNewsList:`${baseUrl}/Competition/GetRecommendNewsList`,
 	getMatchDetailsInfo:`${baseUrl}/Competition/GetCompetitionDetail`,
 	getAllMatchesList:`${baseUrl}/Competition/SearchCompetitionList`,
+	submitApplyCompetition:`${baseUrl}/Competition/SubmitApplyCompetition`,
 	/*新闻*/
 	getAllNewsList:`${baseUrl}/Competition/SearchNewsList`,
 	getNewsInfo:`${baseUrl}/Competition/GetNewsDetail`,
@@ -38,6 +39,7 @@ module.exports = {
 	seachAccountList:`${baseUrl}/GameOrder/SeachAccountList`,
 	seachPlayWithList:`${baseUrl}/GameOrder/SeachPlayWithList`,
 	getAccountDetail:`${baseUrl}/GameOrder/GetAccount`,
+	getPlayWithDetail:`${baseUrl}/GameOrder/GetPlayWith`,
 
 	/*我的*/
 	submitAuthUser:`${baseUrl}/User/SubmitAuthUser`,

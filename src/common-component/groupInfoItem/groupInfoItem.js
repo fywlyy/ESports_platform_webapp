@@ -16,7 +16,7 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
-            $("#app-container").on("touchend", function(e){
+            $("#app-container").on("click", function(e){
                 e.stopPropagation();
                 if($(this).parents().find(".operator_menu").length <= 0){
                     $(".groupItem .operator_menu").hide(200).removeClass("hasShow");

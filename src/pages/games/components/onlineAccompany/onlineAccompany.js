@@ -28,13 +28,13 @@ export default function OnlineAccompany($el) {
         },
         bindEvent: function() {
             let _this = this;
-            $('.hot-list').on('touchend', '.hot-list-item', function () {
+            $('.hot-list').on('click', '.hot-list-item', function () {
                 let $this = $(this);
                 $this.hasClass('active') ? $this.removeClass('active') : $this.addClass('active')
             })
             
             //公共事件添加
-            $("#header-all").on("touchend",".js-handle",function(e){
+            $("#header-all").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
@@ -76,7 +76,7 @@ export default function OnlineAccompany($el) {
         },
         toAccountRental: function(e, $this){
             let id = $this.data('id');
-            Util.linkTo('/account-rental/' + id);
+            Util.linkTo('/inviting-to-play/' + id);
         },
         placeOrder: function(e, $this) {
             e.stopPropagation();

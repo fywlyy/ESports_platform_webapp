@@ -22,7 +22,7 @@ export default function AccountRental(id) {
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".account-rental-page").on("touchend",".js-handle",function(e){
+            $(".account-rental-page").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });

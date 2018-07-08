@@ -13,13 +13,13 @@ export default function GroupInfoList($el, infoList) {
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".groupItem").on("touchend",".js-handle",function(e){
+            $(".groupItem").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
             $("#app-container")
-            .off("touchend",function(e){})
-            .on("touchend", function(e){
+            .off("click",function(e){})
+            .on("click", function(e){
                 e.stopPropagation();
 
                 $(".groupItem .operator_menu.hasShow").hide(200).removeClass("hasShow");

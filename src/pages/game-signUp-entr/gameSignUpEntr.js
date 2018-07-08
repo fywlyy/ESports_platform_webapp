@@ -9,46 +9,26 @@ import GameSignUpEntrTpl from './gameSignUpEntr.html';
 import "./gameSignUpEntr.scss";
 
 export default function NewsDetail(id) {
-	const options = [{
-		id: '1',
-		name: 'IG'
-	},{
-		id: '2',
-		name: 'LGD'
-	},{
-		id: '3',
-		name: 'EHOME'
-	}]
-
+	const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
 	const handlers = {
 		init: function() {
 			let _this = this;
 			let userInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
 			this.getDetail(function(data) {
+				_this.GameCategory = data.GameCategory;
 				Util.setTitle(data.CompetitionName);
-				$(".container").html( GameSignUpEntrTpl({...data,...userInfo,options}) );
+				$(".container").html( GameSignUpEntrTpl({...data,...userInfo}) );
 				_this.bindEvent();
 			})
 		},
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".game-sign-up-entr .js-handle").on("touchend",function(e){
+            $(".game-sign-up-entr .js-handle").on("click",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
-			});
-			
-			$("#clubSelect").on("change",function(e) {
-				let $this = $(this);
-				let value = $this.val();
-
-				let selectItem = _.find(options,function(item){
-					return item.id === value;
-				});
-
-				$this.parent().prev().find(".info-con").html(selectItem.name);
-			})
+			});		
 		},
 		getDetail: function(callback) {
 			$.ajax({
@@ -67,11 +47,44 @@ export default function NewsDetail(id) {
                 }
             })
 		},
-		handleSelect: function(e,$this) {
-			$("#clubSelect").trigger('click');
-		},
 		handleSignUp: function() {
+			let ApplyUserId = userInfo.Id,
+				CompetitionId = id,
+				Project = this.GameCategory,
+				Club = $("input[name='Club']").val();
+			debugger;
+			if(!Club){
+				Util.alertMessage('请输入所属俱乐部！');
+				return;
+			}
 
+			Util.loading(true,'请求中...');
+
+			$.ajax({
+				url: API.submitApplyCompetition,
+				data: {
+					Body: {
+						ApplyUserId,
+						CompetitionId,
+						Project,
+						Club
+					}
+				},
+				success: function(req) {
+					if(!req.IsError){
+						Util.alertMessage('报名成功！');
+						Util.linkTo('/matches');
+					}else{
+						Util.alertMessage(req.Message,function(){
+							Util.linkTo('/matches');
+						});
+					}
+					Util.loading(false);
+				},
+				error: function(msg) {
+
+				}
+			})
 		}
 	}   
 

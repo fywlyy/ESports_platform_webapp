@@ -15,7 +15,7 @@ export default function Live($el, infoList) {
 		init: function() {
 
 			let _this = this;
-
+            $el.html('');
 			this.getLiveList(function(data){
                 $el.html( LiveTpl({liveList: data}) );
 				_this.bindEvent();

@@ -173,12 +173,33 @@ const EditDynamicCb = function(id) {
         EditDynamic.default(id);
     },'EditDynamic')
 };
-/*编辑动态*/
+/*邀请陪玩*/
 const InvitingToPlayCb = function(id) {
     require.ensure([], (require) => {
         let InvitingToPlay = require('./pages/inviting-to-play/inviting-to-play.js');
         InvitingToPlay.default(id);
     },'InvitingToPlay')
+};
+/*邀请下单*/
+const InvitingCreateOrderCb = function(id) {
+    require.ensure([], (require) => {
+        let InvitingCreateOrder = require('./pages/inviting-create-order/inviting-create-order.js');
+        InvitingCreateOrder.default(id);
+    },'InvitingCreateOrder')
+};
+/*订单详情*/
+const OrderDetailsCb = function(id) {
+    require.ensure([], (require) => {
+        let OrderDetails = require('./pages/order-details/order-details.js');
+        OrderDetails.default(id);
+    },'OrderDetails')
+};
+/*训练记录*/
+const TrainingRecordCb = function(id) {
+    require.ensure([], (require) => {
+        let TrainingRecord = require('./pages/training-record/training-record.js');
+        TrainingRecord.default(id);
+    },'TrainingRecord')
 };
 /*jquery ajax setup*/
 $.ajaxSetup({
@@ -198,7 +219,7 @@ $.ajaxSetup({
         let currentRote = Util.getRouter();
 
         if(result.IsError){
-            alert(result.Message);
+            console.log(result.Message);
             if(ErrCode == 400){
                 currentRote != '/login' && Util.linkTo('/login');
             }
@@ -237,12 +258,15 @@ const routes = {
     '/invite-success':InviteSuccessCb,
     '/accountRent-success/:id':AccountRentSuccessCb,
     '/edit-dynamic':EditDynamicCb,
-    '/inviting-to-play':InvitingToPlayCb
+    '/inviting-to-play/:id':InvitingToPlayCb,
+    '/inviting-create-order/:id':InvitingCreateOrderCb,
+    '/order-details':OrderDetailsCb,
+    '/training-record':TrainingRecordCb
 };
 
 const router = new Router(routes).configure({
     notfound: () => {
-        alert('错误链接！');
+        Util.alertMessage('错误链接！');
     },
     before: () => {
         let currentRote = Util.getRouter();

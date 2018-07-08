@@ -5,24 +5,24 @@
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
-import InviteSuccessTpl from './invite-success.html';
+import TrainingRecordTpl from './training-record.html';
 
-import "./invite-success.scss";
+import "./training-record.scss";
 
-export default function InviteSuccess() {
+export default function TrainingRecord() {
 
 	const handlers = {
 		init: function() {
 
-			$(".container").html( InviteSuccessTpl() );
+			$(".container").html( TrainingRecordTpl() );
 			this.bindEvent();
-			Util.setTitle('邀请成功');
+			Util.setTitle('训练记录');
 
 		},
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".invite-success-page").on("click", ".js-handle", function(e){
+            $(".training-record-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
             });

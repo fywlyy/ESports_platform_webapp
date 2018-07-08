@@ -15,21 +15,22 @@ export default function Personal() {
 
 	const handlers = {
 		init: function() {
-			$(".container").html( PersonalTpl() );
+			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
+			$(".container").html( PersonalTpl({userInfo}) );
 			Activity($('.personal-page-container'),{});
 			this.bindEvent();
 		},
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".personal-page").on("touchend", ".js-handle", function(e){
+            $(".personal-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
 			});
 			this.handleChangeTab();
 		},
 		handleChangeTab: function() {
-			$(".personal-page .personal-page-tabBar").on("touchend", ">div", function(e){
+			$(".personal-page .personal-page-tabBar").on("click", ">div", function(e){
 				let $this = $(this);
 				if($this.hasClass('active')){
 					return;
@@ -41,7 +42,7 @@ export default function Personal() {
 					switch (index){
 						case 0 : Activity($container,{}); break;
 						case 1 : Classes($container,{}); break;
-						// case 2 : Interaction($container); break;
+						case 2 : Util.linkTo('/training-record'); break;
 						default : Activity($container,{});
 					}
 

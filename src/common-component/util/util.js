@@ -219,13 +219,13 @@ module.exports = {
     },
     /**
      * Created with JetBrains WebStorm.
-     * User: liyong.wang
+     * User: xp
      * Date: 16/12/5
      * Time: 下午4:45
      * Desc: 弹出提示窗口 delay参数可以为时间,即等待消失时间 也可以为function,即消失后回调. 也可以三者都传入
      */
-    alertMessage: function (desc, delay, callback, hasIcon = true) {
-        let time = 1500, doc = document,
+    alertMessage: function (desc, delay, callback, hasIcon = false) {
+        let time = 2000, doc = document,
             body = doc.body, h = 0, hints = doc.querySelector('.hint-popup'),
             timer1 = null, timer2 = null, icon = hasIcon;
 
@@ -268,28 +268,109 @@ module.exports = {
             }
         }, time);
     },
-    clone: function (obj) {
-        var o;
-        if (typeof obj == "object") {
-            if (obj === null) {
-                o = null;
-            } else {
-                if (obj instanceof Array) {
-                    o = [];
-                    for (var i = 0, len = obj.length; i < len; i++) {
-                        o.push(this.clone(obj[i]));
-                    }
-                } else {
-                    o = {};
-                    for (var j in obj) {
-                        o[j] = this.clone(obj[j]);
-                    }
-                }
+    /**
+     * User: xp
+     * Date: 2017/2/14
+     * Time: 下午15:29
+     * @usage: 模拟confirm
+     * @param options Object
+     *      cancelTxt : "",         取消按钮的文本
+     *      confirmTxt : "",        确认按钮的文本
+     *      html:"",                传入的html，此项比info优先
+     *      isWhite: boolen,        是否默认白色true
+     *      info:"",                提示语信息
+     *      cancelFun: func1,       取消时的回调函数
+     *      confirmFun: func2,      确认时的回调函数
+     *      needClose,              设置为false，点击确定时 不自动关闭可通过modal return的函数手动调用关闭
+     *      hasCancel,              设置为false时，不包含取消按钮
+     *
+     * */
+    confirmModal: (options = {})=>{
+        const _config = {
+            title: '提示信息',
+            confirmTxt: '确认',
+            cancelTxt: '取消',
+            info: '',
+            needClose: true,
+            hasCancel: true,
+            isWhite: true,
+            html: '',
+            className: '',
+            confirmFun: ()=>{},
+            cancelFun: ()=>{}
+        }, config = _.extend({}, _config, options),
+        doc = document, div = doc.createElement('div'), body = doc.body,
+        hasCancel = config.hasCancel;
+        div.className = `_confirm on ${config.className}${config.isWhite ? '' : ' _confirm_dark'}`;
+        const _close = ()=>{
+            if(!div) {
+                return;
             }
-        } else {
-            o = obj;
+            div.className = `_confirm off ${config.className}${config.isWhite ? '' : ' _confirm_dark'}`;
+            window.removeEventListener('hashchange', _removeDiv, false); 
+            setTimeout(()=>{
+                if(hasCancel) {
+                    doc.getElementById("js-cancle-modal").removeEventListener("click", _cancle, false);
+                }
+                doc.getElementById("js-confirm-modal").removeEventListener("click", _confirm, false);
+                body.removeChild(div);
+            }, 400);
         }
-        return o;
+
+        const _confirm = ()=>{
+            if(typeof config.confirmFun === 'function') {
+                config.confirmFun();
+            }
+            if(config.needClose) {
+                _close();
+            }
+        }
+
+        const _cancle = ()=>{
+            if(typeof config.cancelFun === 'function') {
+                config.cancelFun();
+            }
+            _close();
+        }
+        
+        const _removeDiv = ()=>{
+            div && body.removeChild(div);
+            window.removeEventListener('hashchange', _removeDiv, false); 
+        }
+        let html = [];
+
+        html.push('<div class="_confirm-frame">');
+            html.push(`<h4 class="_confirm_title">${config.title}</h4>`)
+            if(config.html) {
+                html.push(`<div className="_confirm-html">${config.html}</div>`)
+            }else {
+                html.push('<div class="_confirm-text">');
+                    html.push(`<p class="_c-vice-text">${config.info}</p>`);
+                html.push('</div>');
+            }
+
+            html.push('<div class="_confirm-operate">');
+                if(hasCancel) {
+                    html.push(`<span id="js-cancle-modal" class="_c-cancel">${config.cancelTxt}</span>`);
+                }
+                html.push(`<span id="js-confirm-modal" class="_c-confirm${hasCancel ? '' : ' single'}">${config.confirmTxt}</span>`);
+            html.push('</div>');
+
+        html.push('</div>');
+
+        div.innerHTML = html.join('');
+        body.appendChild(div);
+        
+        if(hasCancel) {
+            doc.getElementById("js-cancle-modal").addEventListener("click", _cancle, false);
+        }
+        doc.getElementById("js-confirm-modal").addEventListener("click", _confirm, false);
+        window.addEventListener('hashchange', _removeDiv, false);        
+        if(config.needClose) {
+            return ()=>{};
+        }else{
+            return _close;
+        }
     },
     htmlDecode: function (str) {
         return $('<div>').html(str).text();
@@ -310,7 +391,7 @@ module.exports = {
             document.getElementsByClassName('loader')[0].innerHTML = html;
         } else {
             var loader = document.getElementsByClassName('loader')[0];
-            loader.parentNode.removeChild(loader);
+            loader.parentNode.removeChild(loader);            
         }
     },
     /**
@@ -360,7 +441,8 @@ module.exports = {
         let isMainRoter = false;
         const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up',
             '/match-details', '/account-rental', '/personal-details','/all-matches',
-            '/create-order','/apply-certf', '/invite-success', '/edit-dynamic'];//footer隐藏黑名单路由
+            '/create-order','/apply-certf', '/invite-success', '/edit-dynamic', 
+            '/Order-details', '/training-record'];//footer隐藏黑名单路由
         const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {

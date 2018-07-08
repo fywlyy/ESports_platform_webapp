@@ -13,10 +13,10 @@
 
         >.videos-item-image {
             position: relative;
-            height: rem(385);
+            height: rem(410);
             img {
                 width: 100%;
-                height: rem(385);
+                height: rem(410);
             }
 
             .icon-play {
@@ -107,5 +107,58 @@
             }
         }
 
+    }
+
+    .videos-modal-mask{
+        background: rgba(0,0,0,.5);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        display: none;
+        .modal-content{
+            width: rem(660);
+            height: rem(365);
+            background: #fff;
+            border-radius: rem(10);
+            position: fixed;
+            top: rem(285);
+            left: rem(45);
+            font-size: rem(30);
+            text-align: center;
+            .title{
+                color: #050100;
+                margin: rem(50) 0 rem(40);
+            }
+            .codeInput{
+                width: rem(515);
+                height: rem(58);
+                background: #eeedeb;
+                color: #625b51;
+                border: 1px solid #cec9c3;
+                border-radius: rem(12);
+                text-align: center;
+            }
+            .operator{
+                margin-top: rem(80);
+                button{
+                    width: rem(240);
+                    height: rem(55);
+                    font-size: rem(24);
+                    color: #fff;
+                    border: none;
+                    border-radius: rem(55);
+                }
+                button:nth-child(1){
+                    background: #fd8515;
+                    margin-right: rem(35);
+                }
+                button:nth-child(2){
+                    background: #ffaf00;
+                }
+            }
+        }
     }
 }

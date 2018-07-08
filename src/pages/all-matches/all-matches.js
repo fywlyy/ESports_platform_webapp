@@ -23,11 +23,11 @@ export default function AllMatches() {
 		bindEvent: function() {
 			let _this = this;
             //公共事件添加
-            $(".all-matches-page").on("touchend", ".js-handle", function(e){
+            $(".all-matches-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e,$(this));
 			});
-			$(".select-list").on("touchend", ".select-list-item", function(e){
+			$(".select-list").on("click", ".select-list-item", function(e){
 				let $this = $(this);
 				$this.hasClass('active') ? '' : $this.addClass('active').siblings().removeClass('active');
 			});
