@@ -1,5 +1,6 @@
 import API from '../../../../api/Api.js';
 import Util from '../../../../common-component/util/util.js';
+import AccountListTpl from './accountList.html';
 import AccountRentTpl from './accountRent.html';
 
 /**
@@ -18,24 +19,56 @@ export default function AccountRent($el) {
         init: function() {
             let _this = this;
             this.getGameInfoList(function(gameInfoList) {
+                $el.html(AccountRentTpl({gameInfoList}));
                 _this.getAccountList(_this.params,function(accountList) {
-                    $el.html(AccountRentTpl({gameInfoList,accountList}));
+                    $(".container-list").html(AccountListTpl({accountList}));
                     _this.bindEvent();
                 })
             })
         },
         bindEvent: function() {
             let _this = this;
-            $('.hot-list').on('click', '.hot-list-item', function () {
-                let $this = $(this);
-                $this.hasClass('active') ? $this.removeClass('active') : $this.addClass('active')
-            })
             
             //公共事件添加
             $("#header-all").on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
+
+            $('.hot-list').on('click', '.hot-list-item', function () {
+                let $this = $(this);
+                let id = $this.data('id');
+
+                if($this.hasClass('active')){
+                    return;
+                }
+
+                // $this.hasClass('active') ? $this.removeClass('active') : $this.addClass('active');
+                $this.addClass('active').siblings('.active').removeClass('active');
+
+                _this.params.GameInfoId = id;
+
+                _this.getAccountList(_this.params,function(accountList) {
+                    $(".container-list").html(AccountListTpl({accountList}));
+                })                
+            })
+
+            $(".sort .sort-border").on('click',function(){ //排序
+                let $this = $(this);
+                let type = parseInt($this.data('type'));
+
+                if($this.hasClass('active')){
+                    return;
+                }
+
+                $this.addClass('active').siblings('.active').removeClass('active');
+                
+                _this.params.OrderByType = type;
+
+                _this.getAccountList(_this.params,function(accountList) {
+                    $(".container-list").html(AccountListTpl({accountList}));
+                })
+            })
         },
         getGameInfoList: function(callback) {
             $.ajax({

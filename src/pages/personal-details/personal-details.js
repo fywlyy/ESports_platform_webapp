@@ -13,63 +13,33 @@ import "./personal-details.scss";
 export default function PersonalDetails(id) {
 
 	const handlers = {
+        params:{
+            UserId: id,
+            CircleId: null,
+            CommentDataCount: 3,
+            PageIndex: 1,
+            PageSize: 10
+        },
 		init: function() {
+			const _this = this;
 			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
-			const isLoginUser = userInfo.id == id ? true : false;
+			const isLoginUser = userInfo.Id == id ? true : false;
 
 			if(isLoginUser){
 				$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
+				this.getUserPostMsgList(this.params,function(groupsInfo){
+					GroupInfoList($(".gropusList .group-info-list"),groupsInfo);
+				})
 			}else{
-				this.getUserInfo(function(data){
-					$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
+				this.getUserInfo(function(otherUserInfo){
+					_this.getUserPostMsgList(_this.params,function(groupsInfo){
+						$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo: otherUserInfo}) );
+						GroupInfoList($(".gropusList .group-info-list"),groupsInfo);
+					})
+					
 				})
 			}
 			
-			$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
-			GroupInfoList($(".gropusList .group-info-list"), [{
-				"UserUrl":null,
-				"NickName":"打不死的小强",
-				"CommentCount":2,
-				"CommentReplyList":[
-					{
-						"Id":"405476985971150848",
-						"PostMessageId":"405474549667336192",
-						"UserId":"2",
-						"NickName":"打不死的小强",
-						"ReplyUserId":"3",
-						"ReplyUserNickName":"打不死的小强",
-						"CommentReplyType":1,
-						"InDate":"2018-06-24 14:10:46",
-						"Content":"掉血啦",
-						"LikeCount":0
-					},
-					{
-						"Id":"405474597465755648",
-						"PostMessageId":"405474549667336192",
-						"UserId":"3",
-						"NickName":"打不死的小强",
-						"ReplyUserId":"0",
-						"ReplyUserNickName":null,
-						"CommentReplyType":0,
-						"InDate":"2018-06-24 14:01:17",
-						"Content":"不好",
-						"LikeCount":0
-					}
-				],
-				"Id":"405474549667336192",
-				"CircleId":"1",
-				"UserId":"2",
-				"InDate":"2018-06-24 14:01:05",
-				"Content":"今天的的第一血",
-				"LikeCount":1,
-				"MessageType":1,
-				"LocationAddress":null,
-				"AuthType":1,
-				"ImageUrlList":[
-					"http://xiyuxing.oss-cn-qingdao.aliyuncs.com/607ffa14-3d77-4815-bbe5-188b6158e0a3.jpg",
-					"http://xiyuxing.oss-cn-qingdao.aliyuncs.com/607ffa14-3d77-4815-bbe5-188b6158e0a3.jpg"
-				]
-			}]);
 			this.bindEvent();
 			Util.setTitle('个人详情');
 		},
@@ -87,7 +57,27 @@ export default function PersonalDetails(id) {
 		},
 		getUserInfo: function(callback){
 			callback && callback({});
+
+
 		},
+		getUserPostMsgList:function(params, cb, type){
+            $.ajax({
+                url: API.userPostMsgList,
+                type: 'post',
+                data: {Body:params},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req.Result || [], type);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+
+        },
 		toApplyCert: function(e,$this){
 			let status = $this.data("status");
 

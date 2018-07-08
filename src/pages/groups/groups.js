@@ -18,13 +18,13 @@ export default function Groups() {
     const handlers = {
 
         params:{
-            UserId: userId,
+            UserId: '',
             CircleId: null,
             CommentDataCount: 3,
             PageIndex: 1,
-            PageSize: 10
+            PageSize: 3
         },
-
+        groupList: [],
         init: function() {
 
             const that = this;
@@ -64,9 +64,7 @@ export default function Groups() {
                     $this.addClass('active');
 
                     _this.params.CircleId = $this.data('id');
-
-                    _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this),'refresh');
-
+                    _this.mescroll.resetUpScroll();
                 }
             });
         },
@@ -74,27 +72,23 @@ export default function Groups() {
             const _this = this;
             this.mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
                 down: {
-                    auto: false,
-                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip" style="font-size:0.32rem;">下拉刷新</p>',
-                    callback: function(page){
-                        _this.params.pageIndex = 1;
-                        setTimeout(function(){
-                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this),'refresh');
-                        },1000);
-                    }
+                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip" style="font-size:0.32rem;">下拉刷新</p>'
                 },
                 up: {
-                    isBoth: false,
                     isBounce: false,
-                    noMoreSize: 1,
+                    noMoreSize: 2,
+                    page: {
+                        num : 0, 
+                        size : 3
+                    },
+                    clearEmptyId: 'dataList',
                     htmlLoading: '<p class="upwarp-progress mescroll-rotate"></p><p class="upwarp-tip" style="font-size:0.32rem;">加载中..</p>',
                     htmlNodata:"<p class='upwarp-nodata' style='font-size:0.32rem;'>没有更多了-_-</p>",
                     callback: function(page){
-                        _this.params.pageIndex = page.num;
+                        _this.params.PageIndex = page.num;
                         setTimeout(function(){
-                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this),'loadMore');
-                        },1000);
-                        
+                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this));
+                        },500);
                     }
                 }
             });
@@ -136,12 +130,9 @@ export default function Groups() {
             })
 
         },
-        renderMsgList:function(req,type){
-            type == 'refresh' && $(".group-info-list").html('');
-            GroupInfoList($(".group-info-list"), req.Result);
-            this.params.PageIndex = req.PageIndex;
-
-            this.mescroll && this.mescroll.endBySize(req.Result.length, req.TotalCount);
+        renderMsgList:function(req,pageNo){
+            this.mescroll.endBySize(req.Result.length, req.TotalCount);
+            GroupInfoList($(".group-info-list"), req.Result);            
         },
         addGroups: function() {
             let token = Util.getCookie('AccessToken');

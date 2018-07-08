@@ -97,7 +97,6 @@ export default function Videos($el) {
 						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();
 					}else{
 						Util.alertMessage(req.Message);
-						debugger;
 						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();
 					}
 				},

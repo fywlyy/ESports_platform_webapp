@@ -37,6 +37,8 @@ export default function MatchDetails(id) {
 
                     if(!req.IsError){
                         cb && cb(req.Data || []);
+                    }else{
+                        Util.alertMessage(req.Message);
                     }
 
                 },

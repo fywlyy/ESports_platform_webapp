@@ -39,7 +39,9 @@ export default function NewsDetail(id) {
 
                     if(!req.IsError){
                         callback && callback(req.Data || []);
-                    }
+                    }else{
+						Util.alertMessage(req.Message);
+					}
 
                 },
                 error: function(msg){
@@ -52,7 +54,7 @@ export default function NewsDetail(id) {
 				CompetitionId = id,
 				Project = this.GameCategory,
 				Club = $("input[name='Club']").val();
-			debugger;
+
 			if(!Club){
 				Util.alertMessage('请输入所属俱乐部！');
 				return;

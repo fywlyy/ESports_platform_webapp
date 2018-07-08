@@ -89,7 +89,12 @@
 
             }
         }
-
+        .star{
+            width: rem(30);
+            height: rem(30);
+            margin: rem(-5) 0 0 rem(10);
+            vertical-align: middle;
+        }
         input{
             height: rem(58);
             background: #eeedeb;
