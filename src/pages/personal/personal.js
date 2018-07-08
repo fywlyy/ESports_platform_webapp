@@ -42,7 +42,7 @@ export default function Personal() {
 					switch (index){
 						case 0 : Activity($container,{}); break;
 						case 1 : Classes($container,{}); break;
-						// case 2 : Interaction($container); break;
+						case 2 : Util.linkTo('/training-record'); break;
 						default : Activity($container,{});
 					}
 

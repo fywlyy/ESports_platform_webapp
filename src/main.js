@@ -194,6 +194,13 @@ const OrderDetailsCb = function(id) {
         OrderDetails.default(id);
     },'OrderDetails')
 };
+/*训练记录*/
+const TrainingRecordCb = function(id) {
+    require.ensure([], (require) => {
+        let TrainingRecord = require('./pages/training-record/training-record.js');
+        TrainingRecord.default(id);
+    },'TrainingRecord')
+};
 /*jquery ajax setup*/
 $.ajaxSetup({
     cache: false,
@@ -253,7 +260,8 @@ const routes = {
     '/edit-dynamic':EditDynamicCb,
     '/inviting-to-play/:id':InvitingToPlayCb,
     '/inviting-create-order/:id':InvitingCreateOrderCb,
-    '/order-details':OrderDetailsCb
+    '/order-details':OrderDetailsCb,
+    '/training-record':TrainingRecordCb
 };
 
 const router = new Router(routes).configure({
