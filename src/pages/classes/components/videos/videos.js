@@ -91,7 +91,6 @@ export default function Videos($el) {
 					PINCode
 				},
 				success: function(req) {
-					req = JSON.parse(req);
 					if(!req.IsError){
 						$(".videos-modal-mask").hide();
 						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();

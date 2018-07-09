@@ -23,7 +23,7 @@ export default function PersonalDetails(id) {
 		init: function() {
 			const _this = this;
 			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
-			const isLoginUser = userInfo.Id == id ? true : false;
+			const isLoginUser = userInfo && userInfo.Id == id ? true : false;
 
 			if(isLoginUser){
 				$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
@@ -76,9 +76,10 @@ export default function PersonalDetails(id) {
                 type: 'post',
                 data: {Body:params},
                 success: function(req){
-
                     if(!req.IsError){
                         cb && cb(req.Result || [], type);
+                    }else{
+                        Util.alertMessage(req.Message)
                     }
 
                 },

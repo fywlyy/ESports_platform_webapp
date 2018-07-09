@@ -2,11 +2,22 @@ import CommentTpl from "./comment.html";
 
 import "./comment.scss";
 
-export default function Comment($el, commentData, callback) {
+export default function Comment($el, commentData, isCommit, callback) {
     const handlers = {
         init: function() {
             $el.append(CommentTpl(commentData));
             this.bindEvent();
+
+            // if(isCommit){
+            //     const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
+            //     $(".comment-input")
+            //         .show()
+            //         .find(".input-box")
+            //         .attr('data-type','0')
+            //         .attr('data-user-id',userInfo.Id)
+            //         .focus();
+            //     $(".dynamicDetails-layout").addClass("hasCommentInput");
+            // }
         },
         bindEvent: function() {
             let _this = this;
@@ -19,23 +30,25 @@ export default function Comment($el, commentData, callback) {
 
             //评论操作
             let $container = $(".container");
-            let currentScrollTop = 0;
+            // let currentScrollTop = 0;
             $(".input-box")
             .on('focus',function(e){
-                currentScrollTop = $container.scrollTop();
-                $(this).parent().css({position: 'absolute'});
+                // currentScrollTop = $container.scrollTop();
+                // $(this).parent().css({position: 'absolute',left: 0,bottom: 0});
                 $container.on('touchmove',function(event){
                     event.preventDefault();
-                }).scrollTop(0);
+                });
+ 
             })
             .on('blur',function(e){
-                $(this).html('').parent().css({position: 'fixed'});
-                $container.off('touchmove').scrollTop(currentScrollTop);
+                $container.off('touchmove');
                 $(".dynamicDetails-layout").removeClass("hasCommentInput");
-                $(".comment-input").hide();
+                $(this)
+                .val('')
+                .parent()
+                .hide();
             })
             .on("keypress",function(e){
-                e.preventDefault();
                 if(e.keyCode == 13){//回车提交
                     let $this = $(this);
                     let type = $this.data('type');

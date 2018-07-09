@@ -10,7 +10,7 @@ import Comment from '../../common-component/comment/comment.js';
 
 import "./dynamic-details.scss";
 
-export default function DynamicDetails(id) {
+export default function DynamicDetails(type,id) {
 
     const handlers = {
         init: function() {
@@ -23,6 +23,7 @@ export default function DynamicDetails(id) {
         },
         renderDetails: function() {
             let _this = this;
+            let isCommit = type == 'commit' ? true : false;
             this.getDetails(id,function(data){
                 $(".container").html(DynamicDetailsTpl());
                 GroupInfoItem($(".groupItem-layout"),data,true);
@@ -30,7 +31,7 @@ export default function DynamicDetails(id) {
                     commentList: data.CommentReplyList,
                     commentCount: data.CommentCount,
                     likeCount: data.LikeCount
-                },_this.sendInfo.bind(_this));
+                },isCommit,_this.sendInfo.bind(_this));
             })
         },
         getDetails: function(id,callback) {
@@ -40,7 +41,6 @@ export default function DynamicDetails(id) {
                 type: 'post',
                 data: { Body: id },
                 success: function(req){
-                    req = typeof(req) == 'string' ? JSON.parse(req) : req;
                     if(!req.IsError){
                         _this.detailsData = req.Data;
                         callback && callback(req.Data || []);

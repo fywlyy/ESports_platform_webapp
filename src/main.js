@@ -48,10 +48,10 @@ const GamesCb = function(userId) {
     }, 'Games')
 };
 /*动态详情*/
-const DynamicDetailsCb = function(id) {
+const DynamicDetailsCb = function(type,id) {
     require.ensure([], (require) => {
         let DynamicDetails = require('./pages/dynamic-details/dynamic-details.js');
-        DynamicDetails.default(id);
+        DynamicDetails.default(type,id);
     },'DynamicDetails')
 };
 /*比赛页*/
@@ -205,6 +205,7 @@ const TrainingRecordCb = function(id) {
 $.ajaxSetup({
     cache: false,
     type: "POST",
+    dataType: 'JSON',
     beforeSend: function(xhr){
         if(arguments[1].isUpload){
             return;
@@ -242,7 +243,7 @@ const routes = {
     '/forgetPwd': ForgetPwdCb,
     '/groups': GroupsCb,
     '/games': GamesCb,
-    '/dynamic-details/:id': DynamicDetailsCb,
+    '/dynamic-details/:type/:id': DynamicDetailsCb,
     '/matches': MatchesCb,
     '/news': NewsCb,
     '/newsDetail/:id': NewsDetailCb,

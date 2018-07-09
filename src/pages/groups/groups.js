@@ -12,9 +12,6 @@ import GroupInfoList from '../../common-component/groupInfoList/groupInfoList.js
 import "./groups.scss";
 
 export default function Groups() {
-    const userInfo = localStorage.getItem('UserInfo');
-    const userId = userInfo && JSON.parse(userInfo).Id;
-
     const handlers = {
 
         params:{

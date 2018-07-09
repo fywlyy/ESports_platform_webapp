@@ -44,11 +44,11 @@ export default function GroupInfoList($el, infoList) {
         },
         handleLink: function(e,$this) {
             const id = $this.parents(".groupItem").data("id");
-            Util.linkTo('/dynamic-details/' + id);
+            Util.linkTo('/dynamic-details/details/' + id);
         },
         handleComment: function(e,$this){
             const id = $this.parents(".groupItem").data("id");
-            Util.linkTo('/dynamic-details/' + id);
+            Util.linkTo('/dynamic-details/commit/' + id);
         },
         handleMenu: function(e,$this){
             e.stopPropagation();
