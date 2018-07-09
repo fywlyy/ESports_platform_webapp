@@ -15,12 +15,12 @@ export default function Comment($el, commentData, isCommit, callback) {
 
             if(isCommit){
 
-                $(".comment-input")
+                let $input = $(".comment-input")
                     .show()
                     .find(".input-box")
                     .attr('data-type','0')
-                    .attr('data-user-id',commentData.groupId)
-                    .focus();
+                    .attr('data-user-id',commentData.groupId);
+
                 $(".dynamicDetails-layout").addClass("hasCommentInput");
             }
         },
@@ -46,11 +46,10 @@ export default function Comment($el, commentData, isCommit, callback) {
                 });
                 
                 _this.timeout = setTimeout(function() {
-                    $container.scrollTop(currentScrollTop + 10);
+                    // e.target.scrollIntoView(false);
                 },200);
             })
             .on('blur',function(e){
-                clearTimeout(_this.timeout);
                 $container.off('touchmove').scrollTop(currentScrollTop);
                 $(".dynamicDetails-layout").removeClass("hasCommentInput");
                 $(this)
@@ -65,7 +64,7 @@ export default function Comment($el, commentData, isCommit, callback) {
                     callback && callback({
                         CommentReplyType: type,
                         ReplyUserId: $this.data('userId'),
-                        Content: $this.html()
+                        Content: $this.val()
                     });
                     $this.blur();
                 }

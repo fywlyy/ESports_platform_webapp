@@ -14,16 +14,16 @@ export default function DynamicDetails(type,id) {
 
     const handlers = {
         init: function() {
-            this.renderDetails();
+            this.renderDetails(false);
             Util.setTitle('动态详情');
             this.bindEvent();
         },
         bindEvent: function() {
             
         },
-        renderDetails: function() {
+        renderDetails: function(isRefersh) {
             let _this = this;
-            let isCommit = type == 'commit' ? true : false;
+            let isCommit = type == 'commit' && !isRefersh ? true : false;
             this.getDetails(id,function(data){
                 $(".container").html(DynamicDetailsTpl());
                 GroupInfoItem($(".groupItem-layout"),data,true);
@@ -69,7 +69,7 @@ export default function DynamicDetails(type,id) {
 
                     if(!req.IsError){
                         Util.alertMessage('评论/回复成功！');
-                        _this.renderDetails();
+                        _this.renderDetails(true);
                     }
 
                 },
