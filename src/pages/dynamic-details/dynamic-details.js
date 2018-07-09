@@ -28,6 +28,7 @@ export default function DynamicDetails(type,id) {
                 $(".container").html(DynamicDetailsTpl());
                 GroupInfoItem($(".groupItem-layout"),data,true);
                 Comment($(".comment-layout"),{
+                    groupId: data.id,
                     commentList: data.CommentReplyList,
                     commentCount: data.CommentCount,
                     likeCount: data.LikeCount

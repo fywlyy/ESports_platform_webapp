@@ -1,3 +1,4 @@
+import Util from '../util/util.js';
 import GroupInfoItemTpl from "./groupInfoItem.html";
 import API from '../../api/Api.js';
 import "./groupInfoItem.scss";
@@ -5,6 +6,10 @@ import "./groupInfoItem.scss";
 export default function GroupInfoItem($el, itemData, onlyOne) {
     const handlers = {
         init: function() {
+            let token = Util.getCookie('AccessToken');
+
+            this.hasLogin = !!token || false;
+
             itemData.onlyOne = onlyOne;
             $el.append(GroupInfoItemTpl(itemData));
             this.bindEvent();
@@ -41,6 +46,10 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
             })
         },
         handleComment: function() {
+            if(!this.hasLogin){
+                Util.linkTo('/login');
+                return;
+            }
             $(".comment-input")
             .show()
             .find(".input-box")

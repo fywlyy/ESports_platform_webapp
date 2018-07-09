@@ -7,6 +7,10 @@ import "../groupInfoItem/groupInfoItem.scss";
 export default function GroupInfoList($el, infoList) {
     const handlers = {
         init: function() {
+            let token = Util.getCookie('AccessToken');
+
+            this.hasLogin = !!token || false;
+
             $el.append(GroupInfoListTpl({infoList}));
             this.bindEvent();
         },
@@ -47,6 +51,11 @@ export default function GroupInfoList($el, infoList) {
             Util.linkTo('/dynamic-details/details/' + id);
         },
         handleComment: function(e,$this){
+            if(!this.hasLogin){
+                Util.linkTo('/login');
+                return;
+            }
+
             const id = $this.parents(".groupItem").data("id");
             Util.linkTo('/dynamic-details/commit/' + id);
         },

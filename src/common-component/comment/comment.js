@@ -1,3 +1,4 @@
+import Util from '../util/util.js';
 import CommentTpl from "./comment.html";
 
 import "./comment.scss";
@@ -5,19 +6,23 @@ import "./comment.scss";
 export default function Comment($el, commentData, isCommit, callback) {
     const handlers = {
         init: function() {
+            let token = Util.getCookie('AccessToken');
+
+            this.hasLogin = !!token || false;
+
             $el.append(CommentTpl(commentData));
             this.bindEvent();
 
-            // if(isCommit){
-            //     const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
-            //     $(".comment-input")
-            //         .show()
-            //         .find(".input-box")
-            //         .attr('data-type','0')
-            //         .attr('data-user-id',userInfo.Id)
-            //         .focus();
-            //     $(".dynamicDetails-layout").addClass("hasCommentInput");
-            // }
+            if(isCommit){
+
+                $(".comment-input")
+                    .show()
+                    .find(".input-box")
+                    .attr('data-type','0')
+                    .attr('data-user-id',commentData.groupId)
+                    .focus();
+                $(".dynamicDetails-layout").addClass("hasCommentInput");
+            }
         },
         bindEvent: function() {
             let _this = this;
@@ -30,18 +35,23 @@ export default function Comment($el, commentData, isCommit, callback) {
 
             //评论操作
             let $container = $(".container");
-            // let currentScrollTop = 0;
+            let currentScrollTop = 0;
+            let scrollHeight = $container[0].scrollHeight;
             $(".input-box")
             .on('focus',function(e){
-                // currentScrollTop = $container.scrollTop();
+                currentScrollTop = $container.scrollTop();
                 // $(this).parent().css({position: 'absolute',left: 0,bottom: 0});
                 $container.on('touchmove',function(event){
                     event.preventDefault();
                 });
- 
+                
+                _this.timeout = setTimeout(function() {
+                    $container.scrollTop(currentScrollTop + 10);
+                },200);
             })
             .on('blur',function(e){
-                $container.off('touchmove');
+                clearTimeout(_this.timeout);
+                $container.off('touchmove').scrollTop(currentScrollTop);
                 $(".dynamicDetails-layout").removeClass("hasCommentInput");
                 $(this)
                 .val('')
@@ -62,6 +72,11 @@ export default function Comment($el, commentData, isCommit, callback) {
             })
         },
         handleComment: function(e,$this) {
+            if(!this.hasLogin){
+                Util.linkTo('/login');
+                return;
+            }
+
             $(".comment-input")
                 .show()
                 .find(".input-box")
