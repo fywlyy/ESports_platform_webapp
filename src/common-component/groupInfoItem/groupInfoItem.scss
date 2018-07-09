@@ -156,20 +156,35 @@
                     border-radius: rem(10);
                     display:none;
 
-                    >div{
+                    div:first-child{
 
                         >img{
+                            width:rem(40);
+                            height:rem(50);
                             vertical-align: middle;
                         }
     
                         >span{
+                            padding-left:rem(5);
+                            font-size:rem(24);
                             vertical-align: middle;
                         }
 
                     }
 
-                    >div + div{
+                    div:last-child{
                         border-top: 2px solid #d9d9d4;
+                        >img{
+                            width:rem(34);
+                            height:rem(40);
+                            vertical-align: middle;
+                        }
+    
+                        >span{
+                            padding-left:rem(5);
+                            font-size:rem(24);
+                            vertical-align: middle;
+                        }
                     }
 
                 }

@@ -29,18 +29,18 @@ export default function PersonalDetails(id) {
 				$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
 				this.getUserPostMsgList(this.params,function(groupsInfo){
 					GroupInfoList($(".gropusList .group-info-list"),groupsInfo);
-				})
+                })
+                this.bindEvent();
 			}else{
 				this.getUserInfo(function(otherUserInfo){
-					_this.getUserPostMsgList(_this.params,function(groupsInfo){
-						$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo: otherUserInfo}) );
+                    $(".container").html( PersonalDetailsTpl({isLoginUser,userInfo: otherUserInfo}) );
+					_this.getUserPostMsgList(_this.params,function(groupsInfo){						
 						GroupInfoList($(".gropusList .group-info-list"),groupsInfo);
-					})
-					
+                    })
+                    _this.bindEvent();
 				})
 			}
 			
-			this.bindEvent();
 			Util.setTitle('个人详情');
 		},
 		bindEvent: function() {
@@ -56,9 +56,19 @@ export default function PersonalDetails(id) {
 			});
 		},
 		getUserInfo: function(callback){
-			callback && callback({});
-
-
+            $.ajax({
+                url: API.getUserInfo,
+                data: {
+                    Body: id
+                },
+                success: function(req) {
+                    if(!req.IsError){
+                        callback && callback(req.Data);
+                    }else{
+                        Util.alertMessage(req.Message);
+                    }
+                }
+            })
 		},
 		getUserPostMsgList:function(params, cb, type){
             $.ajax({

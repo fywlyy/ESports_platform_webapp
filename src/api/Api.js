@@ -46,5 +46,6 @@ module.exports = {
 	submitAuthUser:`${baseUrl}/User/SubmitAuthUser`,
 	getSchoolList:`${baseUrl}/User/GetSchoolList`,
 	getPersonalActivityList:`${baseUrl}/User/QueryApplyCompetitionList`,
-	getPersonalClassesList:`${baseUrl}/User/QueryUserStudentLessonHourList`
+	getPersonalClassesList:`${baseUrl}/User/QueryUserStudentLessonHourList`,
+	getUserInfo:`${baseUrl}/User/GetUserInfo`,
 };
