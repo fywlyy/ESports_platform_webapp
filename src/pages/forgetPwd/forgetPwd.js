@@ -33,7 +33,7 @@ export default function Login() {
 				},
 				success: function(req) {
                     if(!req.IsError){
-                        alert('密码修改成功！');
+                        Util.alertMessage('密码修改成功！');
                         Util.linkTo('/login');
                     }else{
                         alert(req.Message);
@@ -55,14 +55,12 @@ export default function Login() {
 			} 
 
 			if(!loginName || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(loginName)){
-				// Util.alertMessage('请输入手机号！');
-				alert('请输入正确格式的注册手机号！');
+				Util.alertMessage('请输入正确格式的注册手机号！');
 				return;
 			}			
 
 			if(!phoneNum || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(phoneNum)){
-				// Util.alertMessage('请输入手机号！');
-				alert('请输入正确格式的手机号！');
+				Util.alertMessage('请输入正确格式的手机号！');
 				return;
 			}
 
@@ -76,7 +74,7 @@ export default function Login() {
 					}
 				},
 				success: function(result) {
-					alert('验证码发送成功！');
+					Util.alertMessage('验证码发送成功！');
 				},
 				error: function(msg){
 					console.log(msg);
@@ -117,32 +115,32 @@ export default function Login() {
 				AffirmNewPwd = $("input[name='conPassword']").val();
 
 			if(!LoginName || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(LoginName)){
-				alert('请输入正确格式的注册手机号码！');
+				Util.alertMessage('请输入正确格式的注册手机号码！');
 				return false;
 			}
 
 			if(!MobilePhone || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(MobilePhone)){
-				alert('请输入正确格式的手机号码！');
+				Util.alertMessage('请输入正确格式的手机号码！');
 				return false;
 			}
 
 			if(!AuthCode){
-				alert('获取并输入验证码！');
+				Util.alertMessage('获取并输入验证码！');
 				return false;
 			}
 
 			if(!NewPwd){
-				alert('请输入密码！');
+				Util.alertMessage('请输入密码！');
 				return false;
 			}
 
 			if(!AffirmNewPwd){
-				alert('请输入确认密码！');
+				Util.alertMessage('请输入确认密码！');
 				return false;
 			}
 
 			if(AffirmNewPwd !== NewPwd){
-				alert('两次密码不一致，请重新输入！');
+				Util.alertMessage('两次密码不一致，请重新输入！');
 				return false;
 			}
 
