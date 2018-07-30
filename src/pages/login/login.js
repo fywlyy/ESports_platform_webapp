@@ -52,7 +52,7 @@ export default function Login() {
 					if(!IsError){
 						let { UserInfo, AccessToken } = Data;
 						
-						Util.addCookie('AccessToken',AccessToken,1,document.domain);
+						Util.addCookie('AccessToken',AccessToken,3600,document.domain);
 						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));
 						Util.linkTo('/matches');	
 					}else{

@@ -55,7 +55,7 @@ export default function Login() {
 			} 
 
 			if(!loginName || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(loginName)){
-				Util.alertMessage('请输入正确格式的注册手机号！');
+				Util.alertMessage('请输入正确格式的电竞通行证！');
 				return;
 			}			
 
@@ -115,7 +115,7 @@ export default function Login() {
 				AffirmNewPwd = $("input[name='conPassword']").val();
 
 			if(!LoginName || !/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(LoginName)){
-				Util.alertMessage('请输入正确格式的注册手机号码！');
+				Util.alertMessage('请输入正确格式的电竞通行证！');
 				return false;
 			}
 
