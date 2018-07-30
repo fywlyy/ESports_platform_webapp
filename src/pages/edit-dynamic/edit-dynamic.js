@@ -72,6 +72,8 @@ export default function EditDynamic(id) {
 					if(!req.IsError){
                         Util.alertMessage('动态信息发布成功！');
                         Util.linkTo('/groups');
+					}else{
+						Util.alertMessage(req.Message);
 					}
 				},
 				error: function(msg){

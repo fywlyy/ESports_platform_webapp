@@ -67,6 +67,8 @@ export default function Groups() {
         },
         renderMescroll: function() {
             const _this = this;
+            let firstLoad = true;
+
             this.mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
                 down: {
                     htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip" style="font-size:0.32rem;">下拉刷新</p>'
@@ -84,7 +86,8 @@ export default function Groups() {
                     callback: function(page){
                         _this.params.PageIndex = page.num;
                         setTimeout(function(){
-                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this));
+                            _this.getUserPostMsgList(_this.params,_this.renderMsgList.bind(_this,firstLoad));
+                            firstLoad = false;
                         },500);
                     }
                 }
@@ -109,7 +112,7 @@ export default function Groups() {
             })
 
         },
-        getUserPostMsgList:function(params, cb, type){
+        getUserPostMsgList:function(params, cb){
             $.ajax({
                 url: API.userPostMsgList,
                 type: 'post',
@@ -117,7 +120,7 @@ export default function Groups() {
                 success: function(req){
 
                     if(!req.IsError){
-                        cb && cb(req || {}, type);
+                        cb && cb(req || {});
                     }
 
                 },
@@ -127,9 +130,9 @@ export default function Groups() {
             })
 
         },
-        renderMsgList:function(req,pageNo){
+        renderMsgList:function(firstLoad,req){
             this.mescroll.endBySize(req.Result.length, req.TotalCount);
-            GroupInfoList($(".group-info-list"), req.Result);            
+            GroupInfoList($(".group-info-list"), req.Result, firstLoad);            
         },
         addGroups: function() {
             let token = Util.getCookie('AccessToken');

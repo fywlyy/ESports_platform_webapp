@@ -10,10 +10,23 @@ export default function Header(url) {
             this.bindEvent();
         },
         bindEvent: function() {
+            let isZoom = false;
             let $pinchZoom = $(".pinch-zoom");
+            let $parent = $pinchZoom.parent();
 
             new PinchZoom($pinchZoom[0], {
                 draggableUnzoomed: false,
+            });
+
+            $pinchZoom.parent()
+            .on('touchstart',function(){
+                isZoom = false;
+            })
+            .on('touchmove',function(){
+                isZoom = true;
+            })
+            .on('click',function(){
+                isZoom || $parent[0].parentNode.removeChild($parent[0]);
             });
         },
     }

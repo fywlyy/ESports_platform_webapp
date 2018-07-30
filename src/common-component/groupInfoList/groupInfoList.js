@@ -5,7 +5,7 @@ import API from '../../api/Api.js';
 
 import "../groupInfoItem/groupInfoItem.scss";
 
-export default function GroupInfoList($el, infoList) {
+export default function GroupInfoList($el, infoList, firstLoad) {
     const handlers = {
         init: function() {
             let token = Util.getCookie('AccessToken');
@@ -13,12 +13,13 @@ export default function GroupInfoList($el, infoList) {
             this.hasLogin = !!token || false;
 
             $el.append(GroupInfoListTpl({infoList}));
-            this.bindEvent();
+            firstLoad && this.bindEvent();
         },
         bindEvent: function() {
             let _this = this;
             //公共事件添加
-            $(".groupItem").on("click",".js-handle",function(e){
+            $(".group-info-list")
+            .on("click",".js-handle",function(e){
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e, $(this));
             });
