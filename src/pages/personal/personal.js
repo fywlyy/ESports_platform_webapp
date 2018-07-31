@@ -1,5 +1,5 @@
 /**
- * 新闻列表页
+ * 我的页面
  */
 
 import _ from 'underscore';
@@ -15,14 +15,17 @@ export default function Personal() {
 
 	const handlers = {
 		init: function() {
-			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
+			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-			if(!userInfo){
+			if(!loginUserInfo){
 				Util.linkTo('/login');
 				return;
 			}
 
-			$(".container").html( PersonalTpl({userInfo}) );
+			this.getUserInfo(loginUserInfo.Id,function(userInfo){
+				$(".container").html( PersonalTpl({userInfo}) );
+			})
+
 			Activity($('.personal-page-container'),{});
 			this.bindEvent();
 		},
@@ -34,6 +37,21 @@ export default function Personal() {
                 _this[handle] && _this[handle](e,$(this));
 			});
 			this.handleChangeTab();
+		},
+		getUserInfo: function(userId,callback){
+            $.ajax({
+                url: API.getUserInfo,
+                data: {
+                    Body: userId
+                },
+                success: function(req) {
+                    if(!req.IsError){
+                        callback && callback(req.Data);
+                    }else{
+                        Util.alertMessage(req.Message);
+                    }
+                }
+            })
 		},
 		handleChangeTab: function() {
 			$(".personal-page .personal-page-tabBar").on("click", ">div", function(e){

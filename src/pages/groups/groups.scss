@@ -26,6 +26,11 @@
         height: rem(113);
       }
 
+      div{
+        height:rem(32);
+        @include ellipsis1();
+      }
+
       &.active{
         color: #ffaf00;
 

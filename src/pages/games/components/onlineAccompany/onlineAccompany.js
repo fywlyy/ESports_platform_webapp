@@ -10,10 +10,10 @@ import OnlineAccompanyTpl from './onlineAccompany.html'
 export default function OnlineAccompany($el) {
     const handlers = {
         params: {
-            GameInfoId: '',
-            Grade: 1,
-            Sex:1,
-            Status: 10,
+            GameInfoId: null,
+            Grade: null,
+            Sex: null,
+            Status: null,
             PageIndex: 1,
             PageSize: 10
         },

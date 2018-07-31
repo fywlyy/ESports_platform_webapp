@@ -31,6 +31,12 @@
 	</ul>
 
 	<div class="btn-module">
-		<button class="btn js-handle" data-handle="handleSignUp">我要报名</button>
+		{{if CompetitionStatus == 10}}
+		<button class="btn js-handle" data-handle="handleSignUp" data-status="{{CompetitionStatus}}">我要报名</button>
+		{{else if CompetitionStatus == 0}}
+		<button disabled class="btn js-handle" data-handle="handleSignUp" data-status="{{CompetitionStatus}}">报名未开始</button>
+		{{else if CompetitionStatus > 10}}
+		<button disabled class="btn js-handle" data-handle="handleSignUp" data-status="{{CompetitionStatus}}">报名已结束</button>
+		{{/if}}
 	</div>
 </div>

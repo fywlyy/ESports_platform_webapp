@@ -44,7 +44,13 @@ export default function NewsDetail(id) {
                 }
             })
 		},
-		handleSignUp: function() {
+		handleSignUp: function(e,$this) {
+			let status = $this.status;
+
+			if(status == 0 || status > 10){
+				return;
+			}
+
 			Util.linkTo('/game-sign-up-entr/1');
 		}
 	}   

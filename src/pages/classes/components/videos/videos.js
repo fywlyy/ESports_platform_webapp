@@ -54,12 +54,16 @@ export default function Videos($el) {
             })
 		},
 		initVideo: function(videoList) {
+			let _this = this;
 			videoList.map((item,index) => {
 				window.videoObjs[index] = videojs('my-player-' + index,{
 					width: '100%',
 					height: '100%'
 				},function() {
-					
+					this.on('play',function(){
+						_this.playVideo && _this.playVideo != this && _this.playVideo.pause();
+						_this.playVideo = this;
+					})
 				});
 			})
 		},
@@ -86,15 +90,18 @@ export default function Videos($el) {
 			$.ajax({
 				url: API.lookVVideoLesson,
 				data: {
-					LookType: 1,
-					VideoId: this.VideoId,
-					PINCode
+					Body: {
+						LookType: 1,
+						VideoId: this.VideoId,
+						PINCode
+					}
 				},
 				success: function(req) {
 					if(!req.IsError){
 						$(".videos-modal-mask").hide();
-                    }
-                    $("span[data-video-id='"+_this.VideoId+"']").parent().hide();
+						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();  
+					}  
+					                
 				},
 				error: function(msg){
 
