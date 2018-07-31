@@ -36,9 +36,7 @@ export default function Login() {
 					if(!IsError){
                         Util.alertMessage('注册成功！');
                         Util.linkTo('/login');	
-					}else{
-                        Util.alertMessage(req.Message);
-                    }	
+					}	
 				},
 				error: function(msg) {
 					console.log(msg);

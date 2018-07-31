@@ -35,8 +35,6 @@ export default function Login() {
                     if(!req.IsError){
                         Util.alertMessage('密码修改成功！');
                         Util.linkTo('/login');
-                    }else{
-                        alert(req.Message);
                     }
 				},
 				error: function(msg) {
@@ -73,29 +71,31 @@ export default function Login() {
 						MobilePhone: phoneNum
 					}
 				},
-				success: function(result) {
-					Util.alertMessage('验证码发送成功！');
+				success: function(req) {
+                    if(!req.IsError){
+                        Util.alertMessage('验证码发送成功！');
+
+                        $this.html(time + 's').css({
+                            backgroundColor: '#c0c0c0'
+                        })
+                        _this.countdown(time - 1,function(overTime) {
+                            if(overTime < 0){
+                                $this
+                                .html('获取验证码')
+                                .removeClass('disabled')
+                                .css({
+                                    backgroundColor: '#ffaf00'
+                                });
+                            }else{
+                                $this.addClass("disabled").html(overTime + 's');
+                            }
+                        })
+                    }					
 				},
 				error: function(msg){
 					console.log(msg);
 				}
 			})			
-
-			$this.html(time + 's').css({
-				backgroundColor: '#c0c0c0'
-			})
-			this.countdown(time - 1,function(overTime) {
-				if(overTime < 0){
-					$this
-					.html('获取验证码')
-					.removeClass('disabled')
-					.css({
-						backgroundColor: '#ffaf00'
-					});
-				}else{
-					$this.addClass("disabled").html(overTime + 's');
-				}
-			})
 		},
 		countdown: function(time,callback) {
 			let myInterval = setInterval(function() {

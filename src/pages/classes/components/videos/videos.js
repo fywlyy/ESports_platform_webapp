@@ -93,11 +93,8 @@ export default function Videos($el) {
 				success: function(req) {
 					if(!req.IsError){
 						$(".videos-modal-mask").hide();
-						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();
-					}else{
-						Util.alertMessage(req.Message);
-						$("span[data-video-id='"+_this.VideoId+"']").parent().hide();
-					}
+                    }
+                    $("span[data-video-id='"+_this.VideoId+"']").parent().hide();
 				},
 				error: function(msg){
 

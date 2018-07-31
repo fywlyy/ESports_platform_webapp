@@ -39,9 +39,7 @@ export default function NewsDetail(id) {
 
                     if(!req.IsError){
                         callback && callback(req.Data || []);
-                    }else{
-						Util.alertMessage(req.Message);
-					}
+                    }
 
                 },
                 error: function(msg){
@@ -76,12 +74,8 @@ export default function NewsDetail(id) {
 					if(!req.IsError){
 						Util.alertMessage('报名成功！');
 						Util.linkTo('/matches');
-					}else{
-						Util.alertMessage(req.Message,function(){
-							Util.linkTo('/matches');
-						});
 					}
-					Util.loading(false);
+                    Util.loading(false);
 				},
 				error: function(msg) {
 

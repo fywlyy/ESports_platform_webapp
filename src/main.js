@@ -220,11 +220,12 @@ $.ajaxSetup({
         let currentRote = Util.getRouter();
 
         if(result.IsError){
-            console.log(result.Message);
             if(ErrCode == 400){
                 localStorage.removeItem('UserInfo');
                 Util.deleteCookie('AccessToken',document.domain);
                 currentRote != '/login' && Util.linkTo('/login');
+            }else{
+                Util.alertMessage(result.Message);
             }
             return false;
         }

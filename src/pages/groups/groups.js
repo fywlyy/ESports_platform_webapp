@@ -31,7 +31,7 @@ export default function Groups() {
                 $(".container").html(GroupsTpl({circleList:data}));
 
                 that.params.CircleId = data[0].Id;
-                that.CircleName = data[0].Name;
+                that.circleList = data;
                 // that.getUserPostMsgList(that.params, that.renderMsgList.bind(that), 'loadMore');
                 that.renderMescroll.call(that);
                 var swiper = new Swiper('.group-list',{
@@ -137,9 +137,13 @@ export default function Groups() {
         },
         addGroups: function() {
             let token = Util.getCookie('AccessToken');
+            let { params: { CircleId }, circleList } = this;
+            let CircleName = _.find(circleList,function(item){
+                return item.Id == CircleId;
+            }).Name;
 
             if(!!token){
-                Util.linkTo('/edit-dynamic/' + this.params.CircleId +'/'+ this.CircleName);
+                Util.linkTo('/edit-dynamic/' + CircleId +'/'+ encodeURI(encodeURI(CircleName)));
             }else{
                 Util.linkTo('/login');
             }

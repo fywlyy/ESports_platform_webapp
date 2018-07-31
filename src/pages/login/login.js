@@ -55,9 +55,7 @@ export default function Login() {
 						Util.addCookie('AccessToken',AccessToken,3600,document.domain);
 						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));
 						Util.linkTo('/matches');	
-					}else{
-                        Util.alertMessage(req.Message);
-                    }		
+					}		
                     Util.loading(false);	       
 				},
 				error: function(msg){

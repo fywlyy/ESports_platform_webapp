@@ -36,9 +36,7 @@ export default function NewsDetail(id) {
 
                     if(!req.IsError){
                         callback && callback(req.Data || []);
-                    }else{
-						Util.alertMessage(req.Message);
-					}
+                    }
 
                 },
                 error: function(msg){

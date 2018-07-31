@@ -14,7 +14,7 @@ export default function EditDynamic(id,name) {
 	const handlers = {
 		imgUrls: [],
 		init: function() {
-			$(".container").html( EditDynamicTpl({CircleName: decodeURI(name)}) );
+			$(".container").html( EditDynamicTpl({CircleName: decodeURI(decodeURI(name))}) );
 			this.bindEvent();
 			Util.setTitle('编辑动态');
 
@@ -71,8 +71,6 @@ export default function EditDynamic(id,name) {
 					if(!req.IsError){
                         Util.alertMessage('动态信息发布成功！');
                         Util.linkTo('/groups');
-					}else{
-						Util.alertMessage(req.Message);
 					}
 				},
 				error: function(msg){
