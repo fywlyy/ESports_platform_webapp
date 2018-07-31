@@ -31,6 +31,7 @@ export default function Groups() {
                 $(".container").html(GroupsTpl({circleList:data}));
 
                 that.params.CircleId = data[0].Id;
+                that.CircleName = data[0].Name;
                 // that.getUserPostMsgList(that.params, that.renderMsgList.bind(that), 'loadMore');
                 that.renderMescroll.call(that);
                 var swiper = new Swiper('.group-list',{
@@ -138,7 +139,7 @@ export default function Groups() {
             let token = Util.getCookie('AccessToken');
 
             if(!!token){
-                Util.linkTo('/edit-dynamic');
+                Util.linkTo('/edit-dynamic/' + this.params.CircleId +'/'+ this.CircleName);
             }else{
                 Util.linkTo('/login');
             }

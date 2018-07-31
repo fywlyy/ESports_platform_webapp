@@ -22,24 +22,17 @@ export default function PersonalDetails(id) {
         },
 		init: function() {
 			const _this = this;
-			const userInfo = JSON.parse(localStorage.getItem('UserInfo'));
-			const isLoginUser = userInfo && userInfo.Id == id ? true : false;
+			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
+			const isLoginUser = loginUserInfo && loginUserInfo.Id == id ? true : false;
 
-			if(isLoginUser){
-				$(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
-				this.getUserPostMsgList(this.params,function(groupsInfo){
-					GroupInfoList($(".gropusList .group-info-list"),groupsInfo);
+            this.getUserInfo(function(userInfo){
+                _this.userInfo = userInfo;
+                $(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
+                _this.getUserPostMsgList(_this.params,function(groupsInfo){						
+                    GroupInfoList($(".gropusList .group-info-list"),groupsInfo,true);
                 })
-                this.bindEvent();
-			}else{
-				this.getUserInfo(function(otherUserInfo){
-                    $(".container").html( PersonalDetailsTpl({isLoginUser,userInfo: otherUserInfo}) );
-					_this.getUserPostMsgList(_this.params,function(groupsInfo){						
-						GroupInfoList($(".gropusList .group-info-list"),groupsInfo);
-                    })
-                    _this.bindEvent();
-				})
-			}
+                _this.bindEvent();
+            })
 			
 			Util.setTitle('个人详情');
 		},
@@ -101,9 +94,10 @@ export default function PersonalDetails(id) {
 		},
         addGroups: function() {
             let token = Util.getCookie('AccessToken');
+            let userInfo = this.userInfo;
 
             if(!!token){
-                Util.linkTo('/edit-dynamic');
+                Util.linkTo('/edit-dynamic/' + userInfo.CircleId +'/'+ userInfo.CircleName);
             }else{
                 Util.linkTo('/login');
             }

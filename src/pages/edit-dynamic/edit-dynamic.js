@@ -1,5 +1,5 @@
 /**
- * 新闻列表页
+ * 动态发布
  */
 
 import _ from 'underscore';
@@ -9,13 +9,12 @@ import EditDynamicTpl from './edit-dynamic.html';
 
 import "./edit-dynamic.scss";
 
-export default function EditDynamic(id) {
+export default function EditDynamic(id,name) {
 	const accessToken = Util.getCookie('AccessToken');
 	const handlers = {
 		imgUrls: [],
 		init: function() {
-
-			$(".container").html( EditDynamicTpl() );
+			$(".container").html( EditDynamicTpl({CircleName: decodeURI(name)}) );
 			this.bindEvent();
 			Util.setTitle('编辑动态');
 
@@ -63,7 +62,7 @@ export default function EditDynamic(id) {
 				url: API.addPostMessage,
 				data: {
 					Body: {
-						CircleId: 1,
+						CircleId: id,
 						Content: con,
 						ImageUrlList: this.imgUrls
 					}

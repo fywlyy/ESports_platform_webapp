@@ -167,10 +167,10 @@ const AccountRentSuccessCb = function(id) {
     },'AccountRentSuccess')
 };
 /*编辑动态*/
-const EditDynamicCb = function(id) {
+const EditDynamicCb = function(id,name) {
     require.ensure([], (require) => {
         let EditDynamic = require('./pages/edit-dynamic/edit-dynamic.js');
-        EditDynamic.default(id);
+        EditDynamic.default(id,name);
     },'EditDynamic')
 };
 /*邀请陪玩*/
@@ -260,7 +260,7 @@ const routes = {
     '/create-order/:id':CreateOrderCb,
     '/invite-success':InviteSuccessCb,
     '/accountRent-success/:id':AccountRentSuccessCb,
-    '/edit-dynamic':EditDynamicCb,
+    '/edit-dynamic/:id/:name':EditDynamicCb,
     '/inviting-to-play/:id':InvitingToPlayCb,
     '/inviting-create-order/:id':InvitingCreateOrderCb,
     '/order-details':OrderDetailsCb,
