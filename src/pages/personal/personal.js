@@ -15,6 +15,7 @@ export default function Personal() {
 
 	const handlers = {
 		init: function() {
+            let _this = this;
 			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
 			if(!loginUserInfo){
@@ -23,11 +24,10 @@ export default function Personal() {
 			}
 
 			this.getUserInfo(loginUserInfo.Id,function(userInfo){
-				$(".container").html( PersonalTpl({userInfo}) );
-			})
-
-			Activity($('.personal-page-container'),{});
-			this.bindEvent();
+                $(".container").html( PersonalTpl({userInfo}) );
+                Activity($('.personal-page-container'),{});
+                _this.bindEvent();
+			})			
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -55,7 +55,7 @@ export default function Personal() {
 		},
 		handleChangeTab: function() {
 			$(".personal-page .personal-page-tabBar").on("click", ">div", function(e){
-				let $this = $(this);
+                let $this = $(this);
 				if($this.hasClass('active')){
 					return;
 				}else{

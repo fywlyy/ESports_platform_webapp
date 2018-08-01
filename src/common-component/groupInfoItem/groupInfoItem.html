@@ -11,7 +11,13 @@
     <div class="content">
         <p>{{Content}}</p>
         <div>
-            <img class="js-handle" data-handle="handleShowImg" src="{{ImageUrlList[0]}}" alt="">
+            {{each ImageUrlList item i}}
+            <div 
+                class="img-box js-handle" 
+                data-handle="handleShowImg" 
+                data-src="{{item}}" 
+                style="background:url({{item}}) no-repeat center center;background-size:cover;"></div>
+            {{/each}}
             <div class="operator">
                 <span class="js-handle" data-handle="handleComment"></span>
                 <span class="js-handle" data-handle="handleLike"></span>

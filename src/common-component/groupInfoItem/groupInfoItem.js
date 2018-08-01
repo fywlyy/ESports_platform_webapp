@@ -1,4 +1,5 @@
 import Util from '../util/util.js';
+import PinchZoom from '../../common-component/pinchZoom/pinchZoom.js';
 import GroupInfoItemTpl from "./groupInfoItem.html";
 import API from '../../api/Api.js';
 import "./groupInfoItem.scss";
@@ -84,6 +85,11 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
                     console.log(msg);
                 }
             })
+        },
+        handleShowImg: function(e,$this){
+            let url = $this.data('src');
+
+            PinchZoom(url);
         }
     }
 

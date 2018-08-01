@@ -48,15 +48,17 @@ export default function Login() {
 					Body
 				},
 				success: function(req){
-					let { Data, IsError } = req;
+                    let { Data, IsError } = req;
+                    
+                    Util.loading(false);
+                    
 					if(!IsError){
-						let { UserInfo, AccessToken } = Data;
-						
-						Util.addCookie('AccessToken',AccessToken,3600,document.domain);
-						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));
-						Util.linkTo('/matches');	
-					}		
-                    Util.loading(false);	       
+                        let { UserInfo, AccessToken } = Data;
+                        
+                        Util.linkTo('/matches');
+                        Util.addCookie('AccessToken',AccessToken,360,document.domain);
+						window.localStorage.setItem('UserInfo',JSON.stringify(UserInfo));  
+					}		            	       
 				},
 				error: function(msg){
 					console.log(msg);

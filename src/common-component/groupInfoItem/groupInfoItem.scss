@@ -92,11 +92,13 @@
             border-bottom: 1px solid #d9d8d4;
             position: relative;
 
-            >img{
-                display: block;
-                max-width: rem(225);
+            .img-box{
+                & + .img-box{
+                    margin-top:rem(10);
+                }
+                width:rem(425);
+                height:rem(225);               
             }
-
             >div.operator{
                 display: inline-block;
                 position: absolute;

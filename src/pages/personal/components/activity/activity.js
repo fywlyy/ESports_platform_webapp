@@ -13,7 +13,6 @@ export default function Activity($el, infoList) {
 
 	const handlers = {
 		init: function() {
-
 			let _this = this;
 
 			this.getActivityList(function(data){

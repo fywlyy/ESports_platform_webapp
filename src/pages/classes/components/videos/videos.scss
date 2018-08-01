@@ -32,6 +32,10 @@
                 z-index: 100;
             }
 
+            .video-js{
+                font-size:rem(10)!important;
+            }
+
             .video-js.vjs-fluid{
                 position: absolute;
                 top:0;
@@ -60,7 +64,7 @@
                 background-color: rgba(115,133,159,.5);
                 border-width: 0.15em;
                 margin-top: -1.5em;
-                margin-left: -1.7em;
+                margin-left: -1.8em;
             }
             /* 中间的播放箭头 */
             .video-js .vjs-big-play-button .vjs-icon-placeholder {
@@ -68,7 +72,7 @@
             }
             
             .video-js.vjs-has-started .vjs-control-bar,.video-js.vjs-has-started .vjs-loading-spinner{
-                font-size:3em;
+                font-size:rem(28);
             }
 
             .video-js.vjs-fullscreen .vjs-big-play-button{
@@ -83,13 +87,13 @@
                 background-color: rgba(115,133,159,.5);
                 border-width: 0.1em;
                 margin-top: -1.25em;
-                margin-left: -1.75em;
+                margin-left: -1.55em;
             }
             .video-js.vjs-fullscreen .vjs-big-play-button .vjs-icon-placeholder {
                 font-size: 1.6em;
             }
             .video-js.vjs-fullscreen  .vjs-control-bar,.video-js.vjs-fullscreen  .vjs-loading-spinner{
-                font-size:1.5em;
+                font-size:rem(26);
             }
             .video-mask{
                 position: absolute;
