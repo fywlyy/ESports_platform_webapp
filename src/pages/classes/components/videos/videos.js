@@ -35,6 +35,14 @@ export default function Videos($el) {
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e,$(this));
 			});
+
+			$(".videos-item-image").each(function(){
+				let height = $(this).find('.video-js')[0].offsetHeight;
+
+				$(this).css({
+					height: height
+				})
+			})
 		},
 		getVideoList: function(cb){
 			$.ajax({
