@@ -32,6 +32,8 @@ export default function GroupInfoList($el, infoList, firstLoad) {
             });
         },
         handleLike: function(e, $this) {
+            let hasLiked = $this.hasClass("hasLiked");
+
             $.ajax({
                 url: API.clickLike,
                 type: 'post',
@@ -39,7 +41,14 @@ export default function GroupInfoList($el, infoList, firstLoad) {
                 success: function(req){
 
                     if(!req.IsError){
-                        $this.addClass("liked");
+                        if(hasLiked){
+                            Util.alertMessage('取消点赞成功！');
+                            $this.removeClass("hasLiked");
+                        }else{
+                            Util.alertMessage('点赞成功！');
+                            $this.addClass("hasLiked");
+                        }
+                        
                     }
 
                 },

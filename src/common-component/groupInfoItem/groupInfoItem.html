@@ -20,7 +20,7 @@
             {{/each}}
             <div class="operator">
                 <span class="js-handle" data-handle="handleComment"></span>
-                <span class="js-handle" data-handle="handleLike"></span>
+                <span class="js-handle {{IsClickLike ? 'hasLiked' : ''}}" data-handle="handleLike"></span>
                 <span class="js-handle" data-handle="handleMenu"></span>
                 <div class="operator_menu">
                     <div class="js-handle" data-handle="handleReport">

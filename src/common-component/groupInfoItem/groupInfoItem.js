@@ -30,14 +30,22 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
             });
         },
         handleLike: function(e, $this) {
+            let hasLiked = $this.hasClass("hasLiked");
+
             $.ajax({
                 url: API.clickLike,
                 data: {Body:$this.parents(".groupItem").data('id')},
                 success: function(req){
 
                     if(!req.IsError){
-                        $(".comment-header .like-num span:last-child").html(req.Data);
-                        $this.addClass("liked");
+                        $(".comment-header .like-num span:last-child").html(hasLiked ?req.Data - 2 : req.Data);
+                        if(hasLiked){
+                            Util.alertMessage('取消点赞成功！');
+                            $this.removeClass("hasLiked");
+                        }else{
+                            Util.alertMessage('点赞成功！');
+                            $this.addClass("hasLiked");
+                        }  
                     }
 
                 },

@@ -131,7 +131,7 @@
                     &:before{
                         background-image:url('../../asset/images/groupItem/like.png');
                     }
-                    &.liked:before{
+                    &.hasLiked:before{
                         background-image:url('../../asset/images/groupItem/liked.png');
                     }
                 }
