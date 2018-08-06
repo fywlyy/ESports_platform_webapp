@@ -12,18 +12,19 @@
   
   .detailsInfo{
     width: 100%;
-    height: rem(510);
+    height: rem(710);
     position: absolute;
     bottom: 0;
     background: url('../../asset/images/matches/bgBar.png') repeat-x;
-    background-size: rem(32) rem(510);
+    background-size: rem(32) rem(710);
     // display: flex;
     // align-items: center;
     // justify-content: center;
-    padding:0 rem(20) rem(20);
-    @include box-sizing();
-    overflow: auto;
+    padding:rem(200) rem(20) rem(20);
+    @include box-sizing();    
     >div{
+        height:100%;
+        overflow: auto;
       text-align: center;
       >div:nth-child(1){
         font-size: rem(48);

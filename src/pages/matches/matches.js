@@ -1,5 +1,7 @@
 import _ from 'underscore';
 import Swiper from 'Swiper';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import MatchesTpl from './matches.html';
@@ -54,6 +56,14 @@ export default function Matches() {
                         clickable: true
                     }
                 });
+
+                window.videoObjs = window.videoObjs || [];
+                window.videoObjs.map((item,index) => { //销毁
+                    item.dispose();
+                });
+                window.videoObjs= [];
+
+                this.initVideo(this.videoList);
     
                 Util.setTitle('比赛');
     
@@ -89,7 +99,7 @@ export default function Matches() {
                 success: function(req){
 
                     if(!req.IsError){
-                        cb && cb(req.Data || []);
+                        cb && cb(req.Result || []);
                     }
 
                 },
@@ -118,6 +128,20 @@ export default function Matches() {
             })
 
         },
+        initVideo: function(videoList) {
+			let _this = this;
+			videoList.map((item,index) => {
+				window.videoObjs[index] = videojs('video-' + index,{
+					width: '100%',
+					height: '100%'
+				},function() {
+					this.on('play',function(){
+						_this.playVideo && _this.playVideo != this && _this.playVideo.pause();
+						_this.playVideo = this;
+					})
+				});
+			})
+		},
         toSignUpInfo:function(e,$this){
             const id = $this.parents(".event-item").data("id");
             Util.linkTo('/game-sign-up-info/' + id);

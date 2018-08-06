@@ -7,7 +7,17 @@
             {{each videoList item i}}
 
                 <div class="swiper-slide">
-                    <img src="../../asset/images/matches/video.png" alt=""/>
+                    <img src="{{item.DefaultImageUrl}}" alt=""/>
+                    <video
+                    id="video-{{i}}"
+                    class="video-js vjs-default-skin vjs-fluid  vjs-big-play-centered"
+                    controls 
+                    preload="none" 
+                    playsinline
+                    poster="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+                    style="background: transparent url({{item.DefaultImageUrl}}) no-repeat 0 0;background-size:cover;">
+                        <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+                    </video>
                 </div>
 
             {{/each}}

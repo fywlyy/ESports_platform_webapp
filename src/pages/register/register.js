@@ -63,29 +63,32 @@ export default function Login() {
 				data: {
 					Body: {MobilePhone: phoneNum}
 				},
-				success: function(result) {
-					Util.alertMessage('验证码发送成功！');
+				success: function(req) {
+
+                    if(!req.IsError){
+                        Util.alertMessage('验证码发送成功！');
+                        $this.html(time + 's').css({
+                            backgroundColor: '#c0c0c0'
+                        })
+                        this.countdown(time - 1,function(overTime) {
+                            if(overTime < 0){
+                                $this
+                                .html('获取验证码')
+                                .removeClass('disabled')
+                                .css({
+                                    backgroundColor: '#ffaf00'
+                                });
+                            }else{
+                                $this.addClass("disabled").html(overTime + 's');
+                            }
+                        })
+                    }                
+
 				},
 				error: function(msg){
 					console.log(msg);
 				}
 			})			
-
-			$this.html(time + 's').css({
-				backgroundColor: '#c0c0c0'
-			})
-			this.countdown(time - 1,function(overTime) {
-				if(overTime < 0){
-					$this
-					.html('获取验证码')
-					.removeClass('disabled')
-					.css({
-						backgroundColor: '#ffaf00'
-					});
-				}else{
-					$this.addClass("disabled").html(overTime + 's');
-				}
-			})
 		},
 		handleCheck: function(e, $this) {
 			$this.hasClass('checked') ? $this.removeClass('checked') : $this.addClass('checked');
