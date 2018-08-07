@@ -47,8 +47,7 @@ export default function GroupInfoList($el, infoList, firstLoad) {
                         }else{
                             Util.alertMessage('点赞成功！');
                             $this.addClass("hasLiked");
-                        }
-                        
+                        }                        
                     }
 
                 },
