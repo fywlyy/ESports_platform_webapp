@@ -82,7 +82,12 @@ export default function Personal() {
 			}else{
 				Util.linkTo('/apply-certf');
 			}
-		}
+        },
+        logout: function() {
+            Util.deleteCookie('AccessToken',document.domain);
+            window.localStorage.removeItem('UserInfo'); 
+            Util.linkTo('/login');
+        }
 	}   
 
 	handlers.init(); 

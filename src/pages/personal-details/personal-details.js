@@ -24,7 +24,7 @@ export default function PersonalDetails(id) {
 			const _this = this;
 			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 			const isLoginUser = loginUserInfo && loginUserInfo.Id == id ? true : false;
-
+            
             this.getUserInfo(function(userInfo){
                 _this.userInfo = userInfo;
                 $(".container").html( PersonalDetailsTpl({isLoginUser,userInfo}) );
