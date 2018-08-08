@@ -95,8 +95,8 @@ export default function GroupInfoItem($el, itemData, onlyOne) {
             })
         },
         handleShowImg: function(e,$this){
-            let url = $this.data('src');
-
+            let url = $this.data('url');
+            
             PinchZoom(url);
         }
     }

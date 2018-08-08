@@ -108,7 +108,7 @@ export default function GroupInfoList($el, infoList, firstLoad) {
             })
         },
         handleShowImg: function(e,$this){
-            let url = $this.data('src');
+            let url = $this.data('url');
 
             PinchZoom(url);
         }
