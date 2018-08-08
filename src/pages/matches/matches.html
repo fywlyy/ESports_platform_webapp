@@ -5,9 +5,9 @@
         <div class="swiper-wrapper">
 
             {{each videoList item i}}
-
                 <div class="swiper-slide">
-                    <img src="{{item.DefaultImageUrl}}" alt=""/>
+                    <!-- <img src="{{item.DefaultImageUrl}}" alt=""/> -->
+                    <img src="http://xiyuxing.oss-cn-qingdao.aliyuncs.com/3c6f3cb1-968a-40e5-b2bb-6dc611d2c9bb.png" alt=""/>
                     <video
                     id="video-{{i}}"
                     class="video-js vjs-default-skin vjs-fluid  vjs-big-play-centered"
@@ -15,8 +15,8 @@
                     preload="none" 
                     playsinline
                     poster="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
-                    style="background: transparent url({{item.DefaultImageUrl}}) no-repeat 0 0;background-size:cover;">
-                        <source src="{{item.VideoPalyUrl}}" type="video/mp4"></source>
+                    style="background: transparent url(http://xiyuxing.oss-cn-qingdao.aliyuncs.com/3c6f3cb1-968a-40e5-b2bb-6dc611d2c9bb.png) no-repeat 0 0;background-size:cover;">
+                        <source src="{{item.AdRelativeUrl}}" type="video/mp4"></source>
                     </video>
                 </div>
 

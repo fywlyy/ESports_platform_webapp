@@ -21,7 +21,7 @@ module.exports = {
 	addPostMessage: `${baseUrl}/Circle/AddPostMessage`,
 	/*比赛*/
 	getCompetitionList:`${baseUrl}/Competition/GetRecommendCompetitionList`,
-	getVideoList:`${baseUrl}/Competition/GetAdvertisingList`,
+	GetAdvertisingList:`${baseUrl}/Competition/GetAdvertisingList`,
 	getNewsList:`${baseUrl}/Competition/GetRecommendNewsList`,
 	getMatchDetailsInfo:`${baseUrl}/Competition/GetCompetitionDetail`,
 	getAllMatchesList:`${baseUrl}/Competition/SearchCompetitionList`,

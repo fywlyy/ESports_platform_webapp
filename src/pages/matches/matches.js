@@ -93,13 +93,13 @@ export default function Matches() {
         getVideoList: function(cb){
 
             $.ajax({
-                url: API.getVideoList,
+                url: API.GetAdvertisingList,
                 type: 'post',
                 data: {Body:null},
                 success: function(req){
 
                     if(!req.IsError){
-                        cb && cb(req.Result || []);
+                        cb && cb(req.Data || []);
                     }
 
                 },
