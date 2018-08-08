@@ -43,8 +43,12 @@
         color:#050100;
       }
       .info-con{
+        display: block;
+        padding:0 0 rem(5) rem(20);
+        overflow: hidden;
         font-size:rem(30);
         color:#625b51;
+        text-align: justify;
       }
       .input-box{
         position: relative;

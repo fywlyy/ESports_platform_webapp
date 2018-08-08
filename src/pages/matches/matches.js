@@ -136,6 +136,9 @@ export default function Matches() {
 					height: '100%'
 				},function() {
 					this.on('play',function(){
+                        $(this.el_).find('.vjs-tech').css({
+							background: '#000'
+						})
 						_this.playVideo && _this.playVideo != this && _this.playVideo.pause();
 						_this.playVideo = this;
 					})

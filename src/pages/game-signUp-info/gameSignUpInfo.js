@@ -51,7 +51,7 @@ export default function NewsDetail(id) {
 				return;
 			}
 
-			Util.linkTo('/game-sign-up-entr/1');
+			Util.linkTo('/game-sign-up-entr/' + id);
 		}
 	}   
 
