@@ -3,7 +3,7 @@
 	<p>{{newsDetail.Title}}</p>
 
 	<div class="headerInfo">
-		<img src={{newsDetail.UserUrl}} alt="">
+		<img src="{{newsDetail.UserUrl || require('../../asset/images/groupItem/headImage.png')}}" alt="">
 		<div>
 			<p>{{newsDetail.PublishNickName}}</p>
 			<span>{{newsDetail.InDate}}</span>

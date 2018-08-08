@@ -70,7 +70,7 @@ export default function Login() {
                         $this.html(time + 's').css({
                             backgroundColor: '#c0c0c0'
                         })
-                        this.countdown(time - 1,function(overTime) {
+                        _this.countdown(time - 1,function(overTime) {
                             if(overTime < 0){
                                 $this
                                 .html('获取验证码')
@@ -82,7 +82,7 @@ export default function Login() {
                                 $this.addClass("disabled").html(overTime + 's');
                             }
                         })
-                    }                
+                    }   
 
 				},
 				error: function(msg){

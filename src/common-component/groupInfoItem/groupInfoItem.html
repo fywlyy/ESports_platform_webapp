@@ -1,6 +1,6 @@
 <div class="groupItem {{onlyOne ? 'only-one' : ''}}" data-id="{{Id}}">
     <div class="headerInfo">
-        <a href="#/personal-details/{{UserId}}"><img src="../../asset/images/groupItem/headImage.png" alt=""></a>
+        <a href="#/personal-details/{{UserId}}"><img src="{{UserUrl || require('../../asset/images/groupItem/headImage.png')}}" alt=""></a>
         <div>
             <!-- <p>{{NickName}}<img src="../../asset/images/groupItem/live.png" alt=""></p> -->
             <p>{{NickName}}</p>

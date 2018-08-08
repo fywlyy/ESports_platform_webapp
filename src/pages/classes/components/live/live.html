@@ -1,7 +1,7 @@
 <div class="live-page">
 
 	{{each liveList item}}
-		<a href="http://game.dylkj.cn/live/test">
+		<a href="{{item.PlayType == 1 ? item.PlaybackUrl : item.OnlinePalyUrl}}">
 			<div class="liveItem">
 				<img src={{item.DefaultImageUrl}} alt="">
 				<div>

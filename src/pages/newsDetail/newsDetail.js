@@ -12,9 +12,10 @@ export default function NewsDetail(id) {
 
 	const handlers = {
 		init: function() {
+            let _this = this;
 			this.getNewsInfo(function(data){
 				$(".container").html( NewsDetailTpl({newsDetail:data}) );
-				this.bindEvent();
+				_this.bindEvent();
 				Util.setTitle('新闻详情');
 			});
 		},
