@@ -22,6 +22,8 @@ export default function Matches() {
 
             const _that = this;
 
+            Util.setTitle('');
+
             this.getCompetitionList(function(data){
                 _that.compList = data;
                 _that.renderHtml();
@@ -69,9 +71,6 @@ export default function Matches() {
                 window.videoObjs= [];
 
                 this.initVideo(this.videoList);
-    
-                Util.setTitle('比赛');
-    
                 this.bindEvent();
 
             }

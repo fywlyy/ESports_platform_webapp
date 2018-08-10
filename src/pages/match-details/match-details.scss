@@ -10,17 +10,7 @@
   }
   
   .detailsInfo{
-    width: 100%;
-    height: rem(710);
-    position: absolute;
-    bottom: 0;
-    background: url('../../asset/images/matches/bgBar.png') repeat-x;
-    background-size: rem(32) rem(710);
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    padding:rem(200) rem(20) rem(20);
-    @include box-sizing();    
+    padding:rem(30) rem(20);  
     >div{
         height:100%;
         overflow: auto;

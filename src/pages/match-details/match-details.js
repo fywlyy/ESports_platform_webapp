@@ -13,9 +13,10 @@ export default function MatchDetails(id) {
 
             let _this = this;
 
+            Util.setTitle('赛程详情');
+            
             this.getMatchDetailsInfo(function(data){
                 $(".container").html(MatchDetailsTpl({info: data}));
-                Util.setTitle('赛程详情');
                 _this.bindEvent();
             });
 
