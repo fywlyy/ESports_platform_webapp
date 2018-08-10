@@ -47,6 +47,8 @@ export default function Matches() {
             });
         },
         renderHtml:function(){
+            let _this = this;
+
             this.count--;
             if(this.count === 0){
                 $(".container").html(MatchesTpl({videoList:this.videoList,compList:this.compList,newsList:this.newsList}));
@@ -54,7 +56,10 @@ export default function Matches() {
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true
-                    }
+                    },
+                    onSlideChangeEnd: function(){
+                        _this.playVideo && _this.playVideo.pause();
+                    },
                 });
 
                 window.videoObjs = window.videoObjs || [];

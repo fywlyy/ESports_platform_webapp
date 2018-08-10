@@ -304,5 +304,5 @@ router.init();
 
 //初始化默认路由
 if(!Util.getRouter()){
-    Util.linkTo('/matches');
+    Util.linkTo('/groups');
 }
