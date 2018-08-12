@@ -22,7 +22,7 @@
     li{      
       position: relative;
       padding:rem(22) rem(50) 0 rem(14);
-      height:rem(72);
+      min-height:rem(72);
       @include box-sizing();
       & + li{
         border-top:2px solid #d9d8d4;
@@ -44,7 +44,7 @@
       }
       .info-con{
         display: block;
-        padding:0 0 rem(5) rem(20);
+        padding:0 0 rem(5) rem(80);
         overflow: hidden;
         font-size:rem(30);
         color:#625b51;

@@ -12,7 +12,7 @@ export default function Login() {
 
 	const handlers = {
 		init: function() {
-			$("#app-container").html( LoginTpl({ title: '测试' }) );
+			$(".container").html( LoginTpl({ title: '测试' }) );
 			this.bindEvent();
 		},
 		bindEvent: function() {

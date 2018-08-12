@@ -37,8 +37,11 @@ export default function EditDynamic(id,name) {
 					contentType: false, //不设置内容类型
 					processData: false, //不处理数据
 					success:function(req){
-						if(!req.isError){
-							_this.imgUrls.push(req.Data.RelativeUrl);
+						if(!req.IsError){
+							let resList = req.Data;
+							resList.forEach(element => {
+								_this.imgUrls.push(element.RelativeUrl);
+							});
 						}
 					},
 					error:function(){

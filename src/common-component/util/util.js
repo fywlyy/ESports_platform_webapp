@@ -464,13 +464,15 @@ module.exports = {
                 }
             })
 
+            !isMainRoter && $(".footer .nav-item.active").removeClass("active");
+
             key.length > 0 && isMainRoter && $(".footer .nav-item.active").removeClass("active");
             key.length > 0 && isMainRoter && $(".footer .nav-item[data-router="+key.split('/')[1]+"]").addClass("active");
         }
     },
     restHeader: function(key) {
         let noHeader = false;
-        const blacklist = ['/games', '/matches', '/classes', '/personal'];//Header隐藏黑名单路由
+        const blacklist = ['/games', '/matches', '/classes', '/personal', '/login'];//Header隐藏黑名单路由
 
         blacklist.map((item,index) => {
             if(key === item){
@@ -488,7 +490,7 @@ module.exports = {
     },
     isMainPage: function(key) {
         let bool = true;
-        const blacklist = ['/login','/register','/forgetPwd'];//非主页路由
+        const blacklist = ['/register','/forgetPwd'];//非主页路由
 
         blacklist.map((item,index) => {
             if(key === item){
@@ -499,6 +501,7 @@ module.exports = {
         return bool;
     },
     previewImg: function($input,changCb,loadCb) {
+        let _this = this;
         //判断本浏览器是否支持这个API。
         if(typeof FileReader==='undefined'){ 
             this.alertMessage("抱歉，你的浏览器不支持 FileReader"); 
@@ -507,27 +510,33 @@ module.exports = {
             $input.on('change',function(){
                 var i=0;
                 var files = this.files;
-                var func = function(){
-                    var file = files[i];
-                    var reader = new FileReader();
-                    
-                    if(!file.type){
-                        return;
+
+                //上传图片限制
+                _this.limitImgUpload(files, 8, 5, function(){
+                    var func = function(){
+                        var file = files[i];
+                        var reader = new FileReader();
+                        
+                        if(!file.type){
+                            return;
+                        }
+                        
+                        if(!/image\/\w+/.test(file.type)){
+                            show.innerHTML = "请确保文件为图像类型";
+                            return false;
+                        }
+    
+                        reader.onload = function(e){
+                            loadCb && loadCb(this.result);
+                            i++;
+                            i < files.length && func(); //选取下一张图片
+                        }
+                        reader.readAsDataURL(file);
                     }
-                    
-                    if(!/image\/\w+/.test(file.type)){
-                        show.innerHTML = "请确保文件为图像类型";
-                        return false;
-                    }
-                    reader.onload = function(e){
-                        loadCb && loadCb(this.result);
-                        i++;
-                        i < files.length && func(); //选取下一张图片
-                    }
-                    reader.readAsDataURL(file);
-                }
-                func();
-                changCb && changCb(files);
+                    func();
+                    changCb && changCb(files);
+                });
+                
             }); //如果支持就监听改变事件，一旦改变了就运行readFile函数。
         }
     },
@@ -537,5 +546,19 @@ module.exports = {
         var output = temp.innerHTML; 
         temp = null; 
         return output;
+    },
+    // 上传图片限制，files图片数组，size单个图片大小限制（默认3M），num上传总数限制（默认3张），cb验证通过的回调
+    limitImgUpload: function(files = [], size = 3, num = 3, cb) {
+        if(files.length > num){
+            this.alertMessage(`一次最多上传${num}张图片`);
+            return;
+        }
+        for(let file of files){
+            if(file.size > size * 1024 * 1024){
+                this.alertMessage(`图片大小不能超过${size}M`);
+                return;
+            }
+        }
+        cb && cb();
     }
 }
