@@ -133,7 +133,10 @@ $activeBorder: 1px solid #ef9000;
   
     }
     .container-list{
-      padding:rem(15) 0;
+      .acc-ul, .online-ul{
+        padding:rem(15) 0;
+        box-sizing: border-box;
+      }
       .components-item{
         &+.components-item{
           margin-top: rem(12);

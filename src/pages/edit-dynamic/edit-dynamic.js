@@ -27,9 +27,10 @@ export default function EditDynamic(id,name) {
                 _this[handle] && _this[handle](e);
 			});
 			
-			Util.previewImg($("input[type='file']"),function(files){
+			Util.previewImg($("input[type='file']"),function(files, resArr){
 				let uploadFile = new FormData($("#file")[0]);
 
+				Util.loading(true, '上传中，请稍后...');
 				$.ajax({
 					url: API.uploadFile + '?accessToken=' + accessToken,
 					data:uploadFile,
@@ -37,10 +38,16 @@ export default function EditDynamic(id,name) {
 					contentType: false, //不设置内容类型
 					processData: false, //不处理数据
 					success:function(req){
+						Util.loading(false);
+						alert(JSON.stringify(req));
 						if(!req.IsError){
+							Util.alertMessage("上传成功！");
 							let resList = req.Data;
 							resList.forEach(element => {
 								_this.imgUrls.push(element.RelativeUrl);
+							});
+							resArr.forEach(item => {
+								$(".image-picker").children().eq(0).before("<div><img src='"+item+"'></div>");
 							});
 						}
 					},
@@ -49,8 +56,6 @@ export default function EditDynamic(id,name) {
 					}
 				})
 		
-			},function(result){
-				$(".image-picker").children().eq(0).before("<div><img src='"+result+"'></div>");
 			});
 		},
 		handlePost: function() {

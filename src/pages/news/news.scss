@@ -2,7 +2,10 @@
 
 .news-page{
     background: #f1ede8;
-    padding: rem(25) rem(10) 0;
+
+    .news-list{
+        padding: rem(25) rem(10) 0;
+    }
 
     .news-item{
         background: #ffffff;

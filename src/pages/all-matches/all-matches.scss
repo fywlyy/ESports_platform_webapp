@@ -5,6 +5,7 @@ $hotColor: #585757;
 $themeYellow: #ffaf00;
 
 .all-matches-page{
+    height: 100%;
     .select-recommend{
         background: $themeBlack;
         padding-top: rem(16);
@@ -46,7 +47,11 @@ $themeYellow: #ffaf00;
     } 
 
     .matches-list{
-        padding: rem(15) rem(10) 1px;
+        box-sizing: border-box;
+
+        .matches-ul{
+            padding: rem(15) rem(10) 1px;
+        }
 
         .matches-item{
             background: #fff;

@@ -510,12 +510,15 @@ module.exports = {
             $input.on('change',function(){
                 var i=0;
                 var files = this.files;
+                var resArr = [];
 
                 //上传图片限制
                 _this.limitImgUpload(files, 8, 5, function(){
                     var func = function(){
                         var file = files[i];
                         var reader = new FileReader();
+
+                        alert(file.type);
                         
                         if(!file.type){
                             return;
@@ -527,14 +530,14 @@ module.exports = {
                         }
     
                         reader.onload = function(e){
-                            loadCb && loadCb(this.result);
+                            resArr.push(this.result);
                             i++;
                             i < files.length && func(); //选取下一张图片
                         }
                         reader.readAsDataURL(file);
                     }
                     func();
-                    changCb && changCb(files);
+                    changCb && changCb(files, resArr);
                 });
                 
             }); //如果支持就监听改变事件，一旦改变了就运行readFile函数。

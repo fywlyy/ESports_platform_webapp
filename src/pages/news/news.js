@@ -6,17 +6,22 @@ import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
 import NewsTpl from './news.html';
+import MeScroll from 'mescroll.js';
+import NewsItemTpl from './news-item.html';
 
 import "./news.scss";
 
 export default function News() {
 
 	const handlers = {
+		params: {
+			PageIndex: 1,
+			PageSize: 10
+        },
 		init: function() {
 
-			this.getAllNewsList(function(data){
-				$(".container").html( NewsTpl({newsList:data}) );
-			});
+			$('.container').html( NewsTpl() );
+            this.renderMescroll.call(this);
 			this.bindEvent();
 			Util.setTitle('全部新闻');
 
@@ -66,15 +71,15 @@ export default function News() {
 				}
 			})
 		},
-		getAllNewsList:function(cb){
+		getAllNewsList:function(params, cb){
 			$.ajax({
                 url: API.getAllNewsList,
                 type: 'post',
-                data: {Body:null},
+                data: {Body:params},
                 success: function(req){
 
                     if(!req.IsError){
-                        cb && cb(req.Result || []);
+                        cb && cb(req || []);
                     }
 
                 },
@@ -82,7 +87,39 @@ export default function News() {
                     console.log(msg);
                 }
             })
-		}
+		},
+        renderMescroll: function() {
+            const _this = this;
+            let firstLoad = true;
+
+            this.mescroll = new MeScroll("news-mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
+                down: {
+                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip" style="font-size:0.32rem;">下拉刷新</p>'
+                },
+                up: {
+                    isBounce: false,
+                    noMoreSize: 5,
+                    page: {
+                        num : 0, 
+                        size : 10
+                    },
+                    clearEmptyId: 'newsList',
+                    htmlLoading: '<p class="upwarp-progress mescroll-rotate"></p><p class="upwarp-tip" style="font-size:0.32rem;">加载中..</p>',
+                    htmlNodata:"<p class='upwarp-nodata' style='font-size:0.32rem;'>没有更多了-_-</p>",
+                    callback: function(page){
+						_this.params.PageIndex = page.num;
+                        setTimeout(function(){
+                            _this.getAllNewsList(_this.params,_this.renderNewsList.bind(_this,firstLoad));
+                            firstLoad = false;
+                        },500);
+                    }
+                }
+            });
+		},
+		renderNewsList:function(firstLoad,req){
+			this.mescroll.endBySize(req.Result.length, req.TotalCount);
+			$("#newsList").append( NewsItemTpl({newsList: req.Result}) );        
+        }
 	}   
 
 	handlers.init(); 

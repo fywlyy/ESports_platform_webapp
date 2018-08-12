@@ -1,23 +1,20 @@
-{{each accountList item i}}
+{{each seachPlayList item i}}
     <div class="components-item js-handle" data-id="{{item.Id}}" data-handle="toAccountRental">
         <div class="item-container">
             <img class="images-type" src="{{item.DetailImageUrl}}" alt="">
             <div class="prod-detail">
                 <div class="detail-name">{{item.Title}}</div>
                 <div class="detail-advantage">{{item.Remark}}</div>
-                <div>
-                    <div class="detail-price">
-                        ￥<sapn>{{item.UnitPrice}}</sapn>
-                    </div>
-                    <div class="now-use">
-                        <div class="now-use-btn js-handle" data-id="{{item.Id}}" data-handle="placeOrder">立即使用</div>
-                    </div>
+                <div class="detail-price">
+                    ￥<sapn>{{item.UnitPrice}}</sapn>
                 </div>
             </div>
-            
+            <div class="now-use">
+                <div class="now-use-btn js-handle" data-id="{{item.Id}}" data-handle="placeOrder">立即使用</div>
+            </div>
         </div>
     </div>
 {{/each}}
-{{if accountList.length <= 0}}
+{{if seachPlayList.length <= 0}}
 	<div>暂无数据-。-</div>
 {{/if}}

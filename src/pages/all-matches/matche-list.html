@@ -1,4 +1,4 @@
-{{each list item}}
+{{each matchesList item}}
     <div class="matches-item" data-id="{{item.Id}}">
         <img src={{item.DefaultImageUrl}} alt="">
         <div class="matches-info">
@@ -11,3 +11,6 @@
         </div>
     </div>
 {{/each}}
+{{if matchesList.length <= 0}}
+	<div>暂无数据-。-</div>
+{{/if}}
