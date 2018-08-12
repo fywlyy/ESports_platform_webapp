@@ -1,13 +1,25 @@
 @import "../../../../asset/common";
 
 .live-page{
-    padding: rem(15) rem(10) 0;
-   .liveItem{
+    height:100%;
+    padding: 0 rem(10);
+    overflow: hidden;
+    .mescroll-downwarp{
+        margin-top:rem(10);
+    }
+    .live-list{
+        padding:rem(15) 0;
+        li + li{
+            .liveItem{
+                margin-top: rem(15);
+            }
+        }
+    }
+    .liveItem{
         background: #fff;
         border: 1px solid #e3e0db;
         border-radius: rem(15);
         padding: rem(20) rem(10);
-        margin-top: rem(15);
         position: relative;
 
         &:before{

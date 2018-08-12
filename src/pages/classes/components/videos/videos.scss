@@ -1,16 +1,24 @@
 @import "../../../../asset/common";
 
 .videos-page{
-    padding: rem(30) rem(10) 0;
-
+    height:100%;
+    padding: 0 rem(10);
+    overflow: hidden;
+    .mescroll-downwarp{
+        margin-top:rem(10);
+    }
+    .video-list{
+        padding:rem(15) 0;
+    }
     .videos-item{
         background: #ffffff;
         border: 1px solid #e3e0db;
         border-radius: rem(10);
         padding-top: rem(17);
-        margin-bottom: rem(12);
         position: relative;
-
+        & + .videos-item{
+            margin-top: rem(12);
+        }
         >.videos-item-image {
             position: relative;
 
@@ -28,6 +36,7 @@
             }
 
             .video-js{
+                padding-top: 0!important;
                 font-size:rem(10)!important;
             }
 

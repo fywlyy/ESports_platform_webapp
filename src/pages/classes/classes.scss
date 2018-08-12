@@ -1,10 +1,16 @@
 @import "../../asset/common";
 
 .classes-page{
+    height: 100%;
     background: #f1ede8;
     position: relative;
     padding-top: rem(60);
-
+    @include box-sizing();
+    overflow: auto;
+    .classes-item-container{
+        height: 100%;
+        overflow: auto;
+    }
     >.classes-page-tabBar{
         font-size: rem(30);
         color: #93908b;

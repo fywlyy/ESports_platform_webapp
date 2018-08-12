@@ -1,31 +1,7 @@
 <div class="videos-page">
-	{{each videoList item i}}
-		<div class="videos-item">
-			<div class="videos-item-image">
-				<video
-				id="my-player-{{i}}"
-				class="video-js vjs-default-skin vjs-fluid  vjs-big-play-centered"
-				controls 
-				preload="none" 
-				playsinline
-				data-img="{{item.DefaultImageUrl}}"
-				poster="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
-				style="background: transparent url({{item.DefaultImageUrl}}) no-repeat 0 0;background-size:cover;">
-					<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
-				</video>
-				{{if item.VideoType == 0}}
-				<div class="video-mask">
-					<span class="js-handle" data-handle="beforePlay" data-video-id="{{item.Id}}"></span>
-				</div>	
-				{{/if}}			
-			</div>
-			<div class="videos-item-info">
-				<span>{{item.SchoolName}}&nbsp;</span>
-				<span>{{item.PublishName}}</span>
-			</div>
-		</div>
-	{{/each}}
-
+	<div id="mescroll" class="mescroll">
+		<ul class="video-list" id="dataList"></ul>
+	</div>
 	<div class="videos-modal-mask js-handle" data-handle="closeMask">
 		<div class="modal-content">
 			<div class="title">请输入合作学校授权码</div>
@@ -36,8 +12,4 @@
 			</div>
 		</div>
 	</div>
-
-	{{if videoList.length <= 0}}
-		<div>暂无数据-。-</div>
-	{{/if}}
 </div>

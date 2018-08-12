@@ -1,0 +1,31 @@
+{{each videoList item i}}
+	<li class="videos-item">
+		<div class="videos-item-image" style="height: {{videoHeight}}px;">
+			<video
+			id="my-player-{{nextIndex + i}}"
+			height="{{videoHeight}}"
+			class="video-js vjs-default-skin vjs-fluid  vjs-big-play-centered"
+			controls 
+			preload="none" 
+			playsinline
+			data-img="http://xiyuxing.oss-cn-qingdao.aliyuncs.com/52c35ce5-ef30-4bd3-a87c-afb10afca7ef.jpg"
+			poster="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+			style="background: transparent url(http://xiyuxing.oss-cn-qingdao.aliyuncs.com/52c35ce5-ef30-4bd3-a87c-afb10afca7ef.jpg) no-repeat center center;background-size:cover;">
+				<source src="{{item.VideoPalyUrl}}" type="video/mp4"></source>
+			</video>
+			{{if item.VideoType == 0}}
+			<div class="video-mask">
+				<span class="js-handle" data-handle="beforePlay" data-video-id="{{item.Id}}"></span>
+			</div>	
+			{{/if}}			
+		</div>
+		<div class="videos-item-info">
+			<span>{{item.SchoolName}}&nbsp;</span>
+			<span>{{item.PublishName}}</span>
+		</div>
+	</li>
+{{/each}}
+{{if videoList.length <= 0}}
+	<div>暂无数据-。-</div>
+{{/if}}
+
