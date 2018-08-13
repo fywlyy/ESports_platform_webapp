@@ -48,9 +48,9 @@ export default function AccountRent($el) {
 
                 _this.params.GameInfoId = id;
 
-                _this.getAccountList(_this.params,function(accountList) {
-                    $(".container-list").html(AccountListTpl({accountList}));
-                })                
+                //重新请求
+                _this.mescroll.resetUpScroll();
+
             })
 
             $(".sort .sort-border").on('click',function(){ //排序
@@ -65,9 +65,9 @@ export default function AccountRent($el) {
                 
                 _this.params.OrderByType = type;
 
-                _this.getAccountList(_this.params,function(accountList) {
-                    $(".container-list").html(AccountListTpl({accountList}));
-                })
+                //重新请求
+                _this.mescroll.resetUpScroll();
+
             })
         },
         setScrollHeight:function(){

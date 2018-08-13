@@ -51,9 +51,9 @@ export default function AllMatches() {
                     _this.params.CompetitionStatus = $this.data('status') === undefined ? null : $this.data('status');
                 }
 
-                _this.getAllMatchesList(function(data){
-                    $(".matches-list").html( MatcheListTpl({list: data}) );								
-                });
+                //重新请求
+                _this.mescroll.resetUpScroll();
+
             });
         },
         setScrollHeight:function(){

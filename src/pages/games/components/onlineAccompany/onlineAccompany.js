@@ -48,11 +48,11 @@ export default function OnlineAccompany($el) {
                 // $this.hasClass('active') ? $this.removeClass('active') : $this.addClass('active');
                 $this.addClass('active').siblings('.active').removeClass('active');
 
-                // _this.params.GameInfoId = id;
+                _this.params.GameInfoId = id;
 
-                // _this.seachPlayWithList(_this.params,function(accountList) {
-                //     $(".container-list").html(AccountListTpl({accountList}));
-                // })                
+                //重新请求
+                _this.mescroll.resetUpScroll();
+
             })
 
             $(".sort .sort-border").on('click',function(){ //排序
@@ -65,11 +65,11 @@ export default function OnlineAccompany($el) {
 
                 $this.addClass('active').siblings('.active').removeClass('active');
                 
-                // _this.params.OrderByType = type;
+                _this.params.OrderByType = type;
 
-                // _this.seachPlayWithList(_this.params,function(accountList) {
-                //     $(".container-list").html(AccountListTpl({accountList}));
-                // })
+                //重新请求
+                _this.mescroll.resetUpScroll();
+                
             })
         },
         setScrollHeight:function(){

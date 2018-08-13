@@ -39,7 +39,6 @@ export default function EditDynamic(id,name) {
 					processData: false, //不处理数据
 					success:function(req){
 						Util.loading(false);
-						alert(JSON.stringify(req));
 						if(!req.IsError){
 							Util.alertMessage("上传成功！");
 							let resList = req.Data;

@@ -28,7 +28,7 @@ export default function Videos($el) {
 			this.renderMescroll.call(this);
 			this.bindEvent();
 
-			this.videoHeight = $("#dataList")[0].offsetWidth / 1.6;
+			this.videoHeight = $("#dataList")[0].offsetWidth / 1.77778;
 		},
 		bindEvent: function() {
 			let _this = this;

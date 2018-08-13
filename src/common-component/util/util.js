@@ -517,8 +517,6 @@ module.exports = {
                     var func = function(){
                         var file = files[i];
                         var reader = new FileReader();
-
-                        alert(file.type);
                         
                         if(!file.type){
                             return;
