@@ -1,22 +1,24 @@
 /**
- * 下单页
+ * 订单详情页
  */
 
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
-import CreateOrderTpl from './order-details.html';
+import OrderDetailTpl from './order-details.html';
 
 import "./order-details.scss";
 
-export default function CreateOrder(id) {
+export default function OrderDetail(id) {
 
 	const handlers = {
 		init: function() {
 			let _this = this;
-			$(".container").html( CreateOrderTpl() );
-			_this.bindEvent();
-			Util.setTitle('下单');
+			Util.setTitle('订单详情');
+			this.getOrderDetail(function(){
+				$(".container").html( OrderDetailTpl({orderDetail:req.Data}) );
+				_this.bindEvent();
+			});
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -36,11 +38,22 @@ export default function CreateOrder(id) {
 			let hours = parseInt($this.siblings(".num").text());
 			$this.siblings(".num").text(hours + 1);
 		},
-		createOrder: function(e,$this){
-			Util.linkTo('/accountRent-success/' + id)
-		},
-		getAccountDetail: function(cb){
-			
+		getOrderDetail: function(cb){
+			$.ajax({
+                url: API.getOrderDetail,
+                type: 'post',
+                data: {Body: id},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
 		}
 	}   
 

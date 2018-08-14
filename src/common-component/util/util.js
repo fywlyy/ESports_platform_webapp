@@ -442,7 +442,7 @@ module.exports = {
         const blacklist = ['/dynamic-details', '/news', '/newsDetail', '/game-sign-up',
             '/match-details', '/account-rental', '/personal-details','/all-matches',
             '/create-order','/apply-certf', '/invite-success', '/edit-dynamic', 
-            '/Order-details', '/training-record','/inviting-to-play','/inviting-create-order'];//footer隐藏黑名单路由
+            '/Order-details', '/training-record','/inviting-to-play','/inviting-create-order', '/order-details'];//footer隐藏黑名单路由
         const mainRoters = ['/groups','/games','/matches','/classes', '/personal'];//主页路由
 
         blacklist.map((item,index) => {

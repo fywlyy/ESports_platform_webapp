@@ -264,7 +264,7 @@ const routes = {
     '/edit-dynamic/:id/:name':EditDynamicCb,
     '/inviting-to-play/:id':InvitingToPlayCb,
     '/inviting-create-order/:id':InvitingCreateOrderCb,
-    '/order-details':OrderDetailsCb,
+    '/order-details/:id':OrderDetailsCb,
     '/training-record':TrainingRecordCb
 };
 

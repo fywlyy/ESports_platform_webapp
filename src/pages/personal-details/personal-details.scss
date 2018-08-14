@@ -1,6 +1,7 @@
 @import "../../asset/common";
 
 .personal-details-page{
+    height: 100%;
     .page-head{
         color: #93908b;
         text-align: center;
@@ -94,7 +95,7 @@
     }
 
     .gropusList .group-info-list{
-        padding: 0 rem(10) rem(10);
+        padding: rem(10) rem(10) rem(10);
     
         .groupItem{
           margin-bottom: rem(10);

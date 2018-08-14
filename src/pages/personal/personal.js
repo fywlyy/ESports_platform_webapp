@@ -47,8 +47,6 @@ export default function Personal() {
                 success: function(req) {
                     if(!req.IsError){
                         callback && callback(req.Data);
-                    }else{
-                        Util.alertMessage(req.Message);
                     }
                 }
             })

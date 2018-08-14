@@ -5,18 +5,31 @@
 import _ from 'underscore';
 import Util from '../../common-component/util/util.js';
 import API from '../../api/Api.js';
+import MeScroll from 'mescroll.js';
 import TrainingRecordTpl from './training-record.html';
+import TrainingListTpl from './training-list.html';
 
 import "./training-record.scss";
 
 export default function TrainingRecord() {
 
 	const handlers = {
+		params: {
+            GameInfoId: null,
+			TimeType: null,
+			Status: null,
+            PageIndex: 1,
+            PageSize: 10
+        },
 		init: function() {
-
-			$(".container").html( TrainingRecordTpl() );
-			this.bindEvent();
+			let _this = this;
 			Util.setTitle('训练记录');
+			this.getAllGames(function(data){
+				$(".container").html( TrainingRecordTpl({gemes:data}) );
+				_this.setScrollHeight();
+				_this.renderMescroll.call(_this);
+				_this.bindEvent();
+			});
 
 		},
 		bindEvent: function() {
@@ -24,8 +37,98 @@ export default function TrainingRecord() {
             //公共事件添加
             $(".training-record-page").on("click", ".js-handle", function(e){
                 let handle = $(this).data('handle');
-                _this[handle] && _this[handle](e);
+                _this[handle] && _this[handle]($(this));
+			});
+			
+			$(".select-options").on("click", ".list-item", function(e){
+                let $this = $(this);
+                let $parent = $(this).parent();
+                
+				$this.hasClass('active') ? '' : $this.addClass('active').siblings().removeClass('active');
+
+                if($parent.hasClass("game")){
+                    _this.params.Rank = $this.data('rank') === undefined ? null : $this.data('rank');
+                }else{
+                    _this.params.CompetitionStatus = $this.data('status') === undefined ? null : $this.data('status');
+                }
+
+                //重新请求
+                _this.mescroll.resetUpScroll();
+
             });
+		},
+		setScrollHeight: function(){
+			let scrollHeight = $(".training-record-page").height() - $(".select-options")[0].offsetHeight - 2;
+            $("#training-mescroll").height(scrollHeight);
+		},
+		getAllGames: function(callback){
+			$.ajax({
+                url: API.getGameInfoList,
+                data: {
+                    Body: null
+                },
+                success: function(req) {
+					if(!req.IsError){
+                        callback && callback(req.Data || []);
+                    }
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		},
+		getAllRecordList: function(params, cb){
+			$.ajax({
+                url: API.getAllRecordList,
+                type: 'post',
+                data: {Body: params},
+                success: function(req){
+
+                    if(!req.IsError){
+                        cb && cb(req || []);
+                    }
+
+                },
+                error: function(msg){
+                    console.log(msg);
+                }
+            })
+		},
+        renderMescroll: function() {
+            const _this = this;
+            let firstLoad = true;
+
+            this.mescroll = new MeScroll("training-mescroll", { //第一个参数"mescroll"对应上面布局结构div的id
+                down: {
+                    htmlContent: '<p class="downwarp-progress"></p><p class="downwarp-tip" style="font-size:0.32rem;">下拉刷新</p>'
+                },
+                up: {
+                    isBounce: false,
+                    noMoreSize: 5,
+                    page: {
+                        num : 0, 
+                        size : 10
+                    },
+                    clearEmptyId: 'training-ul',
+                    htmlLoading: '<p class="upwarp-progress mescroll-rotate"></p><p class="upwarp-tip" style="font-size:0.32rem;">加载中..</p>',
+                    htmlNodata:"<p class='upwarp-nodata' style='font-size:0.32rem;'>没有更多了-_-</p>",
+                    callback: function(page){
+						_this.params.PageIndex = page.num;
+                        setTimeout(function(){
+                            _this.getAllRecordList(_this.params,_this.renderRecordList.bind(_this,firstLoad));
+                            firstLoad = false;
+                        },500);
+                    }
+                }
+            });
+		},
+		renderRecordList:function(firstLoad,req){
+			this.mescroll.endBySize(req.Result.length, req.TotalCount);
+			$("#training-ul").append( TrainingListTpl({trainingList: req.Result}) );        
+		},
+		linkToDetail: function($this){
+			let id = $this.data('id');
+			Util.linkTo('/order-details/' + id);
 		}
 	}   
 

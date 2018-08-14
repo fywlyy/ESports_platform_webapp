@@ -48,4 +48,8 @@ module.exports = {
 	getPersonalActivityList:`${baseUrl}/User/QueryApplyCompetitionList`,
 	getPersonalClassesList:`${baseUrl}/User/QueryUserStudentLessonHourList`,
 	getUserInfo:`${baseUrl}/User/GetUserInfo`,
+
+	/* 订单列表 */
+	getAllRecordList:`${baseUrl}/GameOrder/SeachOrderList`,
+	getOrderDetail:`${baseUrl}/GameOrder/GetOrder`
 };

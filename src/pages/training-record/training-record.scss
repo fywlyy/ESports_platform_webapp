@@ -5,9 +5,10 @@ $hotColor: #585757;
 $themeYellow: #ffaf00;
 
 .training-record-page{
+    height: 100%;
     .select-options{
         background: $themeBlack;
-        padding: rem(16) 0 rem(5);
+        padding: rem(16) rem(10) rem(5);
         .list{
             font-size: rem(30);
             color: $hotColor;
@@ -31,7 +32,7 @@ $themeYellow: #ffaf00;
         }
     }
     .record-list{
-        padding: rem(15) rem(10);
+        padding: 0 rem(10);
         .record-item{
             position: relative;
             background: #fff;
