@@ -22,6 +22,12 @@ export default function Login() {
                 let handle = $(this).data('handle');
                 _this[handle] && _this[handle](e);
             });
+
+            $("input[type='text'],input[type='password']").on('focus',function(){
+                $('.footer-layout').hide();
+            }).on('blur',function(){
+                $('.footer-layout').show();
+            });
 		},
 		handleLogin: function(e) {
 			let userName = $("input[name='userName']").val(),
