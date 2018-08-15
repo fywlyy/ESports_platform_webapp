@@ -12,13 +12,25 @@ import "./inviting-create-order.scss";
 export default function InvitingCreateOrder(id) {
 
 	const handlers = {
+		params: {
+			UserId: '',
+			SoType: 2,
+			BusinessId: id,
+			Quantity: 1,
+			PayWay: 3,
+			PINCode: '',
+			UserQQ: ''
+		},
 		init: function() {
-			let _this = this;
+			const _this = this;
+			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
+
+			Util.setTitle('下单');
 			this.getPlayWithDetail(function(data){
 				$(".container").html( InvitingCreateOrderTpl({data}) );
 				_this.bindEvent();
-				Util.setTitle('下单');
 			});
+			this.params.UserId = loginUserInfo.Id;
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -55,7 +67,31 @@ export default function InvitingCreateOrder(id) {
                     console.log(msg);
                 }
             })
-		}
+		},
+		createOrder: function(e,$this){
+			const num = parseInt($(".num").text());
+			const qq = $("input[type='number']").val();
+			
+			if(!qq){
+				Util.alertMessage('请输入QQ号码！');
+				return;
+			}
+
+			this.params.Quantity = num;
+			this.params.UserQQ = qq;
+			$.ajax({
+				url: API.creatOrder,
+				data: {
+					Body: this.params
+				},
+				success: function(req) {
+
+					if(!req.IsError){
+						Util.linkTo('/invite-success/' + id);
+					}
+				}
+			})
+		},
 	}   
 
 	handlers.init(); 

@@ -12,13 +12,25 @@ import "./create-order.scss";
 export default function CreateOrder(id) {
 
 	const handlers = {
+		params: {
+			UserId: '',
+			SoType: 1,
+			BusinessId: id,
+			Quantity: 1,
+			PayWay: 3,
+			PINCode: '',
+			UserQQ: ''
+		},
 		init: function() {
-			let _this = this;
+			const _this = this;
+			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
+
 			this.getAccountDetail(function(data){
 				$(".container").html( CreateOrderTpl({data}) );
 				_this.bindEvent();
-				Util.setTitle('下单');
 			});
+			this.params.UserId = loginUserInfo.Id;
+			Util.setTitle('下单');
 		},
 		bindEvent: function() {
 			let _this = this;
@@ -39,7 +51,21 @@ export default function CreateOrder(id) {
 			$this.siblings(".num").text(hours + 1);
 		},
 		createOrder: function(e,$this){
-			Util.linkTo('/accountRent-success/' + id)
+			const num = parseInt($(".num").text());
+
+			this.params.Quantity = num;
+			$.ajax({
+				url: API.creatOrder,
+				data: {
+					Body: this.params
+				},
+				success: function(req) {
+
+					if(!req.IsError){
+						Util.linkTo('/accountRent-success/' + id);
+					}
+				}
+			})
 		},
 		getAccountDetail: function(cb){
 			$.ajax({

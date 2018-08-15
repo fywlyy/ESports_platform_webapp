@@ -10,10 +10,18 @@ export default function InvitingToPlay(id) {
     const handlers = {
 
         init: function() {
+            const _this = this;
+            const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-            $(".container").html(InvitingToPlayTpl());
+            this.hasLogin = !!loginUserInfo ? true : false;
+
+            this.getPlayWithDetail(function(data){
+                $(".container").html(InvitingToPlayTpl({detailData: data}));
+                _this.bindEvent();
+            })
+            
             Util.setTitle('邀请陪玩');
-            this.bindEvent();
+            
 
         },
         bindEvent: function() {
@@ -25,7 +33,12 @@ export default function InvitingToPlay(id) {
             });
         },
         toCreateOrder: function(e, $this){
-            Util.linkTo("/inviting-create-order/" + 1);
+            if(!this.hasLogin){
+                Util.linkTo('/login');
+                return;
+            }
+
+            Util.linkTo("/inviting-create-order/" + id);
         },
 		getPlayWithDetail: function(cb){
 			$.ajax({
@@ -33,9 +46,11 @@ export default function InvitingToPlay(id) {
                 type: 'post',
                 data: { Body: 1 },
                 success: function(req){
+
                     if(!req.IsError){
                         cb && cb(req.Data || []);
                     }
+
                 },
                 error: function(msg){
                     console.log(msg);
