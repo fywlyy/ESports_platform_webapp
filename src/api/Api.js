@@ -51,5 +51,6 @@ module.exports = {
 
 	/* 订单列表 */
 	getAllRecordList:`${baseUrl}/GameOrder/SeachOrderList`,
-	getOrderDetail:`${baseUrl}/GameOrder/GetOrder`
+	getOrderDetail:`${baseUrl}/GameOrder/GetOrder`,
+	creatOrder:`${baseUrl}/GameOrder/CreatOrder`,
 };

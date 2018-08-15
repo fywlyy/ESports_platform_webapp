@@ -4,7 +4,7 @@
   "description": "",
   "main": "app/main.js",
   "scripts": {
-    "start": "webpack -w --watch",
+    "start": "concurrently \"webpack -w --watch\" \"http-server -p 8090 .\"",
     "build": "webpack -p --config webpack.production.config.js"
   },
   "keywords": [
@@ -26,6 +26,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "clean-webpack-plugin": "^0.1.19",
+    "concurrently": "^3.6.1",
     "director": "^1.2.8",
     "echarts": "^3.6.2",
     "es3ify-loader": "^0.2.0",
