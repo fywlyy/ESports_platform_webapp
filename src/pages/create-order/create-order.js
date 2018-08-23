@@ -18,8 +18,7 @@ export default function CreateOrder(id) {
 			BusinessId: id,
 			Quantity: 1,
 			PayWay: 3,
-			PINCode: '',
-			UserQQ: ''
+			PINCode: ''
 		},
 		init: function() {
 			const _this = this;
