@@ -13,8 +13,6 @@ export default function InvitingToPlay(id) {
             const _this = this;
             const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-            this.hasLogin = !!loginUserInfo ? true : false;
-
             this.getPlayWithDetail(function(data){
                 $(".container").html(InvitingToPlayTpl({detailData: data}));
                 _this.bindEvent();
@@ -33,18 +31,13 @@ export default function InvitingToPlay(id) {
             });
         },
         toCreateOrder: function(e, $this){
-            if(!this.hasLogin){
-                Util.linkTo('/login');
-                return;
-            }
-
             Util.linkTo("/inviting-create-order/" + id);
         },
 		getPlayWithDetail: function(cb){
 			$.ajax({
                 url: API.getPlayWithDetail,
                 type: 'post',
-                data: { Body: 1 },
+                data: { Body: id },
                 success: function(req){
 
                     if(!req.IsError){

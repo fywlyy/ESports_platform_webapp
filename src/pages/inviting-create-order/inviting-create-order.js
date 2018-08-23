@@ -25,7 +25,8 @@ export default function InvitingCreateOrder(id) {
 			const _this = this;
 			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-			Util.setTitle('下单');
+            Util.setTitle('下单');
+            this.hasLogin = !!loginUserInfo ? true : false;
 			this.getPlayWithDetail(function(data){
 				$(".container").html( InvitingCreateOrderTpl({data}) );
 				_this.bindEvent();
@@ -75,7 +76,12 @@ export default function InvitingCreateOrder(id) {
 			if(!qq){
 				Util.alertMessage('请输入QQ号码！');
 				return;
-			}
+            }
+            
+            if(!this.hasLogin){
+                Util.linkTo('/login');
+                return;
+            }
 
 			this.params.Quantity = num;
 			this.params.UserQQ = qq;

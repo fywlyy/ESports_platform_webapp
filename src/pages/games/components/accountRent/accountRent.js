@@ -19,9 +19,7 @@ export default function AccountRent($el) {
         },
         init: function() {
             const _this = this;
-            const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-            this.hasLogin = !!loginUserInfo ? true : false;
             this.getGameInfoList(function(req){
                 $el.html(AccountRentTpl({gameInfoList: req.Data}));
                 _this.setScrollHeight();
@@ -148,11 +146,6 @@ export default function AccountRent($el) {
         },
         placeOrder: function(e, $this) {
             e.stopPropagation();
-
-            if(!this.hasLogin){
-                Util.linkTo('/login');
-                return;
-            }
 
             let id = $this.data('id');
             Util.linkTo('/create-order/' + id);

@@ -21,9 +21,7 @@ export default function OnlineAccompany($el) {
         },
         init: function() {
             const _this = this;
-            const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-            this.hasLogin = !!loginUserInfo ? true : false;
             this.getGameInfoList(function(req) {
                 $el.html(OnlineAccompanyTpl({gameInfoList: req.Data}));
                 _this.setScrollHeight();
@@ -149,11 +147,6 @@ export default function OnlineAccompany($el) {
         },
         placeOrder: function(e, $this) {
             e.stopPropagation();
-
-            if(!this.hasLogin){
-                Util.linkTo('/login');
-                return;
-            }
 
             let id = $this.data('id');
             Util.linkTo('/inviting-create-order/' + id);

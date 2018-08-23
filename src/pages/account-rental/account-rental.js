@@ -11,9 +11,7 @@ export default function AccountRental(id) {
 
         init: function() {
             const _this = this;
-            const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
 
-            this.hasLogin = !!loginUserInfo ? true : false;
             this.getAccountDetail(function(data){
                 $(".container").html(AccountRentalTpl({data}));
                 Util.setTitle('账号租用');
@@ -30,11 +28,6 @@ export default function AccountRental(id) {
             });
         },
         toCreateOrder: function(e, $this){
-            if(!this.hasLogin){
-                Util.linkTo('/login');
-                return;
-            }
-
             Util.linkTo("/create-order/" + id);
         },
 		getAccountDetail: function(cb){

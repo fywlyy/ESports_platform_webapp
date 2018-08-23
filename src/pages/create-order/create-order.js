@@ -24,7 +24,8 @@ export default function CreateOrder(id) {
 		init: function() {
 			const _this = this;
 			const loginUserInfo = JSON.parse(localStorage.getItem('UserInfo'));
-
+            
+            this.hasLogin = !!loginUserInfo ? true : false;
 			this.getAccountDetail(function(data){
 				$(".container").html( CreateOrderTpl({data}) );
 				_this.bindEvent();
@@ -51,6 +52,13 @@ export default function CreateOrder(id) {
 			$this.siblings(".num").text(hours + 1);
 		},
 		createOrder: function(e,$this){
+
+            if(!this.hasLogin){
+                Util.linkTo('/login');
+                return;
+            }
+
+            
 			const num = parseInt($(".num").text());
 
 			this.params.Quantity = num;
