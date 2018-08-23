@@ -31,7 +31,7 @@ export default function InvitingCreateOrder(id) {
 				$(".container").html( InvitingCreateOrderTpl({data}) );
 				_this.bindEvent();
 			});
-			this.params.UserId = loginUserInfo.Id;
+			this.params.UserId = this.hasLogin ? loginUserInfo.Id : '';
 		},
 		bindEvent: function() {
 			let _this = this;

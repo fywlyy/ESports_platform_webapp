@@ -15,10 +15,10 @@ export default function CreateOrder(id) {
 		params: {
 			UserId: '',
 			SoType: 1,
-			BusinessId: id,
+            BusinessId: id,
+            SetMeal: 10,
 			Quantity: 1,
-			PayWay: 3,
-			PINCode: ''
+			PayWay: 3
 		},
 		init: function() {
 			const _this = this;
@@ -29,7 +29,7 @@ export default function CreateOrder(id) {
 				$(".container").html( CreateOrderTpl({data}) );
 				_this.bindEvent();
 			});
-			this.params.UserId = loginUserInfo.Id;
+			this.params.UserId = this.hasLogin ? loginUserInfo.Id : '';
 			Util.setTitle('下单');
 		},
 		bindEvent: function() {
@@ -69,7 +69,7 @@ export default function CreateOrder(id) {
 				success: function(req) {
 
 					if(!req.IsError){
-						Util.linkTo('/accountRent-success/' + id);
+						Util.linkTo('/accountRent-success/' + req.Data);
 					}
 				}
 			})

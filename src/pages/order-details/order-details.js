@@ -15,7 +15,7 @@ export default function OrderDetail(id) {
 		init: function() {
 			let _this = this;
 			Util.setTitle('订单详情');
-			this.getOrderDetail(function(){
+			this.getOrderDetail(function(req){
 				$(".container").html( OrderDetailTpl({orderDetail:req.Data}) );
 				_this.bindEvent();
 			});
@@ -46,7 +46,7 @@ export default function OrderDetail(id) {
                 success: function(req){
 
                     if(!req.IsError){
-                        cb && cb(req || []);
+                        cb && cb(req || {});
                     }
 
                 },
